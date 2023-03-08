@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/MedicinalProductUndesirableEffect-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/MedicinalProductUndesirableEffect",
+  "definitions": {
+    "MedicinalProductUndesirableEffect": {
+      "description": "Describe the undesirable effects of the medicinal product.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a MedicinalProductUndesirableEffect resource",
+          "type": "string",
+          "const": "MedicinalProductUndesirableEffect"
+        },
+        "subject": {
+          "description": "The medication for which this is an indication.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "symptomConditionEffect": {
+          "description": "The symptom, condition or undesirable effect.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "classification": {
+          "description": "Classification of the effect.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "frequencyOfOccurrence": {
+          "description": "The frequency of occurrence of the effect.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "population": {
+          "description": "The population group to which this applies.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Population"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    }
+  }
+}

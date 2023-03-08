@@ -1,0 +1,450 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/DeviceDefinition-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/DeviceDefinition",
+  "definitions": {
+    "DeviceDefinition": {
+      "description": "The characteristics, operational status and capabilities of a medical-related component of a medical device.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a DeviceDefinition resource",
+          "type": "string",
+          "const": "DeviceDefinition"
+        },
+        "identifier": {
+          "description": "Unique instance identifiers assigned to a device by the software, manufacturers, other organizations or owners. For example: handle ID.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "udiDeviceIdentifier": {
+          "description": "Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold.",
+          "items": {
+            "$ref": "#/definitions/DeviceDefinition_UdiDeviceIdentifier"
+          },
+          "type": "array"
+        },
+        "manufacturerString": {
+          "description": "A name of the manufacturer.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_manufacturerString": {
+          "description": "Extensions for manufacturerString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "manufacturerReference": {
+          "description": "A name of the manufacturer.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "deviceName": {
+          "description": "A name given to the device to identify it.",
+          "items": {
+            "$ref": "#/definitions/DeviceDefinition_DeviceName"
+          },
+          "type": "array"
+        },
+        "modelNumber": {
+          "description": "The model number for the device.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_modelNumber": {
+          "description": "Extensions for modelNumber",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "What kind of device or device system this is.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "specialization": {
+          "description": "The capabilities supported on a  device, the standards to which the device conforms for a particular purpose, and used for the communication.",
+          "items": {
+            "$ref": "#/definitions/DeviceDefinition_Specialization"
+          },
+          "type": "array"
+        },
+        "version": {
+          "description": "The available versions of the device, e.g., software versions.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/string"
+          },
+          "type": "array"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "safety": {
+          "description": "Safety characteristics of the device.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "shelfLifeStorage": {
+          "description": "Shelf Life and storage information.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ProductShelfLife"
+          },
+          "type": "array"
+        },
+        "physicalCharacteristics": {
+          "description": "Dimensions, color etc.",
+          "$ref": "core/elements.schema.json#/definitions/ProdCharacteristic"
+        },
+        "languageCode": {
+          "description": "Language code for the human-readable text strings produced by the device (all supported).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "capability": {
+          "description": "Device capabilities.",
+          "items": {
+            "$ref": "#/definitions/DeviceDefinition_Capability"
+          },
+          "type": "array"
+        },
+        "property": {
+          "description": "The actual configuration settings of a device as it actually operates, e.g., regulation status, time properties.",
+          "items": {
+            "$ref": "#/definitions/DeviceDefinition_Property"
+          },
+          "type": "array"
+        },
+        "owner": {
+          "description": "An organization that is responsible for the provision and ongoing maintenance of the device.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "contact": {
+          "description": "Contact details for an organization or a particular human that is responsible for the device.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "url": {
+          "description": "A network address on which the device may be contacted directly.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "onlineInformation": {
+          "description": "Access to on-line information about the device.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_onlineInformation": {
+          "description": "Extensions for onlineInformation",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "note": {
+          "description": "Descriptive information, usage information or implantation information that is not captured in an existing element.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "quantity": {
+          "description": "The quantity of the device present in the packaging (e.g. the number of devices present in a pack, or the number of devices in the same package of the medicinal product).",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "parentDevice": {
+          "description": "The parent device it can be part of.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "material": {
+          "description": "A substance used to create the material(s) of which the device is made.",
+          "items": {
+            "$ref": "#/definitions/DeviceDefinition_Material"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "DeviceDefinition_UdiDeviceIdentifier": {
+      "description": "The characteristics, operational status and capabilities of a medical-related component of a medical device.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "deviceIdentifier": {
+          "description": "The identifier that is to be associated with every Device that references this DeviceDefintiion for the issuer and jurisdication porvided in the DeviceDefinition.udiDeviceIdentifier.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_deviceIdentifier": {
+          "description": "Extensions for deviceIdentifier",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "issuer": {
+          "description": "The organization that assigns the identifier algorithm.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_issuer": {
+          "description": "Extensions for issuer",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "jurisdiction": {
+          "description": "The jurisdiction to which the deviceIdentifier applies.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_jurisdiction": {
+          "description": "Extensions for jurisdiction",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DeviceDefinition_DeviceName": {
+      "description": "The characteristics, operational status and capabilities of a medical-related component of a medical device.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "The name of the device.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "The type of deviceName.\nUDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | ModelName.",
+          "enum": [
+            "udi-label-name",
+            "user-friendly-name",
+            "patient-reported-name",
+            "manufacturer-name",
+            "model-name",
+            "other"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DeviceDefinition_Specialization": {
+      "description": "The characteristics, operational status and capabilities of a medical-related component of a medical device.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "systemType": {
+          "description": "The standard that is used to operate and communicate.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_systemType": {
+          "description": "Extensions for systemType",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "version": {
+          "description": "The version of the standard that is used to operate and communicate.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DeviceDefinition_Capability": {
+      "description": "The characteristics, operational status and capabilities of a medical-related component of a medical device.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Type of capability.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "description": {
+          "description": "Description of capability.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "DeviceDefinition_Property": {
+      "description": "The characteristics, operational status and capabilities of a medical-related component of a medical device.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Code that specifies the property DeviceDefinitionPropetyCode (Extensible).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "valueQuantity": {
+          "description": "Property value as a quantity.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Quantity"
+          },
+          "type": "array"
+        },
+        "valueCode": {
+          "description": "Property value as a code, e.g., NTP4 (synced to NTP).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "DeviceDefinition_Material": {
+      "description": "The characteristics, operational status and capabilities of a medical-related component of a medical device.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "substance": {
+          "description": "The substance.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "alternate": {
+          "description": "Indicates an alternative material of the device.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_alternate": {
+          "description": "Extensions for alternate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "allergenicIndicator": {
+          "description": "Whether the substance is a known or suspected allergen.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_allergenicIndicator": {
+          "description": "Extensions for allergenicIndicator",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "substance"
+      ]
+    }
+  }
+}

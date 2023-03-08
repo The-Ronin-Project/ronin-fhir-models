@@ -1,0 +1,464 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Encounter-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Encounter",
+  "definitions": {
+    "Encounter": {
+      "description": "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Encounter resource",
+          "type": "string",
+          "const": "Encounter"
+        },
+        "identifier": {
+          "description": "Identifier(s) by which this encounter is known.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "planned | arrived | triaged | in-progress | onleave | finished | cancelled +.",
+          "enum": [
+            "planned",
+            "arrived",
+            "triaged",
+            "in-progress",
+            "onleave",
+            "finished",
+            "cancelled",
+            "entered-in-error",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "statusHistory": {
+          "description": "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.",
+          "items": {
+            "$ref": "#/definitions/Encounter_StatusHistory"
+          },
+          "type": "array"
+        },
+        "class": {
+          "description": "Concepts representing classification of patient encounter such as ambulatory (outpatient), inpatient, emergency, home health or others due to local variations.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "classHistory": {
+          "description": "The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient.",
+          "items": {
+            "$ref": "#/definitions/Encounter_ClassHistory"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "serviceType": {
+          "description": "Broad categorization of the service that is to be provided (e.g. cardiology).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "priority": {
+          "description": "Indicates the urgency of the encounter.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "The patient or group present at the encounter.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "episodeOfCare": {
+          "description": "Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "basedOn": {
+          "description": "The request this encounter satisfies (e.g. incoming referral or procedure request).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "participant": {
+          "description": "The list of people responsible for providing the service.",
+          "items": {
+            "$ref": "#/definitions/Encounter_Participant"
+          },
+          "type": "array"
+        },
+        "appointment": {
+          "description": "The appointment that scheduled this encounter.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "period": {
+          "description": "The start and end time of the encounter.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "length": {
+          "description": "Quantity of time the encounter lasted. This excludes the time during leaves of absence.",
+          "$ref": "core/elements.schema.json#/definitions/Duration"
+        },
+        "reasonCode": {
+          "description": "Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "reasonReference": {
+          "description": "Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "diagnosis": {
+          "description": "The list of diagnosis relevant to this encounter.",
+          "items": {
+            "$ref": "#/definitions/Encounter_Diagnosis"
+          },
+          "type": "array"
+        },
+        "account": {
+          "description": "The set of accounts that may be used for billing for this Encounter.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "hospitalization": {
+          "description": "Details about the admission to a healthcare service.",
+          "$ref": "#/definitions/Encounter_Hospitalization"
+        },
+        "location": {
+          "description": "List of locations where  the patient has been during this encounter.",
+          "items": {
+            "$ref": "#/definitions/Encounter_Location"
+          },
+          "type": "array"
+        },
+        "serviceProvider": {
+          "description": "The organization that is primarily responsible for this Encounter\u0027s services. This MAY be the same as the organization on the Patient record, however it could be different, such as if the actor performing the services was from an external organization (which may be billed seperately) for an external consultation.  Refer to the example bundle showing an abbreviated set of Encounters for a colonoscopy.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "partOf": {
+          "description": "Another Encounter of which this encounter is a part of (administratively or in time).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "class",
+        "resourceType"
+      ]
+    },
+    "Encounter_StatusHistory": {
+      "description": "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "planned | arrived | triaged | in-progress | onleave | finished | cancelled +.",
+          "enum": [
+            "planned",
+            "arrived",
+            "triaged",
+            "in-progress",
+            "onleave",
+            "finished",
+            "cancelled",
+            "entered-in-error",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "The time that the episode was in the specified status.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "period"
+      ]
+    },
+    "Encounter_ClassHistory": {
+      "description": "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "class": {
+          "description": "inpatient | outpatient | ambulatory | emergency +.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "period": {
+          "description": "The time that the episode was in the specified class.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "period",
+        "class"
+      ]
+    },
+    "Encounter_Participant": {
+      "description": "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Role of participant in encounter.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "period": {
+          "description": "The period of time that the specified participant participated in the encounter. These can overlap or be sub-sets of the overall encounter\u0027s period.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "individual": {
+          "description": "Persons involved in the encounter other than the patient.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Encounter_Diagnosis": {
+      "description": "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "condition": {
+          "description": "Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "use": {
+          "description": "Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "rank": {
+          "description": "Ranking of the diagnosis (for each role type).",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_rank": {
+          "description": "Extensions for rank",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "condition"
+      ]
+    },
+    "Encounter_Hospitalization": {
+      "description": "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "preAdmissionIdentifier": {
+          "description": "Pre-admission identifier.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "origin": {
+          "description": "The location/organization from which the patient came before admission.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "admitSource": {
+          "description": "From where patient was admitted (physician referral, transfer).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "reAdmission": {
+          "description": "Whether this hospitalization is a readmission and why if known.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "dietPreference": {
+          "description": "Diet preferences reported by the patient.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "specialCourtesy": {
+          "description": "Special courtesies (VIP, board member).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "specialArrangement": {
+          "description": "Any special requests that have been made for this hospitalization encounter, such as the provision of specific equipment or other things.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "destination": {
+          "description": "Location/organization to which the patient is discharged.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "dischargeDisposition": {
+          "description": "Category or kind of location after discharge.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Encounter_Location": {
+      "description": "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "location": {
+          "description": "The location where the encounter takes place.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "status": {
+          "description": "The status of the participants\u0027 presence at the specified location during the period specified. If the participant is no longer at the location, then the period will have an end date/time.",
+          "enum": [
+            "planned",
+            "active",
+            "reserved",
+            "completed"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "physicalType": {
+          "description": "This will be used to specify the required levels (bed/ward/room/etc.) desired to be recorded to simplify either messaging or query.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "period": {
+          "description": "Time period during which the patient was present at the location.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "location"
+      ]
+    }
+  }
+}

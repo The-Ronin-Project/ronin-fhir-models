@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/GuidanceResponse-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/GuidanceResponse",
+  "definitions": {
+    "GuidanceResponse": {
+      "description": "A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a GuidanceResponse resource",
+          "type": "string",
+          "const": "GuidanceResponse"
+        },
+        "requestIdentifier": {
+          "description": "The identifier of the request associated with this response. If an identifier was given as part of the request, it will be reproduced here to enable the requester to more easily identify the response in a multi-request scenario.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "identifier": {
+          "description": "Allows a service to provide  unique, business identifiers for the response.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "moduleUri": {
+          "description": "An identifier, CodeableConcept or canonical reference to the guidance that was requested.",
+          "pattern": "^\\S*$",
+          "type": "string"
+        },
+        "_moduleUri": {
+          "description": "Extensions for moduleUri",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "moduleCanonical": {
+          "description": "An identifier, CodeableConcept or canonical reference to the guidance that was requested.",
+          "pattern": "^\\S*$",
+          "type": "string"
+        },
+        "_moduleCanonical": {
+          "description": "Extensions for moduleCanonical",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "moduleCodeableConcept": {
+          "description": "An identifier, CodeableConcept or canonical reference to the guidance that was requested.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "status": {
+          "description": "The status of the response. If the evaluation is completed successfully, the status will indicate success. However, in order to complete the evaluation, the engine may require more information. In this case, the status will be data-required, and the response will contain a description of the additional required information. If the evaluation completed successfully, but the engine determines that a potentially more accurate response could be provided if more data was available, the status will be data-requested, and the response will contain a description of the additional requested information.",
+          "enum": [
+            "success",
+            "data-requested",
+            "data-required",
+            "in-progress",
+            "failure",
+            "entered-in-error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "subject": {
+          "description": "The patient for which the request was processed.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "The encounter during which this response was created or to which the creation of this record is tightly associated.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "occurrenceDateTime": {
+          "description": "Indicates when the guidance response was processed.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_occurrenceDateTime": {
+          "description": "Extensions for occurrenceDateTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "performer": {
+          "description": "Provides a reference to the device that performed the guidance.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "reasonCode": {
+          "description": "Describes the reason for the guidance response in coded or textual form.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "reasonReference": {
+          "description": "Indicates the reason the request was initiated. This is typically provided as a parameter to the evaluation and echoed by the service, although for some use cases, such as subscription- or event-based scenarios, it may provide an indication of the cause for the response.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "Provides a mechanism to communicate additional information about the response.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "evaluationMessage": {
+          "description": "Messages resulting from the evaluation of the artifact or artifacts. As part of evaluating the request, the engine may produce informational or warning messages. These messages will be provided by this element.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "outputParameters": {
+          "description": "The output parameters of the evaluation, if any. Many modules will result in the return of specific resources such as procedure or communication requests that are returned as part of the operation result. However, modules may define specific outputs that would be returned as the result of the evaluation, and these would be returned in this element.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "result": {
+          "description": "The actions, if any, produced by the evaluation of the artifact.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "dataRequirement": {
+          "description": "If the evaluation could not be completed due to lack of information, or additional information would potentially result in a more accurate response, this element will a description of the data required in order to proceed with the evaluation. A subsequent request to the service should include this data.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/DataRequirement"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    }
+  }
+}

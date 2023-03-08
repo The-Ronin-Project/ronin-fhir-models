@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/EnrollmentResponse-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/EnrollmentResponse",
+  "definitions": {
+    "EnrollmentResponse": {
+      "description": "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a EnrollmentResponse resource",
+          "type": "string",
+          "const": "EnrollmentResponse"
+        },
+        "identifier": {
+          "description": "The Response business identifier.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of the resource instance.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "request": {
+          "description": "Original request resource reference.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "outcome": {
+          "description": "Processing status: error, complete.",
+          "enum": [
+            "queued",
+            "complete",
+            "error",
+            "partial"
+          ]
+        },
+        "_outcome": {
+          "description": "Extensions for outcome",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "disposition": {
+          "description": "A description of the status of the adjudication.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_disposition": {
+          "description": "Extensions for disposition",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "created": {
+          "description": "The date when the enclosed suite of services were performed or completed.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_created": {
+          "description": "Extensions for created",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "organization": {
+          "description": "The Insurer who produced this adjudicated response.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "requestProvider": {
+          "description": "The practitioner who is responsible for the services rendered to the patient.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    }
+  }
+}

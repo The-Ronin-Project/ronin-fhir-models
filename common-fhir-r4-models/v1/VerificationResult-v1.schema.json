@@ -1,0 +1,300 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/VerificationResult-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/VerificationResult",
+  "definitions": {
+    "VerificationResult": {
+      "description": "Describes validation requirements, source(s), status and dates for one or more elements.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a VerificationResult resource",
+          "type": "string",
+          "const": "VerificationResult"
+        },
+        "target": {
+          "description": "A resource that was validated.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "targetLocation": {
+          "description": "The fhirpath location(s) within the resource that was validated.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/string"
+          },
+          "type": "array"
+        },
+        "_targetLocation": {
+          "description": "Extensions for targetLocation",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "need": {
+          "description": "The frequency with which the target must be validated (none; initial; periodic).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "status": {
+          "description": "The validation status of the target (attested; validated; in process; requires revalidation; validation failed; revalidation failed).",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "statusDate": {
+          "description": "When the validation status was updated.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_statusDate": {
+          "description": "Extensions for statusDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "validationType": {
+          "description": "What the target is validated against (nothing; primary source; multiple sources).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "validationProcess": {
+          "description": "The primary process by which the target is validated (edit check; value set; primary source; multiple sources; standalone; in context).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "frequency": {
+          "description": "Frequency of revalidation.",
+          "$ref": "core/elements.schema.json#/definitions/Timing"
+        },
+        "lastPerformed": {
+          "description": "The date/time validation was last completed (including failed validations).",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_lastPerformed": {
+          "description": "Extensions for lastPerformed",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "nextScheduled": {
+          "description": "The date when target is next validated, if appropriate.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_nextScheduled": {
+          "description": "Extensions for nextScheduled",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "failureAction": {
+          "description": "The result if validation fails (fatal; warning; record only; none).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "primarySource": {
+          "description": "Information about the primary source(s) involved in validation.",
+          "items": {
+            "$ref": "#/definitions/VerificationResult_PrimarySource"
+          },
+          "type": "array"
+        },
+        "attestation": {
+          "description": "Information about the entity attesting to information.",
+          "$ref": "#/definitions/VerificationResult_Attestation"
+        },
+        "validator": {
+          "description": "Information about the entity validating information.",
+          "items": {
+            "$ref": "#/definitions/VerificationResult_Validator"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "VerificationResult_PrimarySource": {
+      "description": "Describes validation requirements, source(s), status and dates for one or more elements.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "who": {
+          "description": "Reference to the primary source.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "type": {
+          "description": "Type of primary source (License Board; Primary Education; Continuing Education; Postal Service; Relationship owner; Registration Authority; legal source; issuing source; authoritative source).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "communicationMethod": {
+          "description": "Method for communicating with the primary source (manual; API; Push).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "validationStatus": {
+          "description": "Status of the validation of the target against the primary source (successful; failed; unknown).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "validationDate": {
+          "description": "When the target was validated against the primary source.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_validationDate": {
+          "description": "Extensions for validationDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "canPushUpdates": {
+          "description": "Ability of the primary source to push updates/alerts (yes; no; undetermined).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "pushTypeAvailable": {
+          "description": "Type of alerts/updates the primary source can send (specific requested changes; any changes; as defined by source).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VerificationResult_Attestation": {
+      "description": "Describes validation requirements, source(s), status and dates for one or more elements.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "who": {
+          "description": "The individual or organization attesting to information.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "onBehalfOf": {
+          "description": "When the who is asserting on behalf of another (organization or individual).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "communicationMethod": {
+          "description": "The method by which attested information was submitted/retrieved (manual; API; Push).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "date": {
+          "description": "The date the information was attested to.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "sourceIdentityCertificate": {
+          "description": "A digital identity certificate associated with the attestation source.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_sourceIdentityCertificate": {
+          "description": "Extensions for sourceIdentityCertificate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "proxyIdentityCertificate": {
+          "description": "A digital identity certificate associated with the proxy entity submitting attested information on behalf of the attestation source.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_proxyIdentityCertificate": {
+          "description": "Extensions for proxyIdentityCertificate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "proxySignature": {
+          "description": "Signed assertion by the proxy entity indicating that they have the right to submit attested information on behalf of the attestation source.",
+          "$ref": "core/elements.schema.json#/definitions/Signature"
+        },
+        "sourceSignature": {
+          "description": "Signed assertion by the attestation source that they have attested to the information.",
+          "$ref": "core/elements.schema.json#/definitions/Signature"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VerificationResult_Validator": {
+      "description": "Describes validation requirements, source(s), status and dates for one or more elements.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "organization": {
+          "description": "Reference to the organization validating information.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "identityCertificate": {
+          "description": "A digital identity certificate associated with the validator.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_identityCertificate": {
+          "description": "Extensions for identityCertificate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "attestationSignature": {
+          "description": "Signed assertion by the validator that they have validated the information.",
+          "$ref": "core/elements.schema.json#/definitions/Signature"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "organization"
+      ]
+    }
+  }
+}

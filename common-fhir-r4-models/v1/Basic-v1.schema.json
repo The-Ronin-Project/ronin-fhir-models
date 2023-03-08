@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Basic-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Basic",
+  "definitions": {
+    "Basic": {
+      "description": "Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don\u0027t map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Basic resource",
+          "type": "string",
+          "const": "Basic"
+        },
+        "identifier": {
+          "description": "Identifier assigned to the resource for business purposes, outside the context of FHIR.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "Identifies the \u0027type\u0027 of resource - equivalent to the resource name for other resources.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "Identifies the patient, practitioner, device or any other resource that is the \"focus\" of this resource.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "created": {
+          "description": "Identifies when the resource was first created.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_created": {
+          "description": "Extensions for created",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "author": {
+          "description": "Indicates who was responsible for creating the resource instance.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "code",
+        "resourceType"
+      ]
+    }
+  }
+}

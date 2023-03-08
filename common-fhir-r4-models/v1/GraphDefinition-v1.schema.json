@@ -1,0 +1,348 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/GraphDefinition-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/GraphDefinition",
+  "definitions": {
+    "GraphDefinition": {
+      "description": "A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a GraphDefinition resource",
+          "type": "string",
+          "const": "GraphDefinition"
+        },
+        "url": {
+          "description": "An absolute URI that is used to identify this graph definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this graph definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the graph definition is stored on different servers.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "version": {
+          "description": "The identifier that is used to identify this version of the graph definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the graph definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "name": {
+          "description": "A natural language name identifying the graph definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "status": {
+          "description": "The status of this graph definition. Enables tracking the life-cycle of the content.",
+          "enum": [
+            "draft",
+            "active",
+            "retired",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "experimental": {
+          "description": "A Boolean value to indicate that this graph definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_experimental": {
+          "description": "Extensions for experimental",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "date": {
+          "description": "The date  (and optionally time) when the graph definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the graph definition changes.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "publisher": {
+          "description": "The name of the organization or individual that published the graph definition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_publisher": {
+          "description": "Extensions for publisher",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contact": {
+          "description": "Contact details to assist a user in finding and communicating with the publisher.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "A free text natural language description of the graph definition from a consumer\u0027s perspective.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "useContext": {
+          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate graph definition instances.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/UsageContext"
+          },
+          "type": "array"
+        },
+        "jurisdiction": {
+          "description": "A legal or geographic region in which the graph definition is intended to be used.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "purpose": {
+          "description": "Explanation of why this graph definition is needed and why it has been designed as it has.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_purpose": {
+          "description": "Extensions for purpose",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "start": {
+          "description": "The type of FHIR resource at which instances of this graph start.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_start": {
+          "description": "Extensions for start",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "profile": {
+          "description": "The profile that describes the use of the base resource.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        },
+        "link": {
+          "description": "Links this graph makes rules about.",
+          "items": {
+            "$ref": "#/definitions/GraphDefinition_Link"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "GraphDefinition_Link": {
+      "description": "A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "path": {
+          "description": "A FHIR expression that identifies one of FHIR References to other resources.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_path": {
+          "description": "Extensions for path",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "sliceName": {
+          "description": "Which slice (if profiled).",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_sliceName": {
+          "description": "Extensions for sliceName",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "min": {
+          "description": "Minimum occurrences for this link.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_min": {
+          "description": "Extensions for min",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "max": {
+          "description": "Maximum occurrences for this link.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_max": {
+          "description": "Extensions for max",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "Information about why this link is of interest in this graph definition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "target": {
+          "description": "Potential target for the link.",
+          "items": {
+            "$ref": "#/definitions/GraphDefinition_Target"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "GraphDefinition_Target": {
+      "description": "A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Type of resource this link refers to.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "params": {
+          "description": "A set of parameters to look up.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_params": {
+          "description": "Extensions for params",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "profile": {
+          "description": "Profile for the target resource.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        },
+        "compartment": {
+          "description": "Compartment Consistency Rules.",
+          "items": {
+            "$ref": "#/definitions/GraphDefinition_Compartment"
+          },
+          "type": "array"
+        },
+        "link": {
+          "description": "Additional links from target resource.",
+          "items": {
+            "$ref": "#/definitions/GraphDefinition_Link"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "GraphDefinition_Compartment": {
+      "description": "A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "use": {
+          "description": "Defines how the compartment rule is used - whether it it is used to test whether resources are subject to the rule, or whether it is a rule that must be followed.",
+          "enum": [
+            "condition",
+            "requirement"
+          ]
+        },
+        "_use": {
+          "description": "Extensions for use",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "Identifies the compartment.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_code": {
+          "description": "Extensions for code",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "rule": {
+          "description": "identical | matching | different | no-rule | custom.",
+          "enum": [
+            "identical",
+            "matching",
+            "different",
+            "custom"
+          ]
+        },
+        "_rule": {
+          "description": "Extensions for rule",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "expression": {
+          "description": "Custom rule, as a FHIRPath expression.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_expression": {
+          "description": "Extensions for expression",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "Documentation for FHIRPath expression.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

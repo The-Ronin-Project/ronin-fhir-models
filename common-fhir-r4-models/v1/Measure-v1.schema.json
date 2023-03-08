@@ -1,0 +1,572 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Measure-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Measure",
+  "definitions": {
+    "Measure": {
+      "description": "The Measure resource provides the definition of a quality measure.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Measure resource",
+          "type": "string",
+          "const": "Measure"
+        },
+        "url": {
+          "description": "An absolute URI that is used to identify this measure when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this measure is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the measure is stored on different servers.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "identifier": {
+          "description": "A formal identifier that is used to identify this measure when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "version": {
+          "description": "The identifier that is used to identify this version of the measure when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the measure author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence. To provide a version consistent with the Decision Support Service specification, use the format Major.Minor.Revision (e.g. 1.0.0). For more information on versioning knowledge assets, refer to the Decision Support Service specification. Note that a version is required for non-experimental active artifacts.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "name": {
+          "description": "A natural language name identifying the measure. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "title": {
+          "description": "A short, descriptive, user-friendly title for the measure.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "subtitle": {
+          "description": "An explanatory or alternate title for the measure giving additional information about its content.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_subtitle": {
+          "description": "Extensions for subtitle",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "status": {
+          "description": "The status of this measure. Enables tracking the life-cycle of the content.",
+          "enum": [
+            "draft",
+            "active",
+            "retired",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "experimental": {
+          "description": "A Boolean value to indicate that this measure is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_experimental": {
+          "description": "Extensions for experimental",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "subjectCodeableConcept": {
+          "description": "The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subjectReference": {
+          "description": "The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "date": {
+          "description": "The date  (and optionally time) when the measure was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the measure changes.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "publisher": {
+          "description": "The name of the organization or individual that published the measure.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_publisher": {
+          "description": "Extensions for publisher",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contact": {
+          "description": "Contact details to assist a user in finding and communicating with the publisher.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "A free text natural language description of the measure from a consumer\u0027s perspective.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "useContext": {
+          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate measure instances.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/UsageContext"
+          },
+          "type": "array"
+        },
+        "jurisdiction": {
+          "description": "A legal or geographic region in which the measure is intended to be used.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "purpose": {
+          "description": "Explanation of why this measure is needed and why it has been designed as it has.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_purpose": {
+          "description": "Extensions for purpose",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "usage": {
+          "description": "A detailed description, from a clinical perspective, of how the measure is used.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_usage": {
+          "description": "Extensions for usage",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "copyright": {
+          "description": "A copyright statement relating to the measure and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the measure.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_copyright": {
+          "description": "Extensions for copyright",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "approvalDate": {
+          "description": "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_approvalDate": {
+          "description": "Extensions for approvalDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "lastReviewDate": {
+          "description": "The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_lastReviewDate": {
+          "description": "Extensions for lastReviewDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "effectivePeriod": {
+          "description": "The period during which the measure content was or is planned to be in active use.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "topic": {
+          "description": "Descriptive topics related to the content of the measure. Topics provide a high-level categorization grouping types of measures that can be useful for filtering and searching.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "author": {
+          "description": "An individiual or organization primarily involved in the creation and maintenance of the content.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "editor": {
+          "description": "An individual or organization primarily responsible for internal coherence of the content.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "reviewer": {
+          "description": "An individual or organization primarily responsible for review of some aspect of the content.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "endorser": {
+          "description": "An individual or organization responsible for officially endorsing the content for use in some setting.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "relatedArtifact": {
+          "description": "Related artifacts such as additional documentation, justification, or bibliographic references.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/RelatedArtifact"
+          },
+          "type": "array"
+        },
+        "library": {
+          "description": "A reference to a Library resource containing the formal logic used by the measure.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/canonical"
+          },
+          "type": "array"
+        },
+        "disclaimer": {
+          "description": "Notices and disclaimers regarding the use of the measure or related to intellectual property (such as code systems) referenced by the measure.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_disclaimer": {
+          "description": "Extensions for disclaimer",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "scoring": {
+          "description": "Indicates how the calculation is performed for the measure, including proportion, ratio, continuous-variable, and cohort. The value set is extensible, allowing additional measure scoring types to be represented.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "compositeScoring": {
+          "description": "If this is a composite measure, the scoring method used to combine the component measures to determine the composite score.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "type": {
+          "description": "Indicates whether the measure is used to examine a process, an outcome over time, a patient-reported outcome, or a structure measure such as utilization.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "riskAdjustment": {
+          "description": "A description of the risk adjustment factors that may impact the resulting score for the measure and how they may be accounted for when computing and reporting measure results.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_riskAdjustment": {
+          "description": "Extensions for riskAdjustment",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "rateAggregation": {
+          "description": "Describes how to combine the information calculated, based on logic in each of several populations, into one summarized result.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_rateAggregation": {
+          "description": "Extensions for rateAggregation",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "rationale": {
+          "description": "Provides a succinct statement of the need for the measure. Usually includes statements pertaining to importance criterion: impact, gap in care, and evidence.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_rationale": {
+          "description": "Extensions for rationale",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "clinicalRecommendationStatement": {
+          "description": "Provides a summary of relevant clinical guidelines or other clinical recommendations supporting the measure.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_clinicalRecommendationStatement": {
+          "description": "Extensions for clinicalRecommendationStatement",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "improvementNotation": {
+          "description": "Information on whether an increase or decrease in score is the preferred result (e.g., a higher score indicates better quality OR a lower score indicates better quality OR quality is within a range).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "definition": {
+          "description": "Provides a description of an individual term used within the measure.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/markdown"
+          },
+          "type": "array"
+        },
+        "_definition": {
+          "description": "Extensions for definition",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "guidance": {
+          "description": "Additional guidance for the measure including how it can be used in a clinical context, and the intent of the measure.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_guidance": {
+          "description": "Extensions for guidance",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "group": {
+          "description": "A group of population criteria for the measure.",
+          "items": {
+            "$ref": "#/definitions/Measure_Group"
+          },
+          "type": "array"
+        },
+        "supplementalData": {
+          "description": "The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path.",
+          "items": {
+            "$ref": "#/definitions/Measure_SupplementalData"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "Measure_Group": {
+      "description": "The Measure resource provides the definition of a quality measure.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "Indicates a meaning for the group. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing groups to be correlated across measures.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "description": {
+          "description": "The human readable description of this population group.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "population": {
+          "description": "A population criteria for the measure.",
+          "items": {
+            "$ref": "#/definitions/Measure_Population"
+          },
+          "type": "array"
+        },
+        "stratifier": {
+          "description": "The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.",
+          "items": {
+            "$ref": "#/definitions/Measure_Stratifier"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Measure_Population": {
+      "description": "The Measure resource provides the definition of a quality measure.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The type of population criteria.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "description": {
+          "description": "The human readable description of this population criteria.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "criteria": {
+          "description": "An expression that specifies the criteria for the population, typically the name of an expression in a library.",
+          "$ref": "core/elements.schema.json#/definitions/Expression"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "criteria"
+      ]
+    },
+    "Measure_Stratifier": {
+      "description": "The Measure resource provides the definition of a quality measure.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "Indicates a meaning for the stratifier. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing stratifiers to be correlated across measures.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "description": {
+          "description": "The human readable description of this stratifier criteria.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "criteria": {
+          "description": "An expression that specifies the criteria for the stratifier. This is typically the name of an expression defined within a referenced library, but it may also be a path to a stratifier element.",
+          "$ref": "core/elements.schema.json#/definitions/Expression"
+        },
+        "component": {
+          "description": "A component of the stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path.",
+          "items": {
+            "$ref": "#/definitions/Measure_Component"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Measure_Component": {
+      "description": "The Measure resource provides the definition of a quality measure.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "Indicates a meaning for the stratifier component. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing stratifiers to be correlated across measures.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "description": {
+          "description": "The human readable description of this stratifier criteria component.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "criteria": {
+          "description": "An expression that specifies the criteria for this component of the stratifier. This is typically the name of an expression defined within a referenced library, but it may also be a path to a stratifier element.",
+          "$ref": "core/elements.schema.json#/definitions/Expression"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "criteria"
+      ]
+    },
+    "Measure_SupplementalData": {
+      "description": "The Measure resource provides the definition of a quality measure.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "Indicates a meaning for the supplemental data. This can be as simple as a unique identifier, or it can establish meaning in a broader context by drawing from a terminology, allowing supplemental data to be correlated across measures.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "usage": {
+          "description": "An indicator of the intended usage for the supplemental data element. Supplemental data indicates the data is additional information requested to augment the measure information. Risk adjustment factor indicates the data is additional information used to calculate risk adjustment factors when applying a risk model to the measure calculation.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "The human readable description of this supplemental data.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "criteria": {
+          "description": "The criteria for the supplemental data. This is typically the name of a valid expression defined within a referenced library, but it may also be a path to a specific data element. The criteria defines the data to be returned for this element.",
+          "$ref": "core/elements.schema.json#/definitions/Expression"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "criteria"
+      ]
+    }
+  }
+}

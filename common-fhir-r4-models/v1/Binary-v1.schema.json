@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Binary-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Binary",
+  "definitions": {
+    "Binary": {
+      "description": "A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/Resource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/Resource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Binary resource",
+          "type": "string",
+          "const": "Binary"
+        },
+        "contentType": {
+          "description": "MimeType of the binary content represented as a standard MimeType (BCP 13).",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_contentType": {
+          "description": "Extensions for contentType",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "securityContext": {
+          "description": "This element identifies another resource that can be used as a proxy of the security sensitivity to use when deciding and enforcing access control rules for the Binary resource. Given that the Binary resource contains very few elements that can be used to determine the sensitivity of the data and relationships to individuals, the referenced resource stands in as a proxy equivalent for this purpose. This referenced resource may be related to the Binary (e.g. Media, DocumentReference), or may be some non-related Resource purely as a security proxy. E.g. to identify that the binary resource relates to a patient, and access should only be granted to applications that have access to the patient.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "data": {
+          "description": "The actual content, base64 encoded.",
+          "$ref": "core/primitives.schema.json#/definitions/base64Binary"
+        },
+        "_data": {
+          "description": "Extensions for data",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    }
+  }
+}

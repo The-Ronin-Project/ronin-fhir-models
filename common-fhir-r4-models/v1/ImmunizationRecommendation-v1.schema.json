@@ -1,0 +1,230 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/ImmunizationRecommendation-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/ImmunizationRecommendation",
+  "definitions": {
+    "ImmunizationRecommendation": {
+      "description": "A patient\u0027s point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a ImmunizationRecommendation resource",
+          "type": "string",
+          "const": "ImmunizationRecommendation"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this particular recommendation record.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "patient": {
+          "description": "The patient the recommendation(s) are for.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "date": {
+          "description": "The date the immunization recommendation(s) were created.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "authority": {
+          "description": "Indicates the authority who published the protocol (e.g. ACIP).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "recommendation": {
+          "description": "Vaccine administration recommendations.",
+          "items": {
+            "$ref": "#/definitions/ImmunizationRecommendation_Recommendation"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "patient",
+        "recommendation",
+        "resourceType"
+      ]
+    },
+    "ImmunizationRecommendation_Recommendation": {
+      "description": "A patient\u0027s point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "vaccineCode": {
+          "description": "Vaccine(s) or vaccine group that pertain to the recommendation.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "targetDisease": {
+          "description": "The targeted disease for the recommendation.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "contraindicatedVaccineCode": {
+          "description": "Vaccine(s) which should not be used to fulfill the recommendation.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "forecastStatus": {
+          "description": "Indicates the patient status with respect to the path to immunity for the target disease.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "forecastReason": {
+          "description": "The reason for the assigned forecast status.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "dateCriterion": {
+          "description": "Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.",
+          "items": {
+            "$ref": "#/definitions/ImmunizationRecommendation_DateCriterion"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Contains the description about the protocol under which the vaccine was administered.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "series": {
+          "description": "One possible path to achieve presumed immunity against a disease - within the context of an authority.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_series": {
+          "description": "Extensions for series",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "doseNumberPositiveInt": {
+          "description": "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose).",
+          "pattern": "^[1-9][0-9]*$",
+          "type": "number"
+        },
+        "_doseNumberPositiveInt": {
+          "description": "Extensions for doseNumberPositiveInt",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "doseNumberString": {
+          "description": "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose).",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_doseNumberString": {
+          "description": "Extensions for doseNumberString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "seriesDosesPositiveInt": {
+          "description": "The recommended number of doses to achieve immunity.",
+          "pattern": "^[1-9][0-9]*$",
+          "type": "number"
+        },
+        "_seriesDosesPositiveInt": {
+          "description": "Extensions for seriesDosesPositiveInt",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "seriesDosesString": {
+          "description": "The recommended number of doses to achieve immunity.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_seriesDosesString": {
+          "description": "Extensions for seriesDosesString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "supportingImmunization": {
+          "description": "Immunization event history and/or evaluation that supports the status and recommendation.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "supportingPatientInformation": {
+          "description": "Patient Information that supports the status and recommendation.  This includes patient observations, adverse reactions and allergy/intolerance information.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "forecastStatus"
+      ]
+    },
+    "ImmunizationRecommendation_DateCriterion": {
+      "description": "A patient\u0027s point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "Date classification of recommendation.  For example, earliest date to give, latest date to give, etc.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "value": {
+          "description": "The date whose meaning is specified by dateCriterion.code.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_value": {
+          "description": "Extensions for value",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "code"
+      ]
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/List-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/List",
+  "definitions": {
+    "List": {
+      "description": "A list is a curated collection of resources.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a List resource",
+          "type": "string",
+          "const": "List"
+        },
+        "identifier": {
+          "description": "Identifier for the List assigned for business purposes outside the context of FHIR.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "Indicates the current state of this list.",
+          "enum": [
+            "current",
+            "retired",
+            "entered-in-error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "mode": {
+          "description": "How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.",
+          "enum": [
+            "working",
+            "snapshot",
+            "changes"
+          ]
+        },
+        "_mode": {
+          "description": "Extensions for mode",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "title": {
+          "description": "A label for the list assigned by the author.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "This code defines the purpose of the list - why it was created.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "The common subject (or patient) of the resources that are in the list if there is one.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "The encounter that is the context in which this list was created.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "date": {
+          "description": "The date that the list was prepared.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "source": {
+          "description": "The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "orderedBy": {
+          "description": "What order applies to the items in the list.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "note": {
+          "description": "Comments that apply to the overall list.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "entry": {
+          "description": "Entries in this list.",
+          "items": {
+            "$ref": "#/definitions/List_Entry"
+          },
+          "type": "array"
+        },
+        "emptyReason": {
+          "description": "If the list is empty, why the list is empty.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "List_Entry": {
+      "description": "A list is a curated collection of resources.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "flag": {
+          "description": "The flag allows the system constructing the list to indicate the role and significance of the item in the list.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "deleted": {
+          "description": "True if this item is marked as deleted in the list.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_deleted": {
+          "description": "Extensions for deleted",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "date": {
+          "description": "When this item was added to the list.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "item": {
+          "description": "A reference to the actual resource from which data was derived.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "item"
+      ]
+    }
+  }
+}

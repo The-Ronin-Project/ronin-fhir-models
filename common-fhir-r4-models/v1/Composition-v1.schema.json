@@ -1,0 +1,343 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Composition-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Composition",
+  "definitions": {
+    "Composition": {
+      "description": "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type\u003ddocument, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Composition resource",
+          "type": "string",
+          "const": "Composition"
+        },
+        "identifier": {
+          "description": "A version-independent identifier for the Composition. This identifier stays constant as the composition is changed over time.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "status": {
+          "description": "The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.",
+          "enum": [
+            "preliminary",
+            "final",
+            "amended",
+            "entered-in-error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the composition.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "category": {
+          "description": "A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "subject": {
+          "description": "Who or what the composition is about. The composition can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of livestock, or a set of patients that share a common exposure).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "Describes the clinical encounter or type of care this documentation is associated with.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "date": {
+          "description": "The composition editing time, when the composition was last logically changed by the author.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "author": {
+          "description": "Identifies who is responsible for the information in the composition, not necessarily who typed it in.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "title": {
+          "description": "Official human-readable label for the composition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "confidentiality": {
+          "description": "The code specifying the level of confidentiality of the Composition.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_confidentiality": {
+          "description": "Extensions for confidentiality",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "attester": {
+          "description": "A participant who has attested to the accuracy of the composition/document.",
+          "items": {
+            "$ref": "#/definitions/Composition_Attester"
+          },
+          "type": "array"
+        },
+        "custodian": {
+          "description": "Identifies the organization or group who is responsible for ongoing maintenance of and access to the composition/document information.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "relatesTo": {
+          "description": "Relationships that this composition has with other compositions or documents that already exist.",
+          "items": {
+            "$ref": "#/definitions/Composition_RelatesTo"
+          },
+          "type": "array"
+        },
+        "event": {
+          "description": "The clinical service, such as a colonoscopy or an appendectomy, being documented.",
+          "items": {
+            "$ref": "#/definitions/Composition_Event"
+          },
+          "type": "array"
+        },
+        "section": {
+          "description": "The root of the sections that make up the composition.",
+          "items": {
+            "$ref": "#/definitions/Composition_Section"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "author",
+        "type",
+        "resourceType"
+      ]
+    },
+    "Composition_Attester": {
+      "description": "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type\u003ddocument, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "mode": {
+          "description": "The type of attestation the authenticator offers.",
+          "enum": [
+            "personal",
+            "professional",
+            "legal",
+            "official"
+          ]
+        },
+        "_mode": {
+          "description": "Extensions for mode",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "time": {
+          "description": "When the composition was attested by the party.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_time": {
+          "description": "Extensions for time",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "party": {
+          "description": "Who attested the composition in the specified way.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Composition_RelatesTo": {
+      "description": "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type\u003ddocument, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The type of relationship that this composition has with anther composition or document.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_code": {
+          "description": "Extensions for code",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "targetIdentifier": {
+          "description": "The target composition/document of this relationship.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "targetReference": {
+          "description": "The target composition/document of this relationship.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Composition_Event": {
+      "description": "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type\u003ddocument, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a \"History and Physical Report\" in which the procedure being documented is necessarily a \"History and Physical\" act.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "period": {
+          "description": "The period of time covered by the documentation. There is no assertion that the documentation is a complete representation for this period, only that it documents events during this time.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "detail": {
+          "description": "The description and/or reference of the event(s) being documented. For example, this could be used to document such a colonoscopy or an appendectomy.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Composition_Section": {
+      "description": "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type\u003ddocument, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "title": {
+          "description": "The label for this particular section.  This will be part of the rendered content for the document, and is often used to build a table of contents.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "A code identifying the kind of content contained within the section. This must be consistent with the section title.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "author": {
+          "description": "Identifies who is responsible for the information in this section, not necessarily who typed it in.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "focus": {
+          "description": "The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "text": {
+          "description": "A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative.",
+          "$ref": "core/elements.schema.json#/definitions/Narrative"
+        },
+        "mode": {
+          "description": "How the entry list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_mode": {
+          "description": "Extensions for mode",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "orderedBy": {
+          "description": "Specifies the order applied to the items in the section entries.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "entry": {
+          "description": "A reference to the actual resource from which the narrative in the section is derived.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "emptyReason": {
+          "description": "If the section is empty, why the list is empty. An empty section typically has some text explaining the empty reason.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "section": {
+          "description": "A nested sub-section within this section.",
+          "items": {
+            "$ref": "#/definitions/Composition_Section"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

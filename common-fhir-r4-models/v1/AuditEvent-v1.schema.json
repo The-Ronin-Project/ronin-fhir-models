@@ -1,0 +1,432 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/AuditEvent-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/AuditEvent",
+  "definitions": {
+    "AuditEvent": {
+      "description": "A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a AuditEvent resource",
+          "type": "string",
+          "const": "AuditEvent"
+        },
+        "type": {
+          "description": "Identifier for a family of the event.  For example, a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "subtype": {
+          "description": "Identifier for the category of event.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Coding"
+          },
+          "type": "array"
+        },
+        "action": {
+          "description": "Indicator for type of action performed during the event that generated the audit.",
+          "enum": [
+            "C",
+            "R",
+            "U",
+            "D",
+            "E"
+          ]
+        },
+        "_action": {
+          "description": "Extensions for action",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "The period during which the activity occurred.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "recorded": {
+          "description": "The time when the event was recorded.",
+          "$ref": "core/primitives.schema.json#/definitions/instant"
+        },
+        "_recorded": {
+          "description": "Extensions for recorded",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "outcome": {
+          "description": "Indicates whether the event succeeded or failed.",
+          "enum": [
+            "0",
+            "4",
+            "8",
+            "12"
+          ]
+        },
+        "_outcome": {
+          "description": "Extensions for outcome",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "outcomeDesc": {
+          "description": "A free text description of the outcome of the event.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_outcomeDesc": {
+          "description": "Extensions for outcomeDesc",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "purposeOfEvent": {
+          "description": "The purposeOfUse (reason) that was used during the event being recorded.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "agent": {
+          "description": "An actor taking an active role in the event or activity that is logged.",
+          "items": {
+            "$ref": "#/definitions/AuditEvent_Agent"
+          },
+          "type": "array"
+        },
+        "source": {
+          "description": "The system that is reporting the event.",
+          "$ref": "#/definitions/AuditEvent_Source"
+        },
+        "entity": {
+          "description": "Specific instances of data or objects that have been accessed.",
+          "items": {
+            "$ref": "#/definitions/AuditEvent_Entity"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "agent",
+        "source",
+        "type",
+        "resourceType"
+      ]
+    },
+    "AuditEvent_Agent": {
+      "description": "A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Specification of the participation type the user plays when performing the event.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "role": {
+          "description": "The security role that the user was acting under, that come from local codes defined by the access control security system (e.g. RBAC, ABAC) used in the local context.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "who": {
+          "description": "Reference to who this agent is that was involved in the event.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "altId": {
+          "description": "Alternative agent Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g. single sign-on), if available.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_altId": {
+          "description": "Extensions for altId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "name": {
+          "description": "Human-meaningful name for the agent.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "requestor": {
+          "description": "Indicator that the user is or is not the requestor, or initiator, for the event being audited.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_requestor": {
+          "description": "Extensions for requestor",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "location": {
+          "description": "Where the event occurred.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "policy": {
+          "description": "The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/uri"
+          },
+          "type": "array"
+        },
+        "_policy": {
+          "description": "Extensions for policy",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "media": {
+          "description": "Type of media involved. Used when the event is about exporting/importing onto media.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "network": {
+          "description": "Logical network location for application activity, if the activity has a network location.",
+          "$ref": "#/definitions/AuditEvent_Network"
+        },
+        "purposeOfUse": {
+          "description": "The reason (purpose of use), specific to this agent, that was used during the event being recorded.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AuditEvent_Network": {
+      "description": "A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "address": {
+          "description": "An identifier for the network access point of the user device for the audit event.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_address": {
+          "description": "Extensions for address",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "An identifier for the type of network access point that originated the audit event.",
+          "enum": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AuditEvent_Source": {
+      "description": "A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "site": {
+          "description": "Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_site": {
+          "description": "Extensions for site",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "observer": {
+          "description": "Identifier of the source where the event was detected.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "type": {
+          "description": "Code specifying the type of source where event originated.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Coding"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "observer"
+      ]
+    },
+    "AuditEvent_Entity": {
+      "description": "A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "what": {
+          "description": "Identifies a specific instance of the entity. The reference should be version specific.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "type": {
+          "description": "The type of the object that was involved in this audit event.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "role": {
+          "description": "Code representing the role the entity played in the event being audited.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "lifecycle": {
+          "description": "Identifier for the data life-cycle stage for the entity.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "securityLabel": {
+          "description": "Security labels for the identified entity.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Coding"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "A name of the entity in the audit event.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "Text that describes the entity in more detail.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "query": {
+          "description": "The query parameters for a query-type entities.",
+          "$ref": "core/primitives.schema.json#/definitions/base64Binary"
+        },
+        "_query": {
+          "description": "Extensions for query",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "detail": {
+          "description": "Tagged value pairs for conveying additional information about the entity.",
+          "items": {
+            "$ref": "#/definitions/AuditEvent_Detail"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AuditEvent_Detail": {
+      "description": "A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The type of extra detail provided in the value.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "valueString": {
+          "description": "The  value of the extra detail.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_valueString": {
+          "description": "Extensions for valueString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "valueBase64Binary": {
+          "description": "The  value of the extra detail.",
+          "pattern": "^(\\s*([0-9a-zA-Z\\+/\u003d]){4}\\s*)+$",
+          "type": "string"
+        },
+        "_valueBase64Binary": {
+          "description": "Extensions for valueBase64Binary",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

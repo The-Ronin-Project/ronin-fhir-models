@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Endpoint-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Endpoint",
+  "definitions": {
+    "Endpoint": {
+      "description": "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Endpoint resource",
+          "type": "string",
+          "const": "Endpoint"
+        },
+        "identifier": {
+          "description": "Identifier for the organization that is used to identify the endpoint across multiple disparate systems.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "active | suspended | error | off | test.",
+          "enum": [
+            "active",
+            "suspended",
+            "error",
+            "off",
+            "entered-in-error",
+            "test"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "connectionType": {
+          "description": "A coded value that represents the technical details of the usage of this endpoint, such as what WSDLs should be used in what way. (e.g. XDS.b/DICOM/cds-hook).",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "name": {
+          "description": "A friendly name that this endpoint can be referred to with.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "managingOrganization": {
+          "description": "The organization that manages this endpoint (even if technically another organization is hosting this in the cloud, it is the organization associated with the data).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "contact": {
+          "description": "Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "period": {
+          "description": "The interval during which the endpoint is expected to be operational.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "payloadType": {
+          "description": "The payload type describes the acceptable content that can be communicated on the endpoint.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "payloadMimeType": {
+          "description": "The mime type to send the payload in - e.g. application/fhir+xml, application/fhir+json. If the mime type is not specified, then the sender could send any content (including no content depending on the connectionType).",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/code"
+          },
+          "type": "array"
+        },
+        "_payloadMimeType": {
+          "description": "Extensions for payloadMimeType",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "address": {
+          "description": "The uri that describes the actual end-point to connect to.",
+          "$ref": "core/primitives.schema.json#/definitions/url"
+        },
+        "_address": {
+          "description": "Extensions for address",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "header": {
+          "description": "Additional headers / information to send as part of the notification.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/string"
+          },
+          "type": "array"
+        },
+        "_header": {
+          "description": "Extensions for header",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "payloadType",
+        "connectionType",
+        "resourceType"
+      ]
+    }
+  }
+}

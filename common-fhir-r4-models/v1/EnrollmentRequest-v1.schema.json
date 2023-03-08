@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/EnrollmentRequest-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/EnrollmentRequest",
+  "definitions": {
+    "EnrollmentRequest": {
+      "description": "This resource provides the insurance enrollment details to the insurer regarding a specified coverage.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a EnrollmentRequest resource",
+          "type": "string",
+          "const": "EnrollmentRequest"
+        },
+        "identifier": {
+          "description": "The Response business identifier.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of the resource instance.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "created": {
+          "description": "The date when this resource was created.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_created": {
+          "description": "Extensions for created",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "insurer": {
+          "description": "The Insurer who is target  of the request.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "provider": {
+          "description": "The practitioner who is responsible for the services rendered to the patient.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "candidate": {
+          "description": "Patient Resource.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "coverage": {
+          "description": "Reference to the program or plan identification, underwriter or payor.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    }
+  }
+}

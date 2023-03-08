@@ -1,0 +1,352 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/MeasureReport-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/MeasureReport",
+  "definitions": {
+    "MeasureReport": {
+      "description": "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a MeasureReport resource",
+          "type": "string",
+          "const": "MeasureReport"
+        },
+        "identifier": {
+          "description": "A formal identifier that is used to identify this MeasureReport when it is represented in other formats or referenced in a specification, model, design or an instance.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The MeasureReport status. No data will be available until the MeasureReport status is complete.",
+          "enum": [
+            "complete",
+            "pending",
+            "error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "The type of measure report. This may be an individual report, which provides the score for the measure for an individual member of the population; a subject-listing, which returns the list of members that meet the various criteria in the measure; a summary report, which returns a population count for each of the criteria in the measure; or a data-collection, which enables the MeasureReport to be used to exchange the data-of-interest for a quality measure.",
+          "enum": [
+            "individual",
+            "subject-list",
+            "summary",
+            "data-collection"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "measure": {
+          "description": "A reference to the Measure that was calculated to produce this report.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        },
+        "subject": {
+          "description": "Optional subject identifying the individual or individuals the report is for.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "date": {
+          "description": "The date this measure report was generated.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "reporter": {
+          "description": "The individual, location, or organization that is reporting the data.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "period": {
+          "description": "The reporting period for which the report was calculated.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "improvementNotation": {
+          "description": "Whether improvement in the measure is noted by an increase or decrease in the measure score.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "group": {
+          "description": "The results of the calculation, one for each population group in the measure.",
+          "items": {
+            "$ref": "#/definitions/MeasureReport_Group"
+          },
+          "type": "array"
+        },
+        "evaluatedResource": {
+          "description": "A reference to a Bundle containing the Resources that were used in the calculation of this measure.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "period",
+        "measure",
+        "resourceType"
+      ]
+    },
+    "MeasureReport_Group": {
+      "description": "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The meaning of the population group as defined in the measure definition.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "population": {
+          "description": "The populations that make up the population group, one for each type of population appropriate for the measure.",
+          "items": {
+            "$ref": "#/definitions/MeasureReport_Population"
+          },
+          "type": "array"
+        },
+        "measureScore": {
+          "description": "The measure score for this population group, calculated as appropriate for the measure type and scoring method, and based on the contents of the populations defined in the group.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "stratifier": {
+          "description": "When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure.",
+          "items": {
+            "$ref": "#/definitions/MeasureReport_Stratifier"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MeasureReport_Population": {
+      "description": "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The type of the population.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "count": {
+          "description": "The number of members of the population.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_count": {
+          "description": "Extensions for count",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "subjectResults": {
+          "description": "This element refers to a List of subject level MeasureReport resources, one for each subject in this population.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MeasureReport_Stratifier": {
+      "description": "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The meaning of this stratifier, as defined in the measure definition.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "stratum": {
+          "description": "This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value.",
+          "items": {
+            "$ref": "#/definitions/MeasureReport_Stratum"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MeasureReport_Stratum": {
+      "description": "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "value": {
+          "description": "The value for this stratum, expressed as a CodeableConcept. When defining stratifiers on complex values, the value must be rendered such that the value for each stratum within the stratifier is unique.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "component": {
+          "description": "A stratifier component value.",
+          "items": {
+            "$ref": "#/definitions/MeasureReport_Component"
+          },
+          "type": "array"
+        },
+        "population": {
+          "description": "The populations that make up the stratum, one for each type of population appropriate to the measure.",
+          "items": {
+            "$ref": "#/definitions/MeasureReport_Population1"
+          },
+          "type": "array"
+        },
+        "measureScore": {
+          "description": "The measure score for this stratum, calculated as appropriate for the measure type and scoring method, and based on only the members of this stratum.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MeasureReport_Component": {
+      "description": "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The code for the stratum component value.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "value": {
+          "description": "The stratum component value.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "value"
+      ]
+    },
+    "MeasureReport_Population1": {
+      "description": "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The type of the population.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "count": {
+          "description": "The number of members of the population in this stratum.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_count": {
+          "description": "Extensions for count",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "subjectResults": {
+          "description": "This element refers to a List of subject level MeasureReport resources, one for each subject in this population in this stratum.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

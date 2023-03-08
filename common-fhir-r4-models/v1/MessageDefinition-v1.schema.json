@@ -1,0 +1,319 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/MessageDefinition-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/MessageDefinition",
+  "definitions": {
+    "MessageDefinition": {
+      "description": "Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a MessageDefinition resource",
+          "type": "string",
+          "const": "MessageDefinition"
+        },
+        "url": {
+          "description": "The business identifier that is used to reference the MessageDefinition and *is* expected to be consistent from server to server.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "identifier": {
+          "description": "A formal identifier that is used to identify this message definition when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "version": {
+          "description": "The identifier that is used to identify this version of the message definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the message definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "name": {
+          "description": "A natural language name identifying the message definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "title": {
+          "description": "A short, descriptive, user-friendly title for the message definition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "replaces": {
+          "description": "A MessageDefinition that is superseded by this definition.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/canonical"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of this message definition. Enables tracking the life-cycle of the content.",
+          "enum": [
+            "draft",
+            "active",
+            "retired",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "experimental": {
+          "description": "A Boolean value to indicate that this message definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_experimental": {
+          "description": "Extensions for experimental",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "date": {
+          "description": "The date  (and optionally time) when the message definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the message definition changes.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "publisher": {
+          "description": "The name of the organization or individual that published the message definition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_publisher": {
+          "description": "Extensions for publisher",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contact": {
+          "description": "Contact details to assist a user in finding and communicating with the publisher.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "A free text natural language description of the message definition from a consumer\u0027s perspective.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "useContext": {
+          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate message definition instances.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/UsageContext"
+          },
+          "type": "array"
+        },
+        "jurisdiction": {
+          "description": "A legal or geographic region in which the message definition is intended to be used.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "purpose": {
+          "description": "Explanation of why this message definition is needed and why it has been designed as it has.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_purpose": {
+          "description": "Extensions for purpose",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "copyright": {
+          "description": "A copyright statement relating to the message definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the message definition.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_copyright": {
+          "description": "Extensions for copyright",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "base": {
+          "description": "The MessageDefinition that is the basis for the contents of this resource.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        },
+        "parent": {
+          "description": "Identifies a protocol or workflow that this MessageDefinition represents a step in.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/canonical"
+          },
+          "type": "array"
+        },
+        "eventCoding": {
+          "description": "Event code or link to the EventDefinition.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "eventUri": {
+          "description": "Event code or link to the EventDefinition.",
+          "pattern": "^\\S*$",
+          "type": "string"
+        },
+        "_eventUri": {
+          "description": "Extensions for eventUri",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "category": {
+          "description": "The impact of the content of the message.",
+          "enum": [
+            "consequence",
+            "currency",
+            "notification"
+          ]
+        },
+        "_category": {
+          "description": "Extensions for category",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "focus": {
+          "description": "Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.",
+          "items": {
+            "$ref": "#/definitions/MessageDefinition_Focus"
+          },
+          "type": "array"
+        },
+        "responseRequired": {
+          "description": "Declare at a message definition level whether a response is required or only upon error or success, or never.",
+          "enum": [
+            "always",
+            "on-error",
+            "never",
+            "on-success"
+          ]
+        },
+        "_responseRequired": {
+          "description": "Extensions for responseRequired",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "allowedResponse": {
+          "description": "Indicates what types of messages may be sent as an application-level response to this message.",
+          "items": {
+            "$ref": "#/definitions/MessageDefinition_AllowedResponse"
+          },
+          "type": "array"
+        },
+        "graph": {
+          "description": "Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [[[GraphDefinition]]] that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/canonical"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "MessageDefinition_Focus": {
+      "description": "Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The kind of resource that must be the focus for this message.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_code": {
+          "description": "Extensions for code",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "profile": {
+          "description": "A profile that reflects constraints for the focal resource (and potentially for related resources).",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        },
+        "min": {
+          "description": "Identifies the minimum number of resources of this type that must be pointed to by a message in order for it to be valid against this MessageDefinition.",
+          "$ref": "core/primitives.schema.json#/definitions/unsignedInt"
+        },
+        "_min": {
+          "description": "Extensions for min",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "max": {
+          "description": "Identifies the maximum number of resources of this type that must be pointed to by a message in order for it to be valid against this MessageDefinition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_max": {
+          "description": "Extensions for max",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MessageDefinition_AllowedResponse": {
+      "description": "Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "message": {
+          "description": "A reference to the message definition that must be adhered to by this supported response.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        },
+        "situation": {
+          "description": "Provides a description of the circumstances in which this response should be used (as opposed to one of the alternative responses).",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_situation": {
+          "description": "Extensions for situation",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "message"
+      ]
+    }
+  }
+}

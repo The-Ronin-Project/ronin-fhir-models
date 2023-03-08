@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Linkage-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Linkage",
+  "definitions": {
+    "Linkage": {
+      "description": "Identifies two or more records (resource instances) that refer to the same real-world \"occurrence\".",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Linkage resource",
+          "type": "string",
+          "const": "Linkage"
+        },
+        "active": {
+          "description": "Indicates whether the asserted set of linkages are considered to be \"in effect\".",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_active": {
+          "description": "Extensions for active",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "author": {
+          "description": "Identifies the user or organization responsible for asserting the linkages as well as the user or organization who establishes the context in which the nature of each linkage is evaluated.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "item": {
+          "description": "Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items.",
+          "items": {
+            "$ref": "#/definitions/Linkage_Item"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "item",
+        "resourceType"
+      ]
+    },
+    "Linkage_Item": {
+      "description": "Identifies two or more records (resource instances) that refer to the same real-world \"occurrence\".",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Distinguishes which item is \"source of truth\" (if any) and which items are no longer considered to be current representations.",
+          "enum": [
+            "source",
+            "alternate",
+            "historical"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "resource": {
+          "description": "The resource instance being linked as part of the group.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "resource"
+      ]
+    }
+  }
+}

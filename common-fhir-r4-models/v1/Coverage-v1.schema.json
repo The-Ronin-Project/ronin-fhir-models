@@ -1,0 +1,264 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Coverage-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Coverage",
+  "definitions": {
+    "Coverage": {
+      "description": "Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Coverage resource",
+          "type": "string",
+          "const": "Coverage"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this coverage.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of the resource instance.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "policyHolder": {
+          "description": "The party who \u0027owns\u0027 the insurance policy.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "subscriber": {
+          "description": "The party who has signed-up for or \u0027owns\u0027 the contractual relationship to the policy or to whom the benefit of the policy for services rendered to them or their family is due.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "subscriberId": {
+          "description": "The insurer assigned ID for the Subscriber.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_subscriberId": {
+          "description": "Extensions for subscriberId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "beneficiary": {
+          "description": "The party who benefits from the insurance coverage; the patient when products and/or services are provided.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "dependent": {
+          "description": "A unique identifier for a dependent under the coverage.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_dependent": {
+          "description": "Extensions for dependent",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "relationship": {
+          "description": "The relationship of beneficiary (patient) to the subscriber.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "period": {
+          "description": "Time period during which the coverage is in force. A missing start date indicates the start date isn\u0027t known, a missing end date means the coverage is continuing to be in force.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "payor": {
+          "description": "The program or plan underwriter or payor including both insurance and non-insurance agreements, such as patient-pay agreements.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "class": {
+          "description": "A suite of underwriter specific classifiers.",
+          "items": {
+            "$ref": "#/definitions/Coverage_Class"
+          },
+          "type": "array"
+        },
+        "order": {
+          "description": "The order of applicability of this coverage relative to other coverages which are currently in force. Note, there may be gaps in the numbering and this does not imply primary, secondary etc. as the specific positioning of coverages depends upon the episode of care.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_order": {
+          "description": "Extensions for order",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "network": {
+          "description": "The insurer-specific identifier for the insurer-defined network of providers to which the beneficiary may seek treatment which will be covered at the \u0027in-network\u0027 rate, otherwise \u0027out of network\u0027 terms and conditions apply.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_network": {
+          "description": "Extensions for network",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "costToBeneficiary": {
+          "description": "A suite of codes indicating the cost category and associated amount which have been detailed in the policy and may have been  included on the health card.",
+          "items": {
+            "$ref": "#/definitions/Coverage_CostToBeneficiary"
+          },
+          "type": "array"
+        },
+        "subrogation": {
+          "description": "When \u0027subrogation\u003dtrue\u0027 this insurance instance has been included not for adjudication but to provide insurers with the details to recover costs.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_subrogation": {
+          "description": "Extensions for subrogation",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contract": {
+          "description": "The policy(s) which constitute this insurance coverage.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "payor",
+        "beneficiary",
+        "resourceType"
+      ]
+    },
+    "Coverage_Class": {
+      "description": "Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The type of classification for which an insurer-specific class label or number and optional name is provided, for example may be used to identify a class of coverage or employer group, Policy, Plan.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "value": {
+          "description": "The alphanumeric string value associated with the insurer issued label.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_value": {
+          "description": "Extensions for value",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "name": {
+          "description": "A short description for the class.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "Coverage_CostToBeneficiary": {
+      "description": "Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The category of patient centric costs associated with treatment.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "valueQuantity": {
+          "description": "The amount due from the patient for the cost category.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "valueMoney": {
+          "description": "The amount due from the patient for the cost category.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "exception": {
+          "description": "A suite of codes indicating exceptions or reductions to patient costs and their effective periods.",
+          "items": {
+            "$ref": "#/definitions/Coverage_Exception"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Coverage_Exception": {
+      "description": "Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The code for the specific exception.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "period": {
+          "description": "The timeframe during when the exception is in force.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    }
+  }
+}

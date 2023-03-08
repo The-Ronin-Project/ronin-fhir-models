@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/MedicinalProductContraindication-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/MedicinalProductContraindication",
+  "definitions": {
+    "MedicinalProductContraindication": {
+      "description": "The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a MedicinalProductContraindication resource",
+          "type": "string",
+          "const": "MedicinalProductContraindication"
+        },
+        "subject": {
+          "description": "The medication for which this is an indication.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "disease": {
+          "description": "The disease, symptom or procedure for the contraindication.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "diseaseStatus": {
+          "description": "The status of the disease or symptom for the contraindication.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "comorbidity": {
+          "description": "A comorbidity (concurrent condition) or coinfection.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "therapeuticIndication": {
+          "description": "Information about the use of the medicinal product in relation to other therapies as part of the indication.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "otherTherapy": {
+          "description": "Information about the use of the medicinal product in relation to other therapies described as part of the indication.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProductContraindication_OtherTherapy"
+          },
+          "type": "array"
+        },
+        "population": {
+          "description": "The population group to which this applies.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Population"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "MedicinalProductContraindication_OtherTherapy": {
+      "description": "The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "therapyRelationshipType": {
+          "description": "The type of relationship between the medicinal product indication or contraindication and another therapy.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "medicationCodeableConcept": {
+          "description": "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "medicationReference": {
+          "description": "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "therapyRelationshipType"
+      ]
+    }
+  }
+}

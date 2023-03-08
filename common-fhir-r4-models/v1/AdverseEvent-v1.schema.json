@@ -1,0 +1,233 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/AdverseEvent-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/AdverseEvent",
+  "definitions": {
+    "AdverseEvent": {
+      "description": "Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a AdverseEvent resource",
+          "type": "string",
+          "const": "AdverseEvent"
+        },
+        "identifier": {
+          "description": "Business identifiers assigned to this adverse event by the performer or other systems which remain constant as the resource is updated and propagates from server to server.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "actuality": {
+          "description": "Whether the event actually happened, or just had the potential to. Note that this is independent of whether anyone was affected or harmed or how severely.",
+          "enum": [
+            "actual",
+            "potential"
+          ]
+        },
+        "_actuality": {
+          "description": "Extensions for actuality",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "category": {
+          "description": "The overall type of event, intended for search and filtering purposes.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "event": {
+          "description": "This element defines the specific type of event that occurred or that was prevented from occurring.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "This subject or group impacted by the event.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "The Encounter during which AdverseEvent was created or to which the creation of this record is tightly associated.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "date": {
+          "description": "The date (and perhaps time) when the adverse event occurred.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "detected": {
+          "description": "Estimated or actual date the AdverseEvent began, in the opinion of the reporter.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_detected": {
+          "description": "Extensions for detected",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "recordedDate": {
+          "description": "The date on which the existence of the AdverseEvent was first recorded.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_recordedDate": {
+          "description": "Extensions for recordedDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "resultingCondition": {
+          "description": "Includes information about the reaction that occurred as a result of exposure to a substance (for example, a drug or a chemical).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "location": {
+          "description": "The information about where the adverse event occurred.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "seriousness": {
+          "description": "Assessment whether this event was of real importance.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "severity": {
+          "description": "Describes the severity of the adverse event, in relation to the subject. Contrast to AdverseEvent.seriousness - a severe rash might not be serious, but a mild heart problem is.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "outcome": {
+          "description": "Describes the type of outcome from the adverse event.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "recorder": {
+          "description": "Information on who recorded the adverse event.  May be the patient or a practitioner.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "contributor": {
+          "description": "Parties that may or should contribute or have contributed information to the adverse event, which can consist of one or more activities.  Such information includes information leading to the decision to perform the activity and how to perform the activity (e.g. consultant), information that the activity itself seeks to reveal (e.g. informant of clinical history), or information about what activity was performed (e.g. informant witness).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "suspectEntity": {
+          "description": "Describes the entity that is suspected to have caused the adverse event.",
+          "items": {
+            "$ref": "#/definitions/AdverseEvent_SuspectEntity"
+          },
+          "type": "array"
+        },
+        "subjectMedicalHistory": {
+          "description": "AdverseEvent.subjectMedicalHistory.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "referenceDocument": {
+          "description": "AdverseEvent.referenceDocument.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "study": {
+          "description": "AdverseEvent.study.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "subject",
+        "resourceType"
+      ]
+    },
+    "AdverseEvent_SuspectEntity": {
+      "description": "Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "instance": {
+          "description": "Identifies the actual instance of what caused the adverse event.  May be a substance, medication, medication administration, medication statement or a device.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "causality": {
+          "description": "Information on the possible cause of the event.",
+          "items": {
+            "$ref": "#/definitions/AdverseEvent_Causality"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "instance"
+      ]
+    },
+    "AdverseEvent_Causality": {
+      "description": "Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "assessment": {
+          "description": "Assessment of if the entity caused the event.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "productRelatedness": {
+          "description": "AdverseEvent.suspectEntity.causalityProductRelatedness.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_productRelatedness": {
+          "description": "Extensions for productRelatedness",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "author": {
+          "description": "AdverseEvent.suspectEntity.causalityAuthor.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "method": {
+          "description": "ProbabilityScale | Bayesian | Checklist.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Group-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Group",
+  "definitions": {
+    "Group": {
+      "description": "Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn\u0027t an Organization.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Group resource",
+          "type": "string",
+          "const": "Group"
+        },
+        "identifier": {
+          "description": "A unique business identifier for this group.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "active": {
+          "description": "Indicates whether the record for the group is available for use or is merely being retained for historical purposes.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_active": {
+          "description": "Extensions for active",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "Identifies the broad classification of the kind of resources the group includes.",
+          "enum": [
+            "person",
+            "animal",
+            "practitioner",
+            "device",
+            "medication",
+            "substance"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "actual": {
+          "description": "If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_actual": {
+          "description": "Extensions for actual",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "Provides a specific type of resource the group includes; e.g. \"cow\", \"syringe\", etc.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "name": {
+          "description": "A label assigned to the group for human identification and communication.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "quantity": {
+          "description": "A count of the number of resource instances that are part of the group.",
+          "$ref": "core/primitives.schema.json#/definitions/unsignedInt"
+        },
+        "_quantity": {
+          "description": "Extensions for quantity",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "managingEntity": {
+          "description": "Entity responsible for defining and maintaining Group characteristics and/or registered members.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "characteristic": {
+          "description": "Identifies traits whose presence r absence is shared by members of the group.",
+          "items": {
+            "$ref": "#/definitions/Group_Characteristic"
+          },
+          "type": "array"
+        },
+        "member": {
+          "description": "Identifies the resource instances that are members of the group.",
+          "items": {
+            "$ref": "#/definitions/Group_Member"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "Group_Characteristic": {
+      "description": "Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn\u0027t an Organization.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "A code that identifies the kind of trait being asserted.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "valueCodeableConcept": {
+          "description": "The value of the trait that holds (or does not hold - see \u0027exclude\u0027) for members of the group.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "valueBoolean": {
+          "description": "The value of the trait that holds (or does not hold - see \u0027exclude\u0027) for members of the group.",
+          "pattern": "^true|false$",
+          "type": "boolean"
+        },
+        "_valueBoolean": {
+          "description": "Extensions for valueBoolean",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "valueQuantity": {
+          "description": "The value of the trait that holds (or does not hold - see \u0027exclude\u0027) for members of the group.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "valueRange": {
+          "description": "The value of the trait that holds (or does not hold - see \u0027exclude\u0027) for members of the group.",
+          "$ref": "core/elements.schema.json#/definitions/Range"
+        },
+        "valueReference": {
+          "description": "The value of the trait that holds (or does not hold - see \u0027exclude\u0027) for members of the group.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "exclude": {
+          "description": "If true, indicates the characteristic is one that is NOT held by members of the group.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_exclude": {
+          "description": "Extensions for exclude",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "The period over which the characteristic is tested; e.g. the patient had an operation during the month of June.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "code"
+      ]
+    },
+    "Group_Member": {
+      "description": "Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn\u0027t an Organization.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "entity": {
+          "description": "A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "period": {
+          "description": "The period that the member was in the group, if known.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "inactive": {
+          "description": "A flag to indicate that the member is no longer in the group, but previously may have been a member.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_inactive": {
+          "description": "Extensions for inactive",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "entity"
+      ]
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/OrganizationAffiliation-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/OrganizationAffiliation",
+  "definitions": {
+    "OrganizationAffiliation": {
+      "description": "Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a OrganizationAffiliation resource",
+          "type": "string",
+          "const": "OrganizationAffiliation"
+        },
+        "identifier": {
+          "description": "Business identifiers that are specific to this role.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "active": {
+          "description": "Whether this organization affiliation record is in active use.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_active": {
+          "description": "Extensions for active",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "The period during which the participatingOrganization is affiliated with the primary organization.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "organization": {
+          "description": "Organization where the role is available (primary organization/has members).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "participatingOrganization": {
+          "description": "The Participating Organization provides/performs the role(s) defined by the code to the Primary Organization (e.g. providing services or is a member of).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "network": {
+          "description": "Health insurance provider network in which the participatingOrganization provides the role\u0027s services (if defined) at the indicated locations (if defined).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "Definition of the role the participatingOrganization plays in the association.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "specialty": {
+          "description": "Specific specialty of the participatingOrganization in the context of the role.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "location": {
+          "description": "The location(s) at which the role occurs.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "healthcareService": {
+          "description": "Healthcare services provided through the role.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "telecom": {
+          "description": "Contact details at the participatingOrganization relevant to this Affiliation.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "endpoint": {
+          "description": "Technical endpoints providing access to services operated for this role.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    }
+  }
+}

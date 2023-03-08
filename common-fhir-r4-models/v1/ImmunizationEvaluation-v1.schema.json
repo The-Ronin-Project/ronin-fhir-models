@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/ImmunizationEvaluation-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/ImmunizationEvaluation",
+  "definitions": {
+    "ImmunizationEvaluation": {
+      "description": "Describes a comparison of an immunization event against published recommendations to determine if the administration is \"valid\" in relation to those  recommendations.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a ImmunizationEvaluation resource",
+          "type": "string",
+          "const": "ImmunizationEvaluation"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this immunization evaluation record.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "Indicates the current status of the evaluation of the vaccination administration event.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "patient": {
+          "description": "The individual for whom the evaluation is being done.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "date": {
+          "description": "The date the evaluation of the vaccine administration event was performed.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "authority": {
+          "description": "Indicates the authority who published the protocol (e.g. ACIP).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "targetDisease": {
+          "description": "The vaccine preventable disease the dose is being evaluated against.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "immunizationEvent": {
+          "description": "The vaccine administration event being evaluated.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "doseStatus": {
+          "description": "Indicates if the dose is valid or not valid with respect to the published recommendations.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "doseStatusReason": {
+          "description": "Provides an explanation as to why the vaccine administration event is valid or not relative to the published recommendations.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Additional information about the evaluation.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "series": {
+          "description": "One possible path to achieve presumed immunity against a disease - within the context of an authority.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_series": {
+          "description": "Extensions for series",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "doseNumberPositiveInt": {
+          "description": "Nominal position in a series.",
+          "pattern": "^[1-9][0-9]*$",
+          "type": "number"
+        },
+        "_doseNumberPositiveInt": {
+          "description": "Extensions for doseNumberPositiveInt",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "doseNumberString": {
+          "description": "Nominal position in a series.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_doseNumberString": {
+          "description": "Extensions for doseNumberString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "seriesDosesPositiveInt": {
+          "description": "The recommended number of doses to achieve immunity.",
+          "pattern": "^[1-9][0-9]*$",
+          "type": "number"
+        },
+        "_seriesDosesPositiveInt": {
+          "description": "Extensions for seriesDosesPositiveInt",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "seriesDosesString": {
+          "description": "The recommended number of doses to achieve immunity.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_seriesDosesString": {
+          "description": "Extensions for seriesDosesString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "doseStatus",
+        "patient",
+        "targetDisease",
+        "immunizationEvent",
+        "resourceType"
+      ]
+    }
+  }
+}

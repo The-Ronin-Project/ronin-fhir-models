@@ -1,0 +1,1026 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/ClaimResponse-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/ClaimResponse",
+  "definitions": {
+    "ClaimResponse": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a ClaimResponse resource",
+          "type": "string",
+          "const": "ClaimResponse"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this claim response.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of the resource instance.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "A finer grained suite of claim type codes which may convey additional information such as Inpatient vs Outpatient and/or a specialty service.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subType": {
+          "description": "A finer grained suite of claim type codes which may convey additional information such as Inpatient vs Outpatient and/or a specialty service.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "use": {
+          "description": "A code to indicate whether the nature of the request is: to request adjudication of products and services previously rendered; or requesting authorization and adjudication for provision in the future; or requesting the non-binding adjudication of the listed products and services which could be provided in the future.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_use": {
+          "description": "Extensions for use",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "patient": {
+          "description": "The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for facast reimbursement is sought.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "created": {
+          "description": "The date this resource was created.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_created": {
+          "description": "Extensions for created",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "insurer": {
+          "description": "The party responsible for authorization, adjudication and reimbursement.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "requestor": {
+          "description": "The provider which is responsible for the claim, predetermination or preauthorization.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "request": {
+          "description": "Original request resource reference.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "outcome": {
+          "description": "The outcome of the claim, predetermination, or preauthorization processing.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_outcome": {
+          "description": "Extensions for outcome",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "disposition": {
+          "description": "A human readable description of the status of the adjudication.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_disposition": {
+          "description": "Extensions for disposition",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "preAuthRef": {
+          "description": "Reference from the Insurer which is used in later communications which refers to this adjudication.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_preAuthRef": {
+          "description": "Extensions for preAuthRef",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "preAuthPeriod": {
+          "description": "The time frame during which this authorization is effective.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "payeeType": {
+          "description": "Type of Party to be reimbursed: subscriber, provider, other.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "item": {
+          "description": "A claim line. Either a simple (a product or service) or a \u0027group\u0027 of details which can also be a simple items or groups of sub-details.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Item"
+          },
+          "type": "array"
+        },
+        "addItem": {
+          "description": "The first-tier service adjudications for payor added product or service lines.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_AddItem"
+          },
+          "type": "array"
+        },
+        "adjudication": {
+          "description": "The adjudication results which are presented at the header level rather than at the line-item or add-item levels.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Adjudication"
+          },
+          "type": "array"
+        },
+        "total": {
+          "description": "Categorized monetary totals for the adjudication.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Total"
+          },
+          "type": "array"
+        },
+        "payment": {
+          "description": "Payment details for the adjudication of the claim.",
+          "$ref": "#/definitions/ClaimResponse_Payment"
+        },
+        "fundsReserve": {
+          "description": "A code, used only on a response to a preauthorization, to indicate whether the benefits payable have been reserved and for whom.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "formCode": {
+          "description": "A code for the form to be used for printing the content.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "form": {
+          "description": "The actual form, by reference or inclusion, for printing the content or an EOB.",
+          "$ref": "core/elements.schema.json#/definitions/Attachment"
+        },
+        "processNote": {
+          "description": "A note that describes or explains adjudication results in a human readable form.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_ProcessNote"
+          },
+          "type": "array"
+        },
+        "communicationRequest": {
+          "description": "Request for additional supporting or authorizing information.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "insurance": {
+          "description": "Financial instruments for reimbursement for the health care products and services specified on the claim.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Insurance"
+          },
+          "type": "array"
+        },
+        "error": {
+          "description": "Errors encountered during the processing of the adjudication.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Error"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "patient",
+        "insurer",
+        "type",
+        "resourceType"
+      ]
+    },
+    "ClaimResponse_Item": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "itemSequence": {
+          "description": "A number to uniquely reference the claim item entries.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_itemSequence": {
+          "description": "Extensions for itemSequence",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "noteNumber": {
+          "description": "The numbers associated with notes below which apply to the adjudication of this item.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_noteNumber": {
+          "description": "Extensions for noteNumber",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "adjudication": {
+          "description": "If this item is a group then the values here are a summary of the adjudication of the detail items. If this item is a simple product or service then this is the result of the adjudication of this item.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Adjudication"
+          },
+          "type": "array"
+        },
+        "detail": {
+          "description": "A claim detail. Either a simple (a product or service) or a \u0027group\u0027 of sub-details which are simple items.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Detail"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "adjudication"
+      ]
+    },
+    "ClaimResponse_Adjudication": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "category": {
+          "description": "A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that: the patient is responsible for in aggregate or pertaining to this item; amounts paid by other coverages; and, the benefit payable for this item.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "reason": {
+          "description": "A code supporting the understanding of the adjudication result and explaining variance from expected amount.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "amount": {
+          "description": "Monetary amount associated with the category.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "value": {
+          "description": "A non-monetary value associated with the category. Mutually exclusive to the amount element above.",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_value": {
+          "description": "Extensions for value",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "category"
+      ]
+    },
+    "ClaimResponse_Detail": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "detailSequence": {
+          "description": "A number to uniquely reference the claim detail entry.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_detailSequence": {
+          "description": "Extensions for detailSequence",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "noteNumber": {
+          "description": "The numbers associated with notes below which apply to the adjudication of this item.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_noteNumber": {
+          "description": "Extensions for noteNumber",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "adjudication": {
+          "description": "The adjudication results.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Adjudication"
+          },
+          "type": "array"
+        },
+        "subDetail": {
+          "description": "A sub-detail adjudication of a simple product or service.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_SubDetail"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "adjudication"
+      ]
+    },
+    "ClaimResponse_SubDetail": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "subDetailSequence": {
+          "description": "A number to uniquely reference the claim sub-detail entry.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_subDetailSequence": {
+          "description": "Extensions for subDetailSequence",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "noteNumber": {
+          "description": "The numbers associated with notes below which apply to the adjudication of this item.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_noteNumber": {
+          "description": "Extensions for noteNumber",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "adjudication": {
+          "description": "The adjudication results.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Adjudication"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ClaimResponse_AddItem": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "itemSequence": {
+          "description": "Claim items which this service line is intended to replace.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_itemSequence": {
+          "description": "Extensions for itemSequence",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "detailSequence": {
+          "description": "The sequence number of the details within the claim item which this line is intended to replace.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_detailSequence": {
+          "description": "Extensions for detailSequence",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "subdetailSequence": {
+          "description": "The sequence number of the sub-details within the details within the claim item which this line is intended to replace.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_subdetailSequence": {
+          "description": "Extensions for subdetailSequence",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "provider": {
+          "description": "The providers who are authorized for the services rendered to the patient.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "productOrService": {
+          "description": "When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "modifier": {
+          "description": "Item typification or modifiers codes to convey additional context for the product or service.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "programCode": {
+          "description": "Identifies the program under which this may be recovered.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "servicedDate": {
+          "description": "The date or dates when the service or product was supplied, performed or completed.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
+          "type": "string"
+        },
+        "_servicedDate": {
+          "description": "Extensions for servicedDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "servicedPeriod": {
+          "description": "The date or dates when the service or product was supplied, performed or completed.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "locationCodeableConcept": {
+          "description": "Where the product or service was provided.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "locationAddress": {
+          "description": "Where the product or service was provided.",
+          "$ref": "core/elements.schema.json#/definitions/Address"
+        },
+        "locationReference": {
+          "description": "Where the product or service was provided.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "quantity": {
+          "description": "The number of repetitions of a service or product.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "unitPrice": {
+          "description": "If the item is not a group then this is the fee for the product or service, otherwise this is the total of the fees for the details of the group.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "factor": {
+          "description": "A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_factor": {
+          "description": "Extensions for factor",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "net": {
+          "description": "The quantity times the unit price for an additional service or product or charge.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "bodySite": {
+          "description": "Physical service site on the patient (limb, tooth, etc.).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subSite": {
+          "description": "A region or surface of the bodySite, e.g. limb region or tooth surface(s).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "noteNumber": {
+          "description": "The numbers associated with notes below which apply to the adjudication of this item.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_noteNumber": {
+          "description": "Extensions for noteNumber",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "adjudication": {
+          "description": "The adjudication results.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Adjudication"
+          },
+          "type": "array"
+        },
+        "detail": {
+          "description": "The second-tier service adjudications for payor added services.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Detail1"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "adjudication",
+        "productOrService"
+      ]
+    },
+    "ClaimResponse_Detail1": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "productOrService": {
+          "description": "When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "modifier": {
+          "description": "Item typification or modifiers codes to convey additional context for the product or service.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "quantity": {
+          "description": "The number of repetitions of a service or product.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "unitPrice": {
+          "description": "If the item is not a group then this is the fee for the product or service, otherwise this is the total of the fees for the details of the group.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "factor": {
+          "description": "A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_factor": {
+          "description": "Extensions for factor",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "net": {
+          "description": "The quantity times the unit price for an additional service or product or charge.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "noteNumber": {
+          "description": "The numbers associated with notes below which apply to the adjudication of this item.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_noteNumber": {
+          "description": "Extensions for noteNumber",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "adjudication": {
+          "description": "The adjudication results.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Adjudication"
+          },
+          "type": "array"
+        },
+        "subDetail": {
+          "description": "The third-tier service adjudications for payor added services.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_SubDetail1"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "adjudication",
+        "productOrService"
+      ]
+    },
+    "ClaimResponse_SubDetail1": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "productOrService": {
+          "description": "When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "modifier": {
+          "description": "Item typification or modifiers codes to convey additional context for the product or service.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "quantity": {
+          "description": "The number of repetitions of a service or product.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "unitPrice": {
+          "description": "If the item is not a group then this is the fee for the product or service, otherwise this is the total of the fees for the details of the group.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "factor": {
+          "description": "A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_factor": {
+          "description": "Extensions for factor",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "net": {
+          "description": "The quantity times the unit price for an additional service or product or charge.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "noteNumber": {
+          "description": "The numbers associated with notes below which apply to the adjudication of this item.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_noteNumber": {
+          "description": "Extensions for noteNumber",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "adjudication": {
+          "description": "The adjudication results.",
+          "items": {
+            "$ref": "#/definitions/ClaimResponse_Adjudication"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "adjudication",
+        "productOrService"
+      ]
+    },
+    "ClaimResponse_Total": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "category": {
+          "description": "A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "amount": {
+          "description": "Monetary total amount associated with the category.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "amount",
+        "category"
+      ]
+    },
+    "ClaimResponse_Payment": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Whether this represents partial or complete payment of the benefits payable.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "adjustment": {
+          "description": "Total amount of all adjustments to this payment included in this transaction which are not related to this claim\u0027s adjudication.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "adjustmentReason": {
+          "description": "Reason for the payment adjustment.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "date": {
+          "description": "Estimated date the payment will be issued or the actual issue date of payment.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "amount": {
+          "description": "Benefits payable less any payment adjustment.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "identifier": {
+          "description": "Issuer\u0027s unique identifier for the payment instrument.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "amount",
+        "type"
+      ]
+    },
+    "ClaimResponse_ProcessNote": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "number": {
+          "description": "A number to uniquely identify a note entry.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_number": {
+          "description": "Extensions for number",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "The business purpose of the note text.",
+          "enum": [
+            "display",
+            "print",
+            "printoper"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "text": {
+          "description": "The explanation or description associated with the processing.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_text": {
+          "description": "Extensions for text",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "language": {
+          "description": "A code to define the language used in the text of the note.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ClaimResponse_Insurance": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "sequence": {
+          "description": "A number to uniquely identify insurance entries and provide a sequence of coverages to convey coordination of benefit order.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_sequence": {
+          "description": "Extensions for sequence",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "focal": {
+          "description": "A flag to indicate that this Coverage is to be used for adjudication of this claim when set to true.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_focal": {
+          "description": "Extensions for focal",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "coverage": {
+          "description": "Reference to the insurance card level information contained in the Coverage resource. The coverage issuing insurer will use these details to locate the patient\u0027s actual coverage within the insurer\u0027s information system.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "businessArrangement": {
+          "description": "A business agreement number established between the provider and the insurer for special business processing purposes.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_businessArrangement": {
+          "description": "Extensions for businessArrangement",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "claimResponse": {
+          "description": "The result of the adjudication of the line items for the Coverage specified in this insurance.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "coverage"
+      ]
+    },
+    "ClaimResponse_Error": {
+      "description": "This resource provides the adjudication details from the processing of a Claim resource.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "itemSequence": {
+          "description": "The sequence number of the line item submitted which contains the error. This value is omitted when the error occurs outside of the item structure.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_itemSequence": {
+          "description": "Extensions for itemSequence",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "detailSequence": {
+          "description": "The sequence number of the detail within the line item submitted which contains the error. This value is omitted when the error occurs outside of the item structure.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_detailSequence": {
+          "description": "Extensions for detailSequence",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "subDetailSequence": {
+          "description": "The sequence number of the sub-detail within the detail within the line item submitted which contains the error. This value is omitted when the error occurs outside of the item structure.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_subDetailSequence": {
+          "description": "Extensions for subDetailSequence",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "An error code, from a specified code system, which details why the claim could not be adjudicated.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "code"
+      ]
+    }
+  }
+}

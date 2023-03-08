@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/ResearchSubject-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/ResearchSubject",
+  "definitions": {
+    "ResearchSubject": {
+      "description": "A physical entity which is the primary unit of operational and/or administrative interest in a study.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a ResearchSubject resource",
+          "type": "string",
+          "const": "ResearchSubject"
+        },
+        "identifier": {
+          "description": "Identifiers assigned to this research subject for a study.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The current state of the subject.",
+          "enum": [
+            "candidate",
+            "eligible",
+            "follow-up",
+            "ineligible",
+            "not-registered",
+            "off-study",
+            "on-study",
+            "on-study-intervention",
+            "on-study-observation",
+            "pending-on-study",
+            "potential-candidate",
+            "screening",
+            "withdrawn"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "The dates the subject began and ended their participation in the study.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "study": {
+          "description": "Reference to the study the subject is participating in.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "individual": {
+          "description": "The record of the person or animal who is involved in the study.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "assignedArm": {
+          "description": "The name of the arm in the study the subject is expected to follow as part of this study.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_assignedArm": {
+          "description": "Extensions for assignedArm",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "actualArm": {
+          "description": "The name of the arm in the study the subject actually followed as part of this study.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_actualArm": {
+          "description": "Extensions for actualArm",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "consent": {
+          "description": "A record of the patient\u0027s informed agreement to participate in the study.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "study",
+        "individual",
+        "resourceType"
+      ]
+    }
+  }
+}

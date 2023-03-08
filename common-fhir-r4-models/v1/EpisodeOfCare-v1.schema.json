@@ -1,0 +1,202 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/EpisodeOfCare-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/EpisodeOfCare",
+  "definitions": {
+    "EpisodeOfCare": {
+      "description": "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a EpisodeOfCare resource",
+          "type": "string",
+          "const": "EpisodeOfCare"
+        },
+        "identifier": {
+          "description": "The EpisodeOfCare may be known by different identifiers for different contexts of use, such as when an external agency is tracking the Episode for funding purposes.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "planned | waitlist | active | onhold | finished | cancelled.",
+          "enum": [
+            "planned",
+            "waitlist",
+            "active",
+            "onhold",
+            "finished",
+            "cancelled",
+            "entered-in-error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "statusHistory": {
+          "description": "The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).",
+          "items": {
+            "$ref": "#/definitions/EpisodeOfCare_StatusHistory"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "A classification of the type of episode of care; e.g. specialist referral, disease management, type of funded care.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "diagnosis": {
+          "description": "The list of diagnosis relevant to this episode of care.",
+          "items": {
+            "$ref": "#/definitions/EpisodeOfCare_Diagnosis"
+          },
+          "type": "array"
+        },
+        "patient": {
+          "description": "The patient who is the focus of this episode of care.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "managingOrganization": {
+          "description": "The organization that has assumed the specific responsibilities for the specified duration.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "period": {
+          "description": "The interval during which the managing organization assumes the defined responsibility.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "referralRequest": {
+          "description": "Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "careManager": {
+          "description": "The practitioner that is the care manager/care coordinator for this patient.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "team": {
+          "description": "The list of practitioners that may be facilitating this episode of care for specific purposes.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "account": {
+          "description": "The set of accounts that may be used for billing for this EpisodeOfCare.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "patient",
+        "resourceType"
+      ]
+    },
+    "EpisodeOfCare_StatusHistory": {
+      "description": "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "planned | waitlist | active | onhold | finished | cancelled.",
+          "enum": [
+            "planned",
+            "waitlist",
+            "active",
+            "onhold",
+            "finished",
+            "cancelled",
+            "entered-in-error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "The period during this EpisodeOfCare that the specific status applied.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "period"
+      ]
+    },
+    "EpisodeOfCare_Diagnosis": {
+      "description": "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "condition": {
+          "description": "A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "role": {
+          "description": "Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "rank": {
+          "description": "Ranking of the diagnosis (for each role type).",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_rank": {
+          "description": "Extensions for rank",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "condition"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1236 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/TestScript-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/TestScript",
+  "definitions": {
+    "TestScript": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a TestScript resource",
+          "type": "string",
+          "const": "TestScript"
+        },
+        "url": {
+          "description": "An absolute URI that is used to identify this test script when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this test script is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the test script is stored on different servers.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "identifier": {
+          "description": "A formal identifier that is used to identify this test script when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "version": {
+          "description": "The identifier that is used to identify this version of the test script when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the test script author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "name": {
+          "description": "A natural language name identifying the test script. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "title": {
+          "description": "A short, descriptive, user-friendly title for the test script.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "status": {
+          "description": "The status of this test script. Enables tracking the life-cycle of the content.",
+          "enum": [
+            "draft",
+            "active",
+            "retired",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "experimental": {
+          "description": "A Boolean value to indicate that this test script is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_experimental": {
+          "description": "Extensions for experimental",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "date": {
+          "description": "The date  (and optionally time) when the test script was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the test script changes.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "publisher": {
+          "description": "The name of the organization or individual that published the test script.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_publisher": {
+          "description": "Extensions for publisher",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contact": {
+          "description": "Contact details to assist a user in finding and communicating with the publisher.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "A free text natural language description of the test script from a consumer\u0027s perspective.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "useContext": {
+          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate test script instances.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/UsageContext"
+          },
+          "type": "array"
+        },
+        "jurisdiction": {
+          "description": "A legal or geographic region in which the test script is intended to be used.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "purpose": {
+          "description": "Explanation of why this test script is needed and why it has been designed as it has.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_purpose": {
+          "description": "Extensions for purpose",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "copyright": {
+          "description": "A copyright statement relating to the test script and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the test script.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_copyright": {
+          "description": "Extensions for copyright",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "origin": {
+          "description": "An abstract server used in operations within this test script in the origin element.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Origin"
+          },
+          "type": "array"
+        },
+        "destination": {
+          "description": "An abstract server used in operations within this test script in the destination element.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Destination"
+          },
+          "type": "array"
+        },
+        "metadata": {
+          "description": "The required capability must exist and are assumed to function correctly on the FHIR server being tested.",
+          "$ref": "#/definitions/TestScript_Metadata"
+        },
+        "fixture": {
+          "description": "Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Fixture"
+          },
+          "type": "array"
+        },
+        "profile": {
+          "description": "Reference to the profile to be used for validation.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "variable": {
+          "description": "Variable is set based either on element value in response body or on header field value in the response headers.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Variable"
+          },
+          "type": "array"
+        },
+        "setup": {
+          "description": "A series of required setup operations before tests are executed.",
+          "$ref": "#/definitions/TestScript_Setup"
+        },
+        "test": {
+          "description": "A test in this script.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Test"
+          },
+          "type": "array"
+        },
+        "teardown": {
+          "description": "A series of operations required to clean up after all the tests are executed (successfully or otherwise).",
+          "$ref": "#/definitions/TestScript_Teardown"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "TestScript_Origin": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "index": {
+          "description": "Abstract name given to an origin server in this test script.  The name is provided as a number starting at 1.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_index": {
+          "description": "Extensions for index",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "profile": {
+          "description": "The type of origin profile the test system supports.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "profile"
+      ]
+    },
+    "TestScript_Destination": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "index": {
+          "description": "Abstract name given to a destination server in this test script.  The name is provided as a number starting at 1.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_index": {
+          "description": "Extensions for index",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "profile": {
+          "description": "The type of destination profile the test system supports.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "profile"
+      ]
+    },
+    "TestScript_Metadata": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "link": {
+          "description": "A link to the FHIR specification that this test is covering.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Link"
+          },
+          "type": "array"
+        },
+        "capability": {
+          "description": "Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Capability"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "capability"
+      ]
+    },
+    "TestScript_Link": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "url": {
+          "description": "URL to a particular requirement or feature within the FHIR specification.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "Short description of the link.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TestScript_Capability": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "required": {
+          "description": "Whether or not the test execution will require the given capabilities of the server in order for this test script to execute.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_required": {
+          "description": "Extensions for required",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "validated": {
+          "description": "Whether or not the test execution will validate the given capabilities of the server in order for this test script to execute.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_validated": {
+          "description": "Extensions for validated",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "Description of the capabilities that this test script is requiring the server to support.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "origin": {
+          "description": "Which origin server these requirements apply to.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/integer"
+          },
+          "type": "array"
+        },
+        "_origin": {
+          "description": "Extensions for origin",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "destination": {
+          "description": "Which server these requirements apply to.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_destination": {
+          "description": "Extensions for destination",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "link": {
+          "description": "Links to the FHIR specification that describes this interaction and the resources involved in more detail.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/uri"
+          },
+          "type": "array"
+        },
+        "_link": {
+          "description": "Extensions for link",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "capabilities": {
+          "description": "Minimum capabilities required of server for test script to execute successfully.   If server does not meet at a minimum the referenced capability statement, then all tests in this script are skipped.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "capabilities"
+      ]
+    },
+    "TestScript_Fixture": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "autocreate": {
+          "description": "Whether or not to implicitly create the fixture during setup. If true, the fixture is automatically created on each server being tested during setup, therefore no create operation is required for this fixture in the TestScript.setup section.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_autocreate": {
+          "description": "Extensions for autocreate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "autodelete": {
+          "description": "Whether or not to implicitly delete the fixture during teardown. If true, the fixture is automatically deleted on each server being tested during teardown, therefore no delete operation is required for this fixture in the TestScript.teardown section.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_autodelete": {
+          "description": "Extensions for autodelete",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "resource": {
+          "description": "Reference to the resource (containing the contents of the resource needed for operations).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TestScript_Variable": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "Descriptive name for this variable.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "defaultValue": {
+          "description": "A default, hard-coded, or user-defined value for this variable.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_defaultValue": {
+          "description": "Extensions for defaultValue",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "A free text natural language description of the variable and its purpose.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "expression": {
+          "description": "The FHIRPath expression to evaluate against the fixture body. When variables are defined, only one of either expression, headerField or path must be specified.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_expression": {
+          "description": "Extensions for expression",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "headerField": {
+          "description": "Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_headerField": {
+          "description": "Extensions for headerField",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "hint": {
+          "description": "Displayable text string with hint help information to the user when entering a default value.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_hint": {
+          "description": "Extensions for hint",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "path": {
+          "description": "XPath or JSONPath to evaluate against the fixture body.  When variables are defined, only one of either expression, headerField or path must be specified.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_path": {
+          "description": "Extensions for path",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "sourceId": {
+          "description": "Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.",
+          "$ref": "core/primitives.schema.json#/definitions/id"
+        },
+        "_sourceId": {
+          "description": "Extensions for sourceId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TestScript_Setup": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "action": {
+          "description": "Action would contain either an operation or an assertion.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Action"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "action"
+      ]
+    },
+    "TestScript_Action": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "operation": {
+          "description": "The operation to perform.",
+          "$ref": "#/definitions/TestScript_Operation"
+        },
+        "assert": {
+          "description": "Evaluates the results of previous operations to determine if the server under test behaves appropriately.",
+          "$ref": "#/definitions/TestScript_Assert"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TestScript_Operation": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Server interaction or operation type.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "resource": {
+          "description": "The type of the resource.  See http://build.fhir.org/resourcelist.html.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_resource": {
+          "description": "Extensions for resource",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "label": {
+          "description": "The label would be used for tracking/logging purposes by test engines.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_label": {
+          "description": "Extensions for label",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "The description would be used by test engines for tracking and reporting purposes.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "accept": {
+          "description": "The mime-type to use for RESTful operation in the \u0027Accept\u0027 header.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_accept": {
+          "description": "Extensions for accept",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contentType": {
+          "description": "The mime-type to use for RESTful operation in the \u0027Content-Type\u0027 header.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_contentType": {
+          "description": "Extensions for contentType",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "destination": {
+          "description": "The server where the request message is destined for.  Must be one of the server numbers listed in TestScript.destination section.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_destination": {
+          "description": "Extensions for destination",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "encodeRequestUrl": {
+          "description": "Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_encodeRequestUrl": {
+          "description": "Extensions for encodeRequestUrl",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "method": {
+          "description": "The HTTP method the test engine MUST use for this operation regardless of any other operation details.",
+          "enum": [
+            "delete",
+            "get",
+            "options",
+            "patch",
+            "post",
+            "put",
+            "head"
+          ]
+        },
+        "_method": {
+          "description": "Extensions for method",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "origin": {
+          "description": "The server where the request message originates from.  Must be one of the server numbers listed in TestScript.origin section.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_origin": {
+          "description": "Extensions for origin",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "params": {
+          "description": "Path plus parameters after [type].  Used to set parts of the request URL explicitly.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_params": {
+          "description": "Extensions for params",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "requestHeader": {
+          "description": "Header elements would be used to set HTTP headers.",
+          "items": {
+            "$ref": "#/definitions/TestScript_RequestHeader"
+          },
+          "type": "array"
+        },
+        "requestId": {
+          "description": "The fixture id (maybe new) to map to the request.",
+          "$ref": "core/primitives.schema.json#/definitions/id"
+        },
+        "_requestId": {
+          "description": "Extensions for requestId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "responseId": {
+          "description": "The fixture id (maybe new) to map to the response.",
+          "$ref": "core/primitives.schema.json#/definitions/id"
+        },
+        "_responseId": {
+          "description": "Extensions for responseId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "sourceId": {
+          "description": "The id of the fixture used as the body of a PUT or POST request.",
+          "$ref": "core/primitives.schema.json#/definitions/id"
+        },
+        "_sourceId": {
+          "description": "Extensions for sourceId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "targetId": {
+          "description": "Id of fixture used for extracting the [id],  [type], and [vid] for GET requests.",
+          "$ref": "core/primitives.schema.json#/definitions/id"
+        },
+        "_targetId": {
+          "description": "Extensions for targetId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "url": {
+          "description": "Complete request URL.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TestScript_RequestHeader": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "field": {
+          "description": "The HTTP header field e.g. \"Accept\".",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_field": {
+          "description": "Extensions for field",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "value": {
+          "description": "The value of the header e.g. \"application/fhir+xml\".",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_value": {
+          "description": "Extensions for value",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TestScript_Assert": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "label": {
+          "description": "The label would be used for tracking/logging purposes by test engines.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_label": {
+          "description": "Extensions for label",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "The description would be used by test engines for tracking and reporting purposes.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "direction": {
+          "description": "The direction to use for the assertion.",
+          "enum": [
+            "response",
+            "request"
+          ]
+        },
+        "_direction": {
+          "description": "Extensions for direction",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "compareToSourceId": {
+          "description": "Id of the source fixture used as the contents to be evaluated by either the \"source/expression\" or \"sourceId/path\" definition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_compareToSourceId": {
+          "description": "Extensions for compareToSourceId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "compareToSourceExpression": {
+          "description": "The FHIRPath expression to evaluate against the source fixture. When compareToSourceId is defined, either compareToSourceExpression or compareToSourcePath must be defined, but not both.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_compareToSourceExpression": {
+          "description": "Extensions for compareToSourceExpression",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "compareToSourcePath": {
+          "description": "XPath or JSONPath expression to evaluate against the source fixture. When compareToSourceId is defined, either compareToSourceExpression or compareToSourcePath must be defined, but not both.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_compareToSourcePath": {
+          "description": "Extensions for compareToSourcePath",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contentType": {
+          "description": "The mime-type contents to compare against the request or response message \u0027Content-Type\u0027 header.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_contentType": {
+          "description": "Extensions for contentType",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "expression": {
+          "description": "The FHIRPath expression to be evaluated against the request or response message contents - HTTP headers and payload.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_expression": {
+          "description": "Extensions for expression",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "headerField": {
+          "description": "The HTTP header field name e.g. \u0027Location\u0027.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_headerField": {
+          "description": "Extensions for headerField",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "minimumId": {
+          "description": "The ID of a fixture.  Asserts that the response contains at a minimum the fixture specified by minimumId.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_minimumId": {
+          "description": "Extensions for minimumId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "navigationLinks": {
+          "description": "Whether or not the test execution performs validation on the bundle navigation links.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_navigationLinks": {
+          "description": "Extensions for navigationLinks",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "operator": {
+          "description": "The operator type defines the conditional behavior of the assert. If not defined, the default is equals.",
+          "enum": [
+            "equals",
+            "notEquals",
+            "in",
+            "notIn",
+            "greaterThan",
+            "lessThan",
+            "empty",
+            "notEmpty",
+            "contains",
+            "notContains",
+            "eval"
+          ]
+        },
+        "_operator": {
+          "description": "Extensions for operator",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "path": {
+          "description": "The XPath or JSONPath expression to be evaluated against the fixture representing the response received from server.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_path": {
+          "description": "Extensions for path",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "requestMethod": {
+          "description": "The request method or HTTP operation code to compare against that used by the client system under test.",
+          "enum": [
+            "delete",
+            "get",
+            "options",
+            "patch",
+            "post",
+            "put",
+            "head"
+          ]
+        },
+        "_requestMethod": {
+          "description": "Extensions for requestMethod",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "requestURL": {
+          "description": "The value to use in a comparison against the request URL path string.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_requestURL": {
+          "description": "Extensions for requestURL",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "resource": {
+          "description": "The type of the resource.  See http://build.fhir.org/resourcelist.html.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_resource": {
+          "description": "Extensions for resource",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "response": {
+          "description": "okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable.",
+          "enum": [
+            "okay",
+            "created",
+            "noContent",
+            "notModified",
+            "bad",
+            "forbidden",
+            "notFound",
+            "methodNotAllowed",
+            "conflict",
+            "gone",
+            "preconditionFailed",
+            "unprocessable"
+          ]
+        },
+        "_response": {
+          "description": "Extensions for response",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "responseCode": {
+          "description": "The value of the HTTP response code to be tested.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_responseCode": {
+          "description": "Extensions for responseCode",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "sourceId": {
+          "description": "Fixture to evaluate the XPath/JSONPath expression or the headerField  against.",
+          "$ref": "core/primitives.schema.json#/definitions/id"
+        },
+        "_sourceId": {
+          "description": "Extensions for sourceId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "validateProfileId": {
+          "description": "The ID of the Profile to validate against.",
+          "$ref": "core/primitives.schema.json#/definitions/id"
+        },
+        "_validateProfileId": {
+          "description": "Extensions for validateProfileId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "value": {
+          "description": "The value to compare to.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_value": {
+          "description": "Extensions for value",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "warningOnly": {
+          "description": "Whether or not the test execution will produce a warning only on error for this assert.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_warningOnly": {
+          "description": "Extensions for warningOnly",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TestScript_Test": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "The name of this test used for tracking/logging purposes by test engines.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "A short description of the test used by test engines for tracking and reporting purposes.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "action": {
+          "description": "Action would contain either an operation or an assertion.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Action1"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "action"
+      ]
+    },
+    "TestScript_Action1": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "operation": {
+          "description": "An operation would involve a REST request to a server.",
+          "$ref": "#/definitions/TestScript_Operation"
+        },
+        "assert": {
+          "description": "Evaluates the results of previous operations to determine if the server under test behaves appropriately.",
+          "$ref": "#/definitions/TestScript_Assert"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TestScript_Teardown": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "action": {
+          "description": "The teardown action will only contain an operation.",
+          "items": {
+            "$ref": "#/definitions/TestScript_Action2"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "action"
+      ]
+    },
+    "TestScript_Action2": {
+      "description": "A structured set of tests against a FHIR server or client implementation to determine compliance against the FHIR specification.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "operation": {
+          "description": "An operation would involve a REST request to a server.",
+          "$ref": "#/definitions/TestScript_Operation"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "operation"
+      ]
+    }
+  }
+}

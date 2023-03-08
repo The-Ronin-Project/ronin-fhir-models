@@ -1,0 +1,250 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/ObservationDefinition-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/ObservationDefinition",
+  "definitions": {
+    "ObservationDefinition": {
+      "description": "Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a ObservationDefinition resource",
+          "type": "string",
+          "const": "ObservationDefinition"
+        },
+        "category": {
+          "description": "A code that classifies the general type of observation.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "Describes what will be observed. Sometimes this is called the observation \"name\".",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this ObservationDefinition artifact.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "permittedDataType": {
+          "description": "The data types allowed for the value element of the instance observations conforming to this ObservationDefinition.",
+          "items": {
+            "enum": [
+              "Quantity",
+              "CodeableConcept",
+              "string",
+              "boolean",
+              "integer",
+              "Range",
+              "Ratio",
+              "SampledData",
+              "time",
+              "dateTime",
+              "Period"
+            ]
+          },
+          "type": "array"
+        },
+        "_permittedDataType": {
+          "description": "Extensions for permittedDataType",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "multipleResultsAllowed": {
+          "description": "Multiple results allowed for observations conforming to this ObservationDefinition.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_multipleResultsAllowed": {
+          "description": "Extensions for multipleResultsAllowed",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "method": {
+          "description": "The method or technique used to perform the observation.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "preferredReportName": {
+          "description": "The preferred name to be used when reporting the results of observations conforming to this ObservationDefinition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_preferredReportName": {
+          "description": "Extensions for preferredReportName",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "quantitativeDetails": {
+          "description": "Characteristics for quantitative results of this observation.",
+          "$ref": "#/definitions/ObservationDefinition_QuantitativeDetails"
+        },
+        "qualifiedInterval": {
+          "description": "Multiple  ranges of results qualified by different contexts for ordinal or continuous observations conforming to this ObservationDefinition.",
+          "items": {
+            "$ref": "#/definitions/ObservationDefinition_QualifiedInterval"
+          },
+          "type": "array"
+        },
+        "validCodedValueSet": {
+          "description": "The set of valid coded results for the observations  conforming to this ObservationDefinition.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "normalCodedValueSet": {
+          "description": "The set of normal coded results for the observations conforming to this ObservationDefinition.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "abnormalCodedValueSet": {
+          "description": "The set of abnormal coded results for the observation conforming to this ObservationDefinition.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "criticalCodedValueSet": {
+          "description": "The set of critical coded results for the observation conforming to this ObservationDefinition.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "code",
+        "resourceType"
+      ]
+    },
+    "ObservationDefinition_QuantitativeDetails": {
+      "description": "Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "customaryUnit": {
+          "description": "Customary unit used to report quantitative results of observations conforming to this ObservationDefinition.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "unit": {
+          "description": "SI unit used to report quantitative results of observations conforming to this ObservationDefinition.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "conversionFactor": {
+          "description": "Factor for converting value expressed with SI unit to value expressed with customary unit.",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_conversionFactor": {
+          "description": "Extensions for conversionFactor",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "decimalPrecision": {
+          "description": "Number of digits after decimal separator when the results of such observations are of type Quantity.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_decimalPrecision": {
+          "description": "Extensions for decimalPrecision",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ObservationDefinition_QualifiedInterval": {
+      "description": "Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "category": {
+          "description": "The category of interval of values for continuous or ordinal observations conforming to this ObservationDefinition.",
+          "enum": [
+            "reference",
+            "critical",
+            "absolute"
+          ]
+        },
+        "_category": {
+          "description": "Extensions for category",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "range": {
+          "description": "The low and high values determining the interval. There may be only one of the two.",
+          "$ref": "core/elements.schema.json#/definitions/Range"
+        },
+        "context": {
+          "description": "Codes to indicate the health context the range applies to. For example, the normal or therapeutic range.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "appliesTo": {
+          "description": "Codes to indicate the target population this reference range applies to.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "gender": {
+          "description": "Sex of the population the range applies to.",
+          "enum": [
+            "male",
+            "female",
+            "other",
+            "unknown"
+          ]
+        },
+        "_gender": {
+          "description": "Extensions for gender",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "age": {
+          "description": "The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.",
+          "$ref": "core/elements.schema.json#/definitions/Range"
+        },
+        "gestationalAge": {
+          "description": "The gestational age to which this reference range is applicable, in the context of pregnancy.",
+          "$ref": "core/elements.schema.json#/definitions/Range"
+        },
+        "condition": {
+          "description": "Text based condition for which the reference range is valid.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_condition": {
+          "description": "Extensions for condition",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

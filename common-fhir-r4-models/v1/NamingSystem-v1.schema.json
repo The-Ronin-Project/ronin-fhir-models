@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/NamingSystem-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/NamingSystem",
+  "definitions": {
+    "NamingSystem": {
+      "description": "A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a \"System\" used within the Identifier and Coding data types.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a NamingSystem resource",
+          "type": "string",
+          "const": "NamingSystem"
+        },
+        "name": {
+          "description": "A natural language name identifying the naming system. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "status": {
+          "description": "The status of this naming system. Enables tracking the life-cycle of the content.",
+          "enum": [
+            "draft",
+            "active",
+            "retired",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "kind": {
+          "description": "Indicates the purpose for the naming system - what kinds of things does it make unique?",
+          "enum": [
+            "codesystem",
+            "identifier",
+            "root"
+          ]
+        },
+        "_kind": {
+          "description": "Extensions for kind",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "date": {
+          "description": "The date  (and optionally time) when the naming system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "publisher": {
+          "description": "The name of the organization or individual that published the naming system.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_publisher": {
+          "description": "Extensions for publisher",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contact": {
+          "description": "Contact details to assist a user in finding and communicating with the publisher.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "responsible": {
+          "description": "The name of the organization that is responsible for issuing identifiers or codes for this namespace and ensuring their non-collision.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_responsible": {
+          "description": "Extensions for responsible",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "Categorizes a naming system for easier search by grouping related naming systems.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "description": {
+          "description": "A free text natural language description of the naming system from a consumer\u0027s perspective. Details about what the namespace identifies including scope, granularity, version labeling, etc.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "useContext": {
+          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate naming system instances.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/UsageContext"
+          },
+          "type": "array"
+        },
+        "jurisdiction": {
+          "description": "A legal or geographic region in which the naming system is intended to be used.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "usage": {
+          "description": "Provides guidance on the use of the namespace, including the handling of formatting characters, use of upper vs. lower case, etc.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_usage": {
+          "description": "Extensions for usage",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "uniqueId": {
+          "description": "Indicates how the system may be identified when referenced in electronic exchange.",
+          "items": {
+            "$ref": "#/definitions/NamingSystem_UniqueId"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "uniqueId",
+        "resourceType"
+      ]
+    },
+    "NamingSystem_UniqueId": {
+      "description": "A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a \"System\" used within the Identifier and Coding data types.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Identifies the unique identifier scheme used for this particular identifier.",
+          "enum": [
+            "oid",
+            "uuid",
+            "uri",
+            "other"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "value": {
+          "description": "The string that should be sent over the wire to identify the code system or identifier system.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_value": {
+          "description": "Extensions for value",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "preferred": {
+          "description": "Indicates whether this identifier is the \"preferred\" identifier of this type.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_preferred": {
+          "description": "Extensions for preferred",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "comment": {
+          "description": "Notes about the past or intended usage of this identifier.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_comment": {
+          "description": "Extensions for comment",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

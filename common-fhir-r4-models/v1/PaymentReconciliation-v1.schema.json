@@ -1,0 +1,240 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/PaymentReconciliation-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/PaymentReconciliation",
+  "definitions": {
+    "PaymentReconciliation": {
+      "description": "This resource provides the details including amount of a payment and allocates the payment items being paid.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a PaymentReconciliation resource",
+          "type": "string",
+          "const": "PaymentReconciliation"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this payment reconciliation.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of the resource instance.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "The period of time for which payments have been gathered into this bulk payment for settlement.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "created": {
+          "description": "The date when the resource was created.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_created": {
+          "description": "Extensions for created",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "paymentIssuer": {
+          "description": "The party who generated the payment.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "request": {
+          "description": "Original request resource reference.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "requestor": {
+          "description": "The practitioner who is responsible for the services rendered to the patient.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "outcome": {
+          "description": "The outcome of a request for a reconciliation.",
+          "enum": [
+            "queued",
+            "complete",
+            "error",
+            "partial"
+          ]
+        },
+        "_outcome": {
+          "description": "Extensions for outcome",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "disposition": {
+          "description": "A human readable description of the status of the request for the reconciliation.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_disposition": {
+          "description": "Extensions for disposition",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "paymentDate": {
+          "description": "The date of payment as indicated on the financial instrument.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_paymentDate": {
+          "description": "Extensions for paymentDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "paymentAmount": {
+          "description": "Total payment amount as indicated on the financial instrument.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "paymentIdentifier": {
+          "description": "Issuer\u0027s unique identifier for the payment instrument.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "detail": {
+          "description": "Distribution of the payment amount for a previously acknowledged payable.",
+          "items": {
+            "$ref": "#/definitions/PaymentReconciliation_Detail"
+          },
+          "type": "array"
+        },
+        "formCode": {
+          "description": "A code for the form to be used for printing the content.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "processNote": {
+          "description": "A note that describes or explains the processing in a human readable form.",
+          "items": {
+            "$ref": "#/definitions/PaymentReconciliation_ProcessNote"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "paymentAmount",
+        "resourceType"
+      ]
+    },
+    "PaymentReconciliation_Detail": {
+      "description": "This resource provides the details including amount of a payment and allocates the payment items being paid.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "identifier": {
+          "description": "Unique identifier for the current payment item for the referenced payable.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "predecessor": {
+          "description": "Unique identifier for the prior payment item for the referenced payable.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "type": {
+          "description": "Code to indicate the nature of the payment.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "request": {
+          "description": "A resource, such as a Claim, the evaluation of which could lead to payment.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "submitter": {
+          "description": "The party which submitted the claim or financial transaction.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "response": {
+          "description": "A resource, such as a ClaimResponse, which contains a commitment to payment.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "date": {
+          "description": "The date from the response resource containing a commitment to pay.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "responsible": {
+          "description": "A reference to the individual who is responsible for inquiries regarding the response and its payment.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "payee": {
+          "description": "The party which is receiving the payment.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "amount": {
+          "description": "The monetary amount allocated from the total payment to the payable.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "PaymentReconciliation_ProcessNote": {
+      "description": "This resource provides the details including amount of a payment and allocates the payment items being paid.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The business purpose of the note text.",
+          "enum": [
+            "display",
+            "print",
+            "printoper"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "text": {
+          "description": "The explanation or description associated with the processing.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_text": {
+          "description": "Extensions for text",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

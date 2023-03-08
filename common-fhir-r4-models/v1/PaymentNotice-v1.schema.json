@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/PaymentNotice-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/PaymentNotice",
+  "definitions": {
+    "PaymentNotice": {
+      "description": "This resource provides the status of the payment for goods and services rendered, and the request and response resource references.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a PaymentNotice resource",
+          "type": "string",
+          "const": "PaymentNotice"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this payment notice.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of the resource instance.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "request": {
+          "description": "Reference of resource for which payment is being made.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "response": {
+          "description": "Reference of response to resource for which payment is being made.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "created": {
+          "description": "The date when this resource was created.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_created": {
+          "description": "Extensions for created",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "provider": {
+          "description": "The practitioner who is responsible for the services rendered to the patient.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "payment": {
+          "description": "A reference to the payment which is the subject of this notice.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "paymentDate": {
+          "description": "The date when the above payment action occurred.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_paymentDate": {
+          "description": "Extensions for paymentDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "payee": {
+          "description": "The party who will receive or has received payment that is the subject of this notification.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "recipient": {
+          "description": "The party who is notified of the payment status.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "amount": {
+          "description": "The amount sent to the payee.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "paymentStatus": {
+          "description": "A code indicating whether payment has been sent or cleared.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "amount",
+        "recipient",
+        "payment",
+        "resourceType"
+      ]
+    }
+  }
+}

@@ -1,0 +1,483 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/OperationDefinition-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/OperationDefinition",
+  "definitions": {
+    "OperationDefinition": {
+      "description": "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a OperationDefinition resource",
+          "type": "string",
+          "const": "OperationDefinition"
+        },
+        "url": {
+          "description": "An absolute URI that is used to identify this operation definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this operation definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the operation definition is stored on different servers.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "version": {
+          "description": "The identifier that is used to identify this version of the operation definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the operation definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "name": {
+          "description": "A natural language name identifying the operation definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "title": {
+          "description": "A short, descriptive, user-friendly title for the operation definition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "status": {
+          "description": "The status of this operation definition. Enables tracking the life-cycle of the content.",
+          "enum": [
+            "draft",
+            "active",
+            "retired",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "kind": {
+          "description": "Whether this is an operation or a named query.",
+          "enum": [
+            "operation",
+            "query"
+          ]
+        },
+        "_kind": {
+          "description": "Extensions for kind",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "experimental": {
+          "description": "A Boolean value to indicate that this operation definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_experimental": {
+          "description": "Extensions for experimental",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "date": {
+          "description": "The date  (and optionally time) when the operation definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the operation definition changes.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "publisher": {
+          "description": "The name of the organization or individual that published the operation definition.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_publisher": {
+          "description": "Extensions for publisher",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contact": {
+          "description": "Contact details to assist a user in finding and communicating with the publisher.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "A free text natural language description of the operation definition from a consumer\u0027s perspective.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "useContext": {
+          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate operation definition instances.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/UsageContext"
+          },
+          "type": "array"
+        },
+        "jurisdiction": {
+          "description": "A legal or geographic region in which the operation definition is intended to be used.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "purpose": {
+          "description": "Explanation of why this operation definition is needed and why it has been designed as it has.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_purpose": {
+          "description": "Extensions for purpose",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "affectsState": {
+          "description": "Whether the operation affects state. Side effects such as producing audit trail entries do not count as \u0027affecting  state\u0027.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_affectsState": {
+          "description": "Extensions for affectsState",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "The name used to invoke the operation.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_code": {
+          "description": "Extensions for code",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "comment": {
+          "description": "Additional information about how to use this operation or named query.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_comment": {
+          "description": "Extensions for comment",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "base": {
+          "description": "Indicates that this operation definition is a constraining profile on the base.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        },
+        "resource": {
+          "description": "The types on which this operation can be executed.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/code"
+          },
+          "type": "array"
+        },
+        "_resource": {
+          "description": "Extensions for resource",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "system": {
+          "description": "Indicates whether this operation or named query can be invoked at the system level (e.g. without needing to choose a resource type for the context).",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_system": {
+          "description": "Extensions for system",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a specific resource id for the context).",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "instance": {
+          "description": "Indicates whether this operation can be invoked on a particular instance of one of the given types.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_instance": {
+          "description": "Extensions for instance",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "inputProfile": {
+          "description": "Additional validation information for the in parameters - a single profile that covers all the parameters. The profile is a constraint on the parameters resource as a whole.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        },
+        "outputProfile": {
+          "description": "Additional validation information for the out parameters - a single profile that covers all the parameters. The profile is a constraint on the parameters resource.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        },
+        "parameter": {
+          "description": "The parameters for the operation/query.",
+          "items": {
+            "$ref": "#/definitions/OperationDefinition_Parameter"
+          },
+          "type": "array"
+        },
+        "overload": {
+          "description": "Defines an appropriate combination of parameters to use when invoking this operation, to help code generators when generating overloaded parameter sets for this operation.",
+          "items": {
+            "$ref": "#/definitions/OperationDefinition_Overload"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "OperationDefinition_Parameter": {
+      "description": "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "The name of used to identify the parameter.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "use": {
+          "description": "Whether this is an input or an output parameter.",
+          "enum": [
+            "in",
+            "out"
+          ]
+        },
+        "_use": {
+          "description": "Extensions for use",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "min": {
+          "description": "The minimum number of times this parameter SHALL appear in the request or response.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_min": {
+          "description": "Extensions for min",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "max": {
+          "description": "The maximum number of times this element is permitted to appear in the request or response.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_max": {
+          "description": "Extensions for max",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "documentation": {
+          "description": "Describes the meaning or use of this parameter.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_documentation": {
+          "description": "Extensions for documentation",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "The type for this parameter.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "targetProfile": {
+          "description": "Used when the type is \"Reference\" or \"canonical\", and identifies a profile structure or implementation Guide that applies to the target of the reference this parameter refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/canonical"
+          },
+          "type": "array"
+        },
+        "searchType": {
+          "description": "How the parameter is understood as a search parameter. This is only used if the parameter type is \u0027string\u0027.",
+          "enum": [
+            "number",
+            "date",
+            "string",
+            "token",
+            "reference",
+            "composite",
+            "quantity",
+            "uri",
+            "special"
+          ]
+        },
+        "_searchType": {
+          "description": "Extensions for searchType",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "binding": {
+          "description": "Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).",
+          "$ref": "#/definitions/OperationDefinition_Binding"
+        },
+        "referencedFrom": {
+          "description": "Identifies other resource parameters within the operation invocation that are expected to resolve to this resource.",
+          "items": {
+            "$ref": "#/definitions/OperationDefinition_ReferencedFrom"
+          },
+          "type": "array"
+        },
+        "part": {
+          "description": "The parts of a nested Parameter.",
+          "items": {
+            "$ref": "#/definitions/OperationDefinition_Parameter"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "OperationDefinition_Binding": {
+      "description": "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "strength": {
+          "description": "Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.",
+          "enum": [
+            "required",
+            "extensible",
+            "preferred",
+            "example"
+          ]
+        },
+        "_strength": {
+          "description": "Extensions for strength",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "valueSet": {
+          "description": "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.",
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "valueSet"
+      ]
+    },
+    "OperationDefinition_ReferencedFrom": {
+      "description": "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "source": {
+          "description": "The name of the parameter or dot-separated path of parameter names pointing to the resource parameter that is expected to contain a reference to this resource.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_source": {
+          "description": "Extensions for source",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "sourceId": {
+          "description": "The id of the element in the referencing resource that is expected to resolve to this resource.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_sourceId": {
+          "description": "Extensions for sourceId",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "OperationDefinition_Overload": {
+      "description": "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "parameterName": {
+          "description": "Name of parameter to include in overload.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/string"
+          },
+          "type": "array"
+        },
+        "_parameterName": {
+          "description": "Extensions for parameterName",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "comment": {
+          "description": "Comments to go on overload.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_comment": {
+          "description": "Extensions for comment",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

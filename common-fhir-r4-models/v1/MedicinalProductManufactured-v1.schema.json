@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/MedicinalProductManufactured-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/MedicinalProductManufactured",
+  "definitions": {
+    "MedicinalProductManufactured": {
+      "description": "The manufactured item as contained in the packaged medicinal product.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a MedicinalProductManufactured resource",
+          "type": "string",
+          "const": "MedicinalProductManufactured"
+        },
+        "manufacturedDoseForm": {
+          "description": "Dose form as manufactured and before any transformation into the pharmaceutical product.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "unitOfPresentation": {
+          "description": "The “real world” units in which the quantity of the manufactured item is described.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "quantity": {
+          "description": "The quantity or \"count number\" of the manufactured item.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "manufacturer": {
+          "description": "Manufacturer of the item (Note that this should be named \"manufacturer\" but it currently causes technical issues).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "ingredient": {
+          "description": "Ingredient.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "physicalCharacteristics": {
+          "description": "Dimensions, color etc.",
+          "$ref": "core/elements.schema.json#/definitions/ProdCharacteristic"
+        },
+        "otherCharacteristics": {
+          "description": "Other codeable characteristics.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "quantity",
+        "manufacturedDoseForm",
+        "resourceType"
+      ]
+    }
+  }
+}

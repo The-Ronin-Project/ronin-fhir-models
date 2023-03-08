@@ -1,0 +1,232 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Goal-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Goal",
+  "definitions": {
+    "Goal": {
+      "description": "Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Goal resource",
+          "type": "string",
+          "const": "Goal"
+        },
+        "identifier": {
+          "description": "Business identifiers assigned to this goal by the performer or other systems which remain constant as the resource is updated and propagates from server to server.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "lifecycleStatus": {
+          "description": "The state of the goal throughout its lifecycle.",
+          "enum": [
+            "proposed",
+            "planned",
+            "accepted",
+            "active",
+            "on-hold",
+            "completed",
+            "cancelled",
+            "entered-in-error",
+            "rejected"
+          ]
+        },
+        "_lifecycleStatus": {
+          "description": "Extensions for lifecycleStatus",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "achievementStatus": {
+          "description": "Describes the progression, or lack thereof, towards the goal against the target.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "category": {
+          "description": "Indicates a category the goal falls within.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "priority": {
+          "description": "Identifies the mutually agreed level of importance associated with reaching/sustaining the goal.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "description": {
+          "description": "Human-readable and/or coded description of a specific desired objective of care, such as \"control blood pressure\" or \"negotiate an obstacle course\" or \"dance with child at wedding\".",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "Identifies the patient, group or organization for whom the goal is being established.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "startDate": {
+          "description": "The date or event after which the goal should begin being pursued.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
+          "type": "string"
+        },
+        "_startDate": {
+          "description": "Extensions for startDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "startCodeableConcept": {
+          "description": "The date or event after which the goal should begin being pursued.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "target": {
+          "description": "Indicates what should be done by when.",
+          "items": {
+            "$ref": "#/definitions/Goal_Target"
+          },
+          "type": "array"
+        },
+        "statusDate": {
+          "description": "Identifies when the current status.  I.e. When initially created, when achieved, when cancelled, etc.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_statusDate": {
+          "description": "Extensions for statusDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "statusReason": {
+          "description": "Captures the reason for the current status.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_statusReason": {
+          "description": "Extensions for statusReason",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "expressedBy": {
+          "description": "Indicates whose goal this is - patient goal, practitioner goal, etc.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "addresses": {
+          "description": "The identified conditions and other health record elements that are intended to be addressed by the goal.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "Any comments related to the goal.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "outcomeCode": {
+          "description": "Identifies the change (or lack of change) at the point when the status of the goal is assessed.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "outcomeReference": {
+          "description": "Details of what\u0027s changed (or not changed).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "subject",
+        "description",
+        "resourceType"
+      ]
+    },
+    "Goal_Target": {
+      "description": "Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "measure": {
+          "description": "The parameter whose value is being tracked, e.g. body weight, blood pressure, or hemoglobin A1c level.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "detailQuantity": {
+          "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "detailRange": {
+          "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
+          "$ref": "core/elements.schema.json#/definitions/Range"
+        },
+        "detailCodeableConcept": {
+          "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "detailString": {
+          "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_detailString": {
+          "description": "Extensions for detailString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "detailBoolean": {
+          "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
+          "pattern": "^true|false$",
+          "type": "boolean"
+        },
+        "_detailBoolean": {
+          "description": "Extensions for detailBoolean",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "detailInteger": {
+          "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
+          "pattern": "^-?([0]|([1-9][0-9]*))$",
+          "type": "number"
+        },
+        "_detailInteger": {
+          "description": "Extensions for detailInteger",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "detailRatio": {
+          "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        },
+        "dueDate": {
+          "description": "Indicates either the date or the duration after start by which the goal should be met.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
+          "type": "string"
+        },
+        "_dueDate": {
+          "description": "Extensions for dueDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "dueDuration": {
+          "description": "Indicates either the date or the duration after start by which the goal should be met.",
+          "$ref": "core/elements.schema.json#/definitions/Duration"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

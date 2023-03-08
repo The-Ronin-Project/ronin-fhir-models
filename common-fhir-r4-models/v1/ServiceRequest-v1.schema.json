@@ -1,0 +1,278 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/ServiceRequest-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/ServiceRequest",
+  "definitions": {
+    "ServiceRequest": {
+      "description": "A record of a request for service such as diagnostic investigations, treatments, or operations to be performed.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a ServiceRequest resource",
+          "type": "string",
+          "const": "ServiceRequest"
+        },
+        "identifier": {
+          "description": "Identifiers assigned to this order instance by the orderer and/or the receiver and/or order fulfiller.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "instantiatesCanonical": {
+          "description": "The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/canonical"
+          },
+          "type": "array"
+        },
+        "instantiatesUri": {
+          "description": "The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/uri"
+          },
+          "type": "array"
+        },
+        "_instantiatesUri": {
+          "description": "Extensions for instantiatesUri",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "basedOn": {
+          "description": "Plan/proposal/order fulfilled by this request.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "replaces": {
+          "description": "The request takes the place of the referenced completed or terminated request(s).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "requisition": {
+          "description": "A shared identifier common to all service requests that were authorized more or less simultaneously by a single author, representing the composite or group identifier.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "status": {
+          "description": "The status of the order.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "intent": {
+          "description": "Whether the request is a proposal, plan, an original order or a reflex order.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_intent": {
+          "description": "Extensions for intent",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "category": {
+          "description": "A code that classifies the service for searching, sorting and display purposes (e.g. \"Surgical Procedure\").",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "priority": {
+          "description": "Indicates how quickly the ServiceRequest should be addressed with respect to other requests.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_priority": {
+          "description": "Extensions for priority",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "doNotPerform": {
+          "description": "Set this to true if the record is saying that the service/procedure should NOT be performed.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_doNotPerform": {
+          "description": "Extensions for doNotPerform",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "A code that identifies a particular service (i.e., procedure, diagnostic investigation, or panel of investigations) that have been requested.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "orderDetail": {
+          "description": "Additional details and instructions about the how the services are to be delivered.   For example, and order for a urinary catheter may have an order detail for an external or indwelling catheter, or an order for a bandage may require additional instructions specifying how the bandage should be applied.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "quantityQuantity": {
+          "description": "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction).",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "quantityRatio": {
+          "description": "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction).",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        },
+        "quantityRange": {
+          "description": "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction).",
+          "$ref": "core/elements.schema.json#/definitions/Range"
+        },
+        "subject": {
+          "description": "On whom or what the service is to be performed. This is usually a human patient, but can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans).",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "An encounter that provides additional information about the healthcare context in which this request is made.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "occurrenceDateTime": {
+          "description": "The date/time at which the requested service should occur.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
+          "type": "string"
+        },
+        "_occurrenceDateTime": {
+          "description": "Extensions for occurrenceDateTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "occurrencePeriod": {
+          "description": "The date/time at which the requested service should occur.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "occurrenceTiming": {
+          "description": "The date/time at which the requested service should occur.",
+          "$ref": "core/elements.schema.json#/definitions/Timing"
+        },
+        "asNeededBoolean": {
+          "description": "If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example \"pain\", \"on flare-up\", etc.",
+          "pattern": "^true|false$",
+          "type": "boolean"
+        },
+        "_asNeededBoolean": {
+          "description": "Extensions for asNeededBoolean",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "asNeededCodeableConcept": {
+          "description": "If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example \"pain\", \"on flare-up\", etc.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "authoredOn": {
+          "description": "When the request transitioned to being actionable.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_authoredOn": {
+          "description": "Extensions for authoredOn",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "requester": {
+          "description": "The individual who initiated the request and has responsibility for its activation.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "performerType": {
+          "description": "Desired type of performer for doing the requested service.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "performer": {
+          "description": "The desired performer for doing the requested service.  For example, the surgeon, dermatopathologist, endoscopist, etc.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "locationCode": {
+          "description": "The preferred location(s) where the procedure should actually happen in coded or free text form. E.g. at home or nursing day care center.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "locationReference": {
+          "description": "A reference to the the preferred location(s) where the procedure should actually happen. E.g. at home or nursing day care center.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "reasonCode": {
+          "description": "An explanation or justification for why this service is being requested in coded or textual form.   This is often for billing purposes.  May relate to the resources referred to in `supportingInfo`.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "reasonReference": {
+          "description": "Indicates another resource that provides a justification for why this service is being requested.   May relate to the resources referred to in `supportingInfo`.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "insurance": {
+          "description": "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be needed for delivering the requested service.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "supportingInfo": {
+          "description": "Additional clinical information about the patient or specimen that may influence the services or their interpretations.     This information includes diagnosis, clinical findings and other observations.  In laboratory ordering these are typically referred to as \"ask at order entry questions (AOEs)\".  This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example,  reporting the amount of inspired oxygen for blood gas measurements.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "specimen": {
+          "description": "One or more specimens that the laboratory procedure will use.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "bodySite": {
+          "description": "Anatomic location where the procedure should be performed. This is the target site.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "Any other notes and comments made about the service request. For example, internal billing notes.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "patientInstruction": {
+          "description": "Instructions in terms that are understood by the patient or consumer.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_patientInstruction": {
+          "description": "Extensions for patientInstruction",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "relevantHistory": {
+          "description": "Key events in the history of the request.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "subject",
+        "resourceType"
+      ]
+    }
+  }
+}

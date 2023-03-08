@@ -1,0 +1,203 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/RiskAssessment-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/RiskAssessment",
+  "definitions": {
+    "RiskAssessment": {
+      "description": "An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a RiskAssessment resource",
+          "type": "string",
+          "const": "RiskAssessment"
+        },
+        "identifier": {
+          "description": "Business identifier assigned to the risk assessment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "basedOn": {
+          "description": "A reference to the request that is fulfilled by this risk assessment.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "parent": {
+          "description": "A reference to a resource that this risk assessment is part of, such as a Procedure.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "status": {
+          "description": "The status of the RiskAssessment, using the same statuses as an Observation.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "method": {
+          "description": "The algorithm, process or mechanism used to evaluate the risk.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "code": {
+          "description": "The type of the risk assessment performed.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "The patient or group the risk assessment applies to.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "The encounter where the assessment was performed.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "occurrenceDateTime": {
+          "description": "The date (and possibly time) the risk assessment was performed.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
+          "type": "string"
+        },
+        "_occurrenceDateTime": {
+          "description": "Extensions for occurrenceDateTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "occurrencePeriod": {
+          "description": "The date (and possibly time) the risk assessment was performed.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "condition": {
+          "description": "For assessments or prognosis specific to a particular condition, indicates the condition being assessed.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "performer": {
+          "description": "The provider or software application that performed the assessment.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "reasonCode": {
+          "description": "The reason the risk assessment was performed.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "reasonReference": {
+          "description": "Resources supporting the reason the risk assessment was performed.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "basis": {
+          "description": "Indicates the source data considered as part of the assessment (for example, FamilyHistory, Observations, Procedures, Conditions, etc.).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "prediction": {
+          "description": "Describes the expected outcome for the subject.",
+          "items": {
+            "$ref": "#/definitions/RiskAssessment_Prediction"
+          },
+          "type": "array"
+        },
+        "mitigation": {
+          "description": "A description of the steps that might be taken to reduce the identified risk(s).",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_mitigation": {
+          "description": "Extensions for mitigation",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "note": {
+          "description": "Additional comments about the risk assessment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "subject",
+        "resourceType"
+      ]
+    },
+    "RiskAssessment_Prediction": {
+      "description": "An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "outcome": {
+          "description": "One of the potential outcomes for the patient (e.g. remission, death,  a particular condition).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "probabilityDecimal": {
+          "description": "Indicates how likely the outcome is (in the specified timeframe).",
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "type": "number"
+        },
+        "_probabilityDecimal": {
+          "description": "Extensions for probabilityDecimal",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "probabilityRange": {
+          "description": "Indicates how likely the outcome is (in the specified timeframe).",
+          "$ref": "core/elements.schema.json#/definitions/Range"
+        },
+        "qualitativeRisk": {
+          "description": "Indicates how likely the outcome is (in the specified timeframe), expressed as a qualitative value (e.g. low, medium, or high).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "relativeRisk": {
+          "description": "Indicates the risk for this particular subject (with their specific characteristics) divided by the risk of the population in general.  (Numbers greater than 1 \u003d higher risk than the population, numbers less than 1 \u003d lower risk.).",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_relativeRisk": {
+          "description": "Extensions for relativeRisk",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "whenPeriod": {
+          "description": "Indicates the period of time or age range of the subject to which the specified probability applies.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "whenRange": {
+          "description": "Indicates the period of time or age range of the subject to which the specified probability applies.",
+          "$ref": "core/elements.schema.json#/definitions/Range"
+        },
+        "rationale": {
+          "description": "Additional information explaining the basis for the prediction.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_rationale": {
+          "description": "Extensions for rationale",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/MedicinalProductPackaged-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/MedicinalProductPackaged",
+  "definitions": {
+    "MedicinalProductPackaged": {
+      "description": "A medicinal product in a container or package.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a MedicinalProductPackaged resource",
+          "type": "string",
+          "const": "MedicinalProductPackaged"
+        },
+        "identifier": {
+          "description": "Unique identifier.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "subject": {
+          "description": "The product with this is a pack for.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Textual description.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "legalStatusOfSupply": {
+          "description": "The legal status of supply of the medicinal product as classified by the regulator.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "marketingStatus": {
+          "description": "Marketing information.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/MarketingStatus"
+          },
+          "type": "array"
+        },
+        "marketingAuthorization": {
+          "description": "Manufacturer of this Package Item.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "manufacturer": {
+          "description": "Manufacturer of this Package Item.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "batchIdentifier": {
+          "description": "Batch numbering.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProductPackaged_BatchIdentifier"
+          },
+          "type": "array"
+        },
+        "packageItem": {
+          "description": "A packaging item, as a contained for medicine, possibly with other packaging items within.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProductPackaged_PackageItem"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "packageItem",
+        "resourceType"
+      ]
+    },
+    "MedicinalProductPackaged_BatchIdentifier": {
+      "description": "A medicinal product in a container or package.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "outerPackaging": {
+          "description": "A number appearing on the outer packaging of a specific batch.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "immediatePackaging": {
+          "description": "A number appearing on the immediate packaging (and not the outer packaging).",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "outerPackaging"
+      ]
+    },
+    "MedicinalProductPackaged_PackageItem": {
+      "description": "A medicinal product in a container or package.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "identifier": {
+          "description": "Including possibly Data Carrier Identifier.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The physical type of the container of the medicine.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "quantity": {
+          "description": "The quantity of this package in the medicinal product, at the current level of packaging. The outermost is always 1.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "material": {
+          "description": "Material type of the package item.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "alternateMaterial": {
+          "description": "A possible alternate material for the packaging.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "device": {
+          "description": "A device accompanying a medicinal product.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "manufacturedItem": {
+          "description": "The manufactured item as contained in the packaged medicinal product.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "packageItem": {
+          "description": "Allows containers within containers.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProductPackaged_PackageItem"
+          },
+          "type": "array"
+        },
+        "physicalCharacteristics": {
+          "description": "Dimensions, color etc.",
+          "$ref": "core/elements.schema.json#/definitions/ProdCharacteristic"
+        },
+        "otherCharacteristics": {
+          "description": "Other codeable characteristics.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "shelfLifeStorage": {
+          "description": "Shelf Life and storage information.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ProductShelfLife"
+          },
+          "type": "array"
+        },
+        "manufacturer": {
+          "description": "Manufacturer of this Package Item.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "quantity",
+        "type"
+      ]
+    }
+  }
+}

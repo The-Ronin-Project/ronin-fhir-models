@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Subscription-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Subscription",
+  "definitions": {
+    "Subscription": {
+      "description": "The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined \"channel\" so that another system can take an appropriate action.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Subscription resource",
+          "type": "string",
+          "const": "Subscription"
+        },
+        "status": {
+          "description": "The status of the subscription, which marks the server state for managing the subscription.",
+          "enum": [
+            "requested",
+            "active",
+            "error",
+            "off"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "contact": {
+          "description": "Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "end": {
+          "description": "The time for the server to turn the subscription off.",
+          "$ref": "core/primitives.schema.json#/definitions/instant"
+        },
+        "_end": {
+          "description": "Extensions for end",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "reason": {
+          "description": "A description of why this subscription is defined.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_reason": {
+          "description": "Extensions for reason",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "criteria": {
+          "description": "The rules that the server should use to determine when to generate notifications for this subscription.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_criteria": {
+          "description": "Extensions for criteria",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "error": {
+          "description": "A record of the last error that occurred when the server processed a notification.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_error": {
+          "description": "Extensions for error",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "channel": {
+          "description": "Details where to send notifications when resources are received that meet the criteria.",
+          "$ref": "#/definitions/Subscription_Channel"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "channel",
+        "resourceType"
+      ]
+    },
+    "Subscription_Channel": {
+      "description": "The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined \"channel\" so that another system can take an appropriate action.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The type of channel to send notifications on.",
+          "enum": [
+            "rest-hook",
+            "websocket",
+            "email",
+            "sms",
+            "message"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "endpoint": {
+          "description": "The url that describes the actual end-point to send messages to.",
+          "$ref": "core/primitives.schema.json#/definitions/url"
+        },
+        "_endpoint": {
+          "description": "Extensions for endpoint",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "payload": {
+          "description": "The mime type to send the payload in - either application/fhir+xml, or application/fhir+json. If the payload is not present, then there is no payload in the notification, just a notification. The mime type \"text/plain\" may also be used for Email and SMS subscriptions.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_payload": {
+          "description": "Extensions for payload",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "header": {
+          "description": "Additional headers / information to send as part of the notification.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/string"
+          },
+          "type": "array"
+        },
+        "_header": {
+          "description": "Extensions for header",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

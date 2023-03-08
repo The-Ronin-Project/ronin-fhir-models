@@ -1,0 +1,340 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/HealthcareService-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/HealthcareService",
+  "definitions": {
+    "HealthcareService": {
+      "description": "The details of a healthcare service available at a location.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a HealthcareService resource",
+          "type": "string",
+          "const": "HealthcareService"
+        },
+        "identifier": {
+          "description": "External identifiers for this item.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "active": {
+          "description": "This flag is used to mark the record to not be used. This is not used when a center is closed for maintenance, or for holidays, the notAvailable period is to be used for this.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_active": {
+          "description": "Extensions for active",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "providedBy": {
+          "description": "The organization that provides this healthcare service.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "category": {
+          "description": "Identifies the broad category of service being performed or delivered.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The specific type of service that may be delivered or performed.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "specialty": {
+          "description": "Collection of specialties handled by the service site. This is more of a medical term.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "location": {
+          "description": "The location(s) where this healthcare service may be provided.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "Further description of the service as it would be presented to a consumer while searching.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "comment": {
+          "description": "Any additional description of the service and/or any specific issues not covered by the other attributes, which can be displayed as further detail under the serviceName.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_comment": {
+          "description": "Extensions for comment",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "extraDetails": {
+          "description": "Extra details about the service that can\u0027t be placed in the other fields.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_extraDetails": {
+          "description": "Extensions for extraDetails",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "photo": {
+          "description": "If there is a photo/symbol associated with this HealthcareService, it may be included here to facilitate quick identification of the service in a list.",
+          "$ref": "core/elements.schema.json#/definitions/Attachment"
+        },
+        "telecom": {
+          "description": "List of contacts related to this specific healthcare service.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "coverageArea": {
+          "description": "The location(s) that this service is available to (not where the service is provided).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "serviceProvisionCode": {
+          "description": "The code(s) that detail the conditions under which the healthcare service is available/offered.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "eligibility": {
+          "description": "Does this service have specific eligibility requirements that need to be met in order to use the service?",
+          "items": {
+            "$ref": "#/definitions/HealthcareService_Eligibility"
+          },
+          "type": "array"
+        },
+        "program": {
+          "description": "Programs that this service is applicable to.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "characteristic": {
+          "description": "Collection of characteristics (attributes).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "communication": {
+          "description": "Some services are specifically made available in multiple languages, this property permits a directory to declare the languages this is offered in. Typically this is only provided where a service operates in communities with mixed languages used.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "referralMethod": {
+          "description": "Ways that the service accepts referrals, if this is not provided then it is implied that no referral is required.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "appointmentRequired": {
+          "description": "Indicates whether or not a prospective consumer will require an appointment for a particular service at a site to be provided by the Organization. Indicates if an appointment is required for access to this service.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_appointmentRequired": {
+          "description": "Extensions for appointmentRequired",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "availableTime": {
+          "description": "A collection of times that the Service Site is available.",
+          "items": {
+            "$ref": "#/definitions/HealthcareService_AvailableTime"
+          },
+          "type": "array"
+        },
+        "notAvailable": {
+          "description": "The HealthcareService is not available during this period of time due to the provided reason.",
+          "items": {
+            "$ref": "#/definitions/HealthcareService_NotAvailable"
+          },
+          "type": "array"
+        },
+        "availabilityExceptions": {
+          "description": "A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_availabilityExceptions": {
+          "description": "Extensions for availabilityExceptions",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "endpoint": {
+          "description": "Technical endpoints providing access to services operated for the specific healthcare services defined at this resource.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "HealthcareService_Eligibility": {
+      "description": "The details of a healthcare service available at a location.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "Coded value for the eligibility.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "comment": {
+          "description": "Describes the eligibility conditions for the service.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_comment": {
+          "description": "Extensions for comment",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "HealthcareService_AvailableTime": {
+      "description": "The details of a healthcare service available at a location.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "daysOfWeek": {
+          "description": "Indicates which days of the week are available between the start and end Times.",
+          "items": {
+            "enum": [
+              "mon",
+              "tue",
+              "wed",
+              "thu",
+              "fri",
+              "sat",
+              "sun"
+            ]
+          },
+          "type": "array"
+        },
+        "_daysOfWeek": {
+          "description": "Extensions for daysOfWeek",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "allDay": {
+          "description": "Is this always available? (hence times are irrelevant) e.g. 24 hour service.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_allDay": {
+          "description": "Extensions for allDay",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "availableStartTime": {
+          "description": "The opening time of day. Note: If the AllDay flag is set, then this time is ignored.",
+          "$ref": "core/primitives.schema.json#/definitions/time"
+        },
+        "_availableStartTime": {
+          "description": "Extensions for availableStartTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "availableEndTime": {
+          "description": "The closing time of day. Note: If the AllDay flag is set, then this time is ignored.",
+          "$ref": "core/primitives.schema.json#/definitions/time"
+        },
+        "_availableEndTime": {
+          "description": "Extensions for availableEndTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "HealthcareService_NotAvailable": {
+      "description": "The details of a healthcare service available at a location.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "The reason that can be presented to the user as to why this time is not available.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "during": {
+          "description": "Service is not available (seasonally or for a public holiday) from this date.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

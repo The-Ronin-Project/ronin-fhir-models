@@ -1,0 +1,207 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/DiagnosticReport-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/DiagnosticReport",
+  "definitions": {
+    "DiagnosticReport": {
+      "description": "The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a DiagnosticReport resource",
+          "type": "string",
+          "const": "DiagnosticReport"
+        },
+        "identifier": {
+          "description": "Identifiers assigned to this report by the performer or other systems.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "basedOn": {
+          "description": "Details concerning a service requested.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of the diagnostic report.",
+          "enum": [
+            "registered",
+            "partial",
+            "preliminary",
+            "final",
+            "amended",
+            "corrected",
+            "appended",
+            "cancelled",
+            "entered-in-error",
+            "unknown"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "category": {
+          "description": "A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "A code or name that describes this diagnostic report.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "The subject of the report. Usually, but not always, this is a patient. However, diagnostic services also perform analyses on specimens collected from a variety of other sources.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "The healthcare event  (e.g. a patient and healthcare provider interaction) which this DiagnosticReport is about.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "effectiveDateTime": {
+          "description": "The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
+          "type": "string"
+        },
+        "_effectiveDateTime": {
+          "description": "Extensions for effectiveDateTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "effectivePeriod": {
+          "description": "The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "issued": {
+          "description": "The date and time that this version of the report was made available to providers, typically after the report was reviewed and verified.",
+          "$ref": "core/primitives.schema.json#/definitions/instant"
+        },
+        "_issued": {
+          "description": "Extensions for issued",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "performer": {
+          "description": "The diagnostic service that is responsible for issuing the report.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "resultsInterpreter": {
+          "description": "The practitioner or organization that is responsible for the report\u0027s conclusions and interpretations.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "specimen": {
+          "description": "Details about the specimens on which this diagnostic report is based.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "result": {
+          "description": "[Observations](observation.html)  that are part of this diagnostic report.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "imagingStudy": {
+          "description": "One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "media": {
+          "description": "A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).",
+          "items": {
+            "$ref": "#/definitions/DiagnosticReport_Media"
+          },
+          "type": "array"
+        },
+        "conclusion": {
+          "description": "Concise and clinically contextualized summary conclusion (interpretation/impression) of the diagnostic report.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_conclusion": {
+          "description": "Extensions for conclusion",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "conclusionCode": {
+          "description": "One or more codes that represent the summary conclusion (interpretation/impression) of the diagnostic report.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "presentedForm": {
+          "description": "Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Attachment"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "code",
+        "resourceType"
+      ]
+    },
+    "DiagnosticReport_Media": {
+      "description": "The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "comment": {
+          "description": "A comment about the image. Typically, this is used to provide an explanation for why the image is included, or to draw the viewer\u0027s attention to important features.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_comment": {
+          "description": "Extensions for comment",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "link": {
+          "description": "Reference to the image source.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "link"
+      ]
+    }
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/MedicationDispense-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/MedicationDispense",
+  "definitions": {
+    "MedicationDispense": {
+      "description": "Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a MedicationDispense resource",
+          "type": "string",
+          "const": "MedicationDispense"
+        },
+        "identifier": {
+          "description": "Identifiers associated with this Medication Dispense that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. They are business identifiers assigned to this resource by the performer or other systems and remain constant as the resource is updated and propagates from server to server.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "partOf": {
+          "description": "The procedure that trigger the dispense.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "A code specifying the state of the set of dispense events.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "statusReasonCodeableConcept": {
+          "description": "Indicates the reason why a dispense was not performed.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "statusReasonReference": {
+          "description": "Indicates the reason why a dispense was not performed.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "category": {
+          "description": "Indicates the type of medication dispense (for example, where the medication is expected to be consumed or administered (i.e. inpatient or outpatient)).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "medicationCodeableConcept": {
+          "description": "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "medicationReference": {
+          "description": "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "subject": {
+          "description": "A link to a resource representing the person or the group to whom the medication will be given.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "context": {
+          "description": "The encounter or episode of care that establishes the context for this event.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "supportingInformation": {
+          "description": "Additional information that supports the medication being dispensed.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "performer": {
+          "description": "Indicates who or what performed the event.",
+          "items": {
+            "$ref": "#/definitions/MedicationDispense_Performer"
+          },
+          "type": "array"
+        },
+        "location": {
+          "description": "The principal physical location where the dispense was performed.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "authorizingPrescription": {
+          "description": "Indicates the medication order that is being dispensed against.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "quantity": {
+          "description": "The amount of medication that has been dispensed. Includes unit of measure.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "daysSupply": {
+          "description": "The amount of medication expressed as a timing amount.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "whenPrepared": {
+          "description": "The time when the dispensed product was packaged and reviewed.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_whenPrepared": {
+          "description": "Extensions for whenPrepared",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "whenHandedOver": {
+          "description": "The time the dispensed product was provided to the patient or their representative.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_whenHandedOver": {
+          "description": "Extensions for whenHandedOver",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "destination": {
+          "description": "Identification of the facility/location where the medication was shipped to, as part of the dispense event.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "receiver": {
+          "description": "Identifies the person who picked up the medication.  This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "Extra information about the dispense that could not be conveyed in the other attributes.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "dosageInstruction": {
+          "description": "Indicates how the medication is to be used by the patient.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Dosage"
+          },
+          "type": "array"
+        },
+        "substitution": {
+          "description": "Indicates whether or not substitution was made as part of the dispense.  In some cases, substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.  If nothing is specified, substitution was not done.",
+          "$ref": "#/definitions/MedicationDispense_Substitution"
+        },
+        "detectedIssue": {
+          "description": "Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. drug-drug interaction, duplicate therapy, dosage alert etc.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "eventHistory": {
+          "description": "A summary of the events of interest that have occurred, such as when the dispense was verified.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "MedicationDispense_Performer": {
+      "description": "Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "function": {
+          "description": "Distinguishes the type of performer in the dispense.  For example, date enterer, packager, final checker.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "actor": {
+          "description": "The device, practitioner, etc. who performed the action.  It should be assumed that the actor is the dispenser of the medication.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "actor"
+      ]
+    },
+    "MedicationDispense_Substitution": {
+      "description": "Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "wasSubstituted": {
+          "description": "True if the dispenser dispensed a different drug or product from what was prescribed.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_wasSubstituted": {
+          "description": "Extensions for wasSubstituted",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "A code signifying whether a different drug was dispensed from what was prescribed.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "reason": {
+          "description": "Indicates the reason for the substitution (or lack of substitution) from what was prescribed.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "responsibleParty": {
+          "description": "The person or organization that has primary responsibility for the substitution.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

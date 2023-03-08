@@ -1,0 +1,269 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/MedicinalProductIngredient-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/MedicinalProductIngredient",
+  "definitions": {
+    "MedicinalProductIngredient": {
+      "description": "An ingredient of a manufactured item or pharmaceutical product.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a MedicinalProductIngredient resource",
+          "type": "string",
+          "const": "MedicinalProductIngredient"
+        },
+        "identifier": {
+          "description": "The identifier(s) of this Ingredient that are assigned by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "role": {
+          "description": "Ingredient role e.g. Active ingredient, excipient.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "allergenicIndicator": {
+          "description": "If the ingredient is a known or suspected allergen.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_allergenicIndicator": {
+          "description": "Extensions for allergenicIndicator",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "manufacturer": {
+          "description": "Manufacturer of this Ingredient.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "specifiedSubstance": {
+          "description": "A specified substance that comprises this ingredient.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProductIngredient_SpecifiedSubstance"
+          },
+          "type": "array"
+        },
+        "substance": {
+          "description": "The ingredient substance.",
+          "$ref": "#/definitions/MedicinalProductIngredient_Substance"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "role",
+        "resourceType"
+      ]
+    },
+    "MedicinalProductIngredient_SpecifiedSubstance": {
+      "description": "An ingredient of a manufactured item or pharmaceutical product.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The specified substance.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "group": {
+          "description": "The group of specified substance, e.g. group 1 to 4.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "confidentiality": {
+          "description": "Confidentiality level of the specified substance as the ingredient.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "strength": {
+          "description": "Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProductIngredient_Strength"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "group"
+      ]
+    },
+    "MedicinalProductIngredient_Strength": {
+      "description": "An ingredient of a manufactured item or pharmaceutical product.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "presentation": {
+          "description": "The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item.",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        },
+        "presentationLowLimit": {
+          "description": "A lower limit for the quantity of substance in the unit of presentation. For use when there is a range of strengths, this is the lower limit, with the presentation attribute becoming the upper limit.",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        },
+        "concentration": {
+          "description": "The strength per unitary volume (or mass).",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        },
+        "concentrationLowLimit": {
+          "description": "A lower limit for the strength per unitary volume (or mass), for when there is a range. The concentration attribute then becomes the upper limit.",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        },
+        "measurementPoint": {
+          "description": "For when strength is measured at a particular point or distance.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_measurementPoint": {
+          "description": "Extensions for measurementPoint",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "country": {
+          "description": "The country or countries for which the strength range applies.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "referenceStrength": {
+          "description": "Strength expressed in terms of a reference substance.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProductIngredient_ReferenceStrength"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "presentation"
+      ]
+    },
+    "MedicinalProductIngredient_ReferenceStrength": {
+      "description": "An ingredient of a manufactured item or pharmaceutical product.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "substance": {
+          "description": "Relevant reference substance.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "strength": {
+          "description": "Strength expressed in terms of a reference substance.",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        },
+        "strengthLowLimit": {
+          "description": "Strength expressed in terms of a reference substance.",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        },
+        "measurementPoint": {
+          "description": "For when strength is measured at a particular point or distance.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_measurementPoint": {
+          "description": "Extensions for measurementPoint",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "country": {
+          "description": "The country or countries for which the strength range applies.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "strength"
+      ]
+    },
+    "MedicinalProductIngredient_Substance": {
+      "description": "An ingredient of a manufactured item or pharmaceutical product.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The ingredient substance.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "strength": {
+          "description": "Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProductIngredient_Strength"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "code"
+      ]
+    }
+  }
+}

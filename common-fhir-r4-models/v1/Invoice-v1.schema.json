@@ -1,0 +1,268 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Invoice-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Invoice",
+  "definitions": {
+    "Invoice": {
+      "description": "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Invoice resource",
+          "type": "string",
+          "const": "Invoice"
+        },
+        "identifier": {
+          "description": "Identifier of this Invoice, often used for reference in correspondence about this invoice or for tracking of payments.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The current state of the Invoice.",
+          "enum": [
+            "draft",
+            "issued",
+            "balanced",
+            "cancelled",
+            "entered-in-error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "cancelledReason": {
+          "description": "In case of Invoice cancellation a reason must be given (entered in error, superseded by corrected invoice etc.).",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_cancelledReason": {
+          "description": "Extensions for cancelledReason",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "Type of Invoice depending on domain, realm an usage (e.g. internal/external, dental, preliminary).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "The individual or set of individuals receiving the goods and services billed in this invoice.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "recipient": {
+          "description": "The individual or Organization responsible for balancing of this invoice.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "date": {
+          "description": "Date/time(s) of when this Invoice was posted.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "participant": {
+          "description": "Indicates who or what performed or participated in the charged service.",
+          "items": {
+            "$ref": "#/definitions/Invoice_Participant"
+          },
+          "type": "array"
+        },
+        "issuer": {
+          "description": "The organizationissuing the Invoice.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "account": {
+          "description": "Account which is supposed to be balanced with this Invoice.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "lineItem": {
+          "description": "Each line item represents one charge for goods and services rendered. Details such as date, code and amount are found in the referenced ChargeItem resource.",
+          "items": {
+            "$ref": "#/definitions/Invoice_LineItem"
+          },
+          "type": "array"
+        },
+        "totalPriceComponent": {
+          "description": "The total amount for the Invoice may be calculated as the sum of the line items with surcharges/deductions that apply in certain conditions.  The priceComponent element can be used to offer transparency to the recipient of the Invoice of how the total price was calculated.",
+          "items": {
+            "$ref": "#/definitions/Invoice_PriceComponent"
+          },
+          "type": "array"
+        },
+        "totalNet": {
+          "description": "Invoice total , taxes excluded.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "totalGross": {
+          "description": "Invoice total, tax included.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        },
+        "paymentTerms": {
+          "description": "Payment details such as banking details, period of payment, deductibles, methods of payment.",
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
+        },
+        "_paymentTerms": {
+          "description": "Extensions for paymentTerms",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "note": {
+          "description": "Comments made about the invoice by the issuer, subject, or other participants.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "Invoice_Participant": {
+      "description": "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "role": {
+          "description": "Describes the type of involvement (e.g. transcriptionist, creator etc.). If the invoice has been created automatically, the Participant may be a billing engine or another kind of device.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "actor": {
+          "description": "The device, practitioner, etc. who performed or participated in the service.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "actor"
+      ]
+    },
+    "Invoice_LineItem": {
+      "description": "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "sequence": {
+          "description": "Sequence in which the items appear on the invoice.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_sequence": {
+          "description": "Extensions for sequence",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "chargeItemReference": {
+          "description": "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "chargeItemCodeableConcept": {
+          "description": "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "priceComponent": {
+          "description": "The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice as to how the prices have been calculated.",
+          "items": {
+            "$ref": "#/definitions/Invoice_PriceComponent"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Invoice_PriceComponent": {
+      "description": "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "This code identifies the type of the component.",
+          "enum": [
+            "base",
+            "surcharge",
+            "deduction",
+            "discount",
+            "tax",
+            "informational"
+          ]
+        },
+        "_type": {
+          "description": "Extensions for type",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "A code that identifies the component. Codes may be used to differentiate between kinds of taxes, surcharges, discounts etc.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "factor": {
+          "description": "The factor that has been applied on the base price for calculating this component.",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_factor": {
+          "description": "Extensions for factor",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "amount": {
+          "description": "The amount calculated for this component.",
+          "$ref": "core/elements.schema.json#/definitions/Money"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

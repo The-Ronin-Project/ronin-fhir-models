@@ -1,0 +1,263 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Appointment-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Appointment",
+  "definitions": {
+    "Appointment": {
+      "description": "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Appointment resource",
+          "type": "string",
+          "const": "Appointment"
+        },
+        "identifier": {
+          "description": "This records identifiers associated with this appointment concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.",
+          "enum": [
+            "proposed",
+            "pending",
+            "booked",
+            "arrived",
+            "fulfilled",
+            "cancelled",
+            "noshow",
+            "entered-in-error",
+            "checked-in",
+            "waitlist"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "cancelationReason": {
+          "description": "The coded reason for the appointment being cancelled. This is often used in reporting/billing/futher processing to determine if further actions are required, or specific fees apply.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "serviceCategory": {
+          "description": "A broad categorization of the service that is to be performed during this appointment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "serviceType": {
+          "description": "The specific service that is to be performed during this appointment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "specialty": {
+          "description": "The specialty of a practitioner that would be required to perform the service requested in this appointment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "appointmentType": {
+          "description": "The style of appointment or patient that has been booked in the slot (not service type).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "reasonCode": {
+          "description": "The coded reason that this appointment is being scheduled. This is more clinical than administrative.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "reasonReference": {
+          "description": "Reason the appointment has been scheduled to take place, as specified using information from another resource. When the patient arrives and the encounter begins it may be used as the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "priority": {
+          "description": "The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority).",
+          "$ref": "core/primitives.schema.json#/definitions/unsignedInt"
+        },
+        "_priority": {
+          "description": "Extensions for priority",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "The brief description of the appointment as would be shown on a subject line in a meeting request, or appointment list. Detailed or expanded information should be put in the comment field.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "supportingInformation": {
+          "description": "Additional information to support the appointment provided when making the appointment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "start": {
+          "description": "Date/Time that the appointment is to take place.",
+          "$ref": "core/primitives.schema.json#/definitions/instant"
+        },
+        "_start": {
+          "description": "Extensions for start",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "end": {
+          "description": "Date/Time that the appointment is to conclude.",
+          "$ref": "core/primitives.schema.json#/definitions/instant"
+        },
+        "_end": {
+          "description": "Extensions for end",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "minutesDuration": {
+          "description": "Number of minutes that the appointment is to take. This can be less than the duration between the start and end times.  For example, where the actual time of appointment is only an estimate or if a 30 minute appointment is being requested, but any time would work.  Also, if there is, for example, a planned 15 minute break in the middle of a long appointment, the duration may be 15 minutes less than the difference between the start and end.",
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
+        },
+        "_minutesDuration": {
+          "description": "Extensions for minutesDuration",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "slot": {
+          "description": "The slots from the participants\u0027 schedules that will be filled by the appointment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "created": {
+          "description": "The date that this appointment was initially created. This could be different to the meta.lastModified value on the initial entry, as this could have been before the resource was created on the FHIR server, and should remain unchanged over the lifespan of the appointment.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_created": {
+          "description": "Extensions for created",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "comment": {
+          "description": "Additional comments about the appointment.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_comment": {
+          "description": "Extensions for comment",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "patientInstruction": {
+          "description": "While Appointment.comment contains information for internal use, Appointment.patientInstructions is used to capture patient facing information about the Appointment (e.g. please bring your referral or fast from 8pm night before).",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_patientInstruction": {
+          "description": "Extensions for patientInstruction",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "basedOn": {
+          "description": "The service request this appointment is allocated to assess (e.g. incoming referral or procedure request).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "participant": {
+          "description": "List of participants involved in the appointment.",
+          "items": {
+            "$ref": "#/definitions/Appointment_Participant"
+          },
+          "type": "array"
+        },
+        "requestedPeriod": {
+          "description": "A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within.\n\nThe duration (usually in minutes) could also be provided to indicate the length of the appointment to fill and populate the start/end times for the actual allocated time. However, in other situations the duration may be calculated by the scheduling system.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Period"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "participant",
+        "resourceType"
+      ]
+    },
+    "Appointment_Participant": {
+      "description": "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Role of participant in the appointment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "actor": {
+          "description": "A Person, Location/HealthcareService or Device that is participating in the appointment.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "required": {
+          "description": "Whether this participant is required to be present at the meeting. This covers a use-case where two doctors need to meet to discuss the results for a specific patient, and the patient is not required to be present.",
+          "enum": [
+            "required",
+            "optional",
+            "information-only"
+          ]
+        },
+        "_required": {
+          "description": "Extensions for required",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "status": {
+          "description": "Participation status of the actor.",
+          "enum": [
+            "accepted",
+            "declined",
+            "tentative",
+            "needs-action"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "Participation period of the actor.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

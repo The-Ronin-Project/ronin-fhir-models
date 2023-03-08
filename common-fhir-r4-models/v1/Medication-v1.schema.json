@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Medication-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Medication",
+  "definitions": {
+    "Medication": {
+      "description": "This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Medication resource",
+          "type": "string",
+          "const": "Medication"
+        },
+        "identifier": {
+          "description": "Business identifier for this medication.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "status": {
+          "description": "A code to indicate if the medication is in active use.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "manufacturer": {
+          "description": "Describes the details of the manufacturer of the medication product.  This is not intended to represent the distributor of a medication product.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "form": {
+          "description": "Describes the form of the item.  Powder; tablets; capsule.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "amount": {
+          "description": "Specific amount of the drug in the packaged product.  For example, when specifying a product that has the same strength (For example, Insulin glargine 100 unit per mL solution for injection), this attribute provides additional clarification of the package amount (For example, 3 mL, 10mL, etc.).",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        },
+        "ingredient": {
+          "description": "Identifies a particular constituent of interest in the product.",
+          "items": {
+            "$ref": "#/definitions/Medication_Ingredient"
+          },
+          "type": "array"
+        },
+        "batch": {
+          "description": "Information that only applies to packages (not products).",
+          "$ref": "#/definitions/Medication_Batch"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "Medication_Ingredient": {
+      "description": "This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "itemCodeableConcept": {
+          "description": "The actual ingredient - either a substance (simple ingredient) or another medication of a medication.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "itemReference": {
+          "description": "The actual ingredient - either a substance (simple ingredient) or another medication of a medication.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "isActive": {
+          "description": "Indication of whether this ingredient affects the therapeutic action of the drug.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_isActive": {
+          "description": "Extensions for isActive",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "strength": {
+          "description": "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet.",
+          "$ref": "core/elements.schema.json#/definitions/Ratio"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Medication_Batch": {
+      "description": "This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "lotNumber": {
+          "description": "The assigned lot number of a batch of the specified product.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_lotNumber": {
+          "description": "Extensions for lotNumber",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "expirationDate": {
+          "description": "When this specific batch of product will expire.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_expirationDate": {
+          "description": "Extensions for expirationDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

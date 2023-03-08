@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Slot-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Slot",
+  "definitions": {
+    "Slot": {
+      "description": "A slot of time on a schedule that may be available for booking appointments.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Slot resource",
+          "type": "string",
+          "const": "Slot"
+        },
+        "identifier": {
+          "description": "External Ids for this item.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "serviceCategory": {
+          "description": "A broad categorization of the service that is to be performed during this appointment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "serviceType": {
+          "description": "The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "specialty": {
+          "description": "The specialty of a practitioner that would be required to perform the service requested in this appointment.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "appointmentType": {
+          "description": "The style of appointment or patient that may be booked in the slot (not service type).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "schedule": {
+          "description": "The schedule resource that this slot defines an interval of status information.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "status": {
+          "description": "busy | free | busy-unavailable | busy-tentative | entered-in-error.",
+          "enum": [
+            "busy",
+            "free",
+            "busy-unavailable",
+            "busy-tentative",
+            "entered-in-error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "start": {
+          "description": "Date/Time that the slot is to begin.",
+          "$ref": "core/primitives.schema.json#/definitions/instant"
+        },
+        "_start": {
+          "description": "Extensions for start",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "end": {
+          "description": "Date/Time that the slot is to conclude.",
+          "$ref": "core/primitives.schema.json#/definitions/instant"
+        },
+        "_end": {
+          "description": "Extensions for end",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "overbooked": {
+          "description": "This slot has already been overbooked, appointments are unlikely to be accepted for this time.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_overbooked": {
+          "description": "Extensions for overbooked",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "comment": {
+          "description": "Comments on the slot to describe any extended information. Such as custom constraints on the slot.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_comment": {
+          "description": "Extensions for comment",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "schedule",
+        "resourceType"
+      ]
+    }
+  }
+}

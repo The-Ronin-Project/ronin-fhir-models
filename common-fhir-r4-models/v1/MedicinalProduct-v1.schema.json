@@ -1,0 +1,403 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/MedicinalProduct-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/MedicinalProduct",
+  "definitions": {
+    "MedicinalProduct": {
+      "description": "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a MedicinalProduct resource",
+          "type": "string",
+          "const": "MedicinalProduct"
+        },
+        "identifier": {
+          "description": "Business identifier for this product. Could be an MPID.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Regulatory type, e.g. Investigational or Authorized.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "domain": {
+          "description": "If this medicine applies to human or veterinary uses.",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        },
+        "combinedPharmaceuticalDoseForm": {
+          "description": "The dose form for a single part product, or combined form of a multiple part product.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "legalStatusOfSupply": {
+          "description": "The legal status of supply of the medicinal product as classified by the regulator.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "additionalMonitoringIndicator": {
+          "description": "Whether the Medicinal Product is subject to additional monitoring for regulatory reasons.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "specialMeasures": {
+          "description": "Whether the Medicinal Product is subject to special measures for regulatory reasons.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/string"
+          },
+          "type": "array"
+        },
+        "_specialMeasures": {
+          "description": "Extensions for specialMeasures",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "paediatricUseIndicator": {
+          "description": "If authorised for use in children.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "productClassification": {
+          "description": "Allows the product to be classified by various systems.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "marketingStatus": {
+          "description": "Marketing status of the medicinal product, in contrast to marketing authorizaton.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/MarketingStatus"
+          },
+          "type": "array"
+        },
+        "pharmaceuticalProduct": {
+          "description": "Pharmaceutical aspects of product.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "packagedMedicinalProduct": {
+          "description": "Package representation for the product.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "attachedDocument": {
+          "description": "Supporting documentation, typically for regulatory submission.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "masterFile": {
+          "description": "A master file for to the medicinal product (e.g. Pharmacovigilance System Master File).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "contact": {
+          "description": "A product specific contact, person (in a role), or an organization.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "clinicalTrial": {
+          "description": "Clinical trials or studies that this product is involved in.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "The product\u0027s name, including full name and possibly coded parts.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProduct_Name"
+          },
+          "type": "array"
+        },
+        "crossReference": {
+          "description": "Reference to another product, e.g. for linking authorised to investigational product.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "manufacturingBusinessOperation": {
+          "description": "An operation applied to the product, for manufacturing or adminsitrative purpose.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProduct_ManufacturingBusinessOperation"
+          },
+          "type": "array"
+        },
+        "specialDesignation": {
+          "description": "Indicates if the medicinal product has an orphan designation for the treatment of a rare disease.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProduct_SpecialDesignation"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "name",
+        "resourceType"
+      ]
+    },
+    "MedicinalProduct_Name": {
+      "description": "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "productName": {
+          "description": "The full product name.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_productName": {
+          "description": "Extensions for productName",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "namePart": {
+          "description": "Coding words or phrases of the name.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProduct_NamePart"
+          },
+          "type": "array"
+        },
+        "countryLanguage": {
+          "description": "Country where the name applies.",
+          "items": {
+            "$ref": "#/definitions/MedicinalProduct_CountryLanguage"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MedicinalProduct_NamePart": {
+      "description": "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "part": {
+          "description": "A fragment of a product name.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_part": {
+          "description": "Extensions for part",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "Idenifying type for this part of the name (e.g. strength part).",
+          "$ref": "core/elements.schema.json#/definitions/Coding"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "MedicinalProduct_CountryLanguage": {
+      "description": "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "country": {
+          "description": "Country code for where this name applies.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "jurisdiction": {
+          "description": "Jurisdiction code for where this name applies.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "language": {
+          "description": "Language code for this name.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "country",
+        "language"
+      ]
+    },
+    "MedicinalProduct_ManufacturingBusinessOperation": {
+      "description": "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "operationType": {
+          "description": "The type of manufacturing operation.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "authorisationReferenceNumber": {
+          "description": "Regulatory authorization reference number.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "effectiveDate": {
+          "description": "Regulatory authorization date.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_effectiveDate": {
+          "description": "Extensions for effectiveDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "confidentialityIndicator": {
+          "description": "To indicate if this proces is commercially confidential.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "manufacturer": {
+          "description": "The manufacturer or establishment associated with the process.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "regulator": {
+          "description": "A regulator which oversees the operation.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MedicinalProduct_SpecialDesignation": {
+      "description": "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "identifier": {
+          "description": "Identifier for the designation, or procedure number.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The type of special designation, e.g. orphan drug, minor use.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "intendedUse": {
+          "description": "The intended use of the product, e.g. prevention, treatment.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "indicationCodeableConcept": {
+          "description": "Condition for which the medicinal use applies.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "indicationReference": {
+          "description": "Condition for which the medicinal use applies.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "status": {
+          "description": "For example granted, pending, expired or withdrawn.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "date": {
+          "description": "Date when the designation was granted.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "species": {
+          "description": "Animal species for which this applies.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

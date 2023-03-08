@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/CareTeam-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/CareTeam",
+  "definitions": {
+    "CareTeam": {
+      "description": "The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care for a patient.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a CareTeam resource",
+          "type": "string",
+          "const": "CareTeam"
+        },
+        "identifier": {
+          "description": "Business identifiers assigned to this care team by the performer or other systems which remain constant as the resource is updated and propagates from server to server.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "Indicates the current state of the care team.",
+          "enum": [
+            "proposed",
+            "active",
+            "suspended",
+            "inactive",
+            "entered-in-error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "category": {
+          "description": "Identifies what kind of team.  This is to support differentiation between multiple co-existing teams, such as care plan team, episode of care team, longitudinal care team.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "A label for human use intended to distinguish like teams.  E.g. the \"red\" vs. \"green\" trauma teams.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "subject": {
+          "description": "Identifies the patient or group whose intended care is handled by the team.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "The Encounter during which this CareTeam was created or to which the creation of this record is tightly associated.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "period": {
+          "description": "Indicates when the team did (or is intended to) come into effect and end.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "participant": {
+          "description": "Identifies all people and organizations who are expected to be involved in the care team.",
+          "items": {
+            "$ref": "#/definitions/CareTeam_Participant"
+          },
+          "type": "array"
+        },
+        "reasonCode": {
+          "description": "Describes why the care team exists.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "reasonReference": {
+          "description": "Condition(s) that this care team addresses.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "managingOrganization": {
+          "description": "The organization responsible for the care team.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "telecom": {
+          "description": "A central contact detail for the care team (that applies to all members).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "Comments made about the CareTeam.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "CareTeam_Participant": {
+      "description": "The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care for a patient.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "role": {
+          "description": "Indicates specific responsibility of an individual within the care team, such as \"Primary care physician\", \"Trained social worker counselor\", \"Caregiver\", etc.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "member": {
+          "description": "The specific person or organization who is participating/expected to participate in the care team.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "onBehalfOf": {
+          "description": "The organization of the practitioner.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "period": {
+          "description": "Indicates when the specific member or organization did (or is intended to) come into effect and end.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

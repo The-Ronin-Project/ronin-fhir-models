@@ -1,0 +1,200 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/DetectedIssue-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/DetectedIssue",
+  "definitions": {
+    "DetectedIssue": {
+      "description": "Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a DetectedIssue resource",
+          "type": "string",
+          "const": "DetectedIssue"
+        },
+        "identifier": {
+          "description": "Business identifier associated with the detected issue record.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "Indicates the status of the detected issue.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "Identifies the general type of issue identified.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "severity": {
+          "description": "Indicates the degree of importance associated with the identified issue based on the potential impact on the patient.",
+          "enum": [
+            "high",
+            "moderate",
+            "low"
+          ]
+        },
+        "_severity": {
+          "description": "Extensions for severity",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "patient": {
+          "description": "Indicates the patient whose record the detected issue is associated with.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "identifiedDateTime": {
+          "description": "The date or period when the detected issue was initially identified.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
+          "type": "string"
+        },
+        "_identifiedDateTime": {
+          "description": "Extensions for identifiedDateTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "identifiedPeriod": {
+          "description": "The date or period when the detected issue was initially identified.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "author": {
+          "description": "Individual or device responsible for the issue being raised.  For example, a decision support application or a pharmacist conducting a medication review.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "implicated": {
+          "description": "Indicates the resource representing the current activity or proposed activity that is potentially problematic.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "evidence": {
+          "description": "Supporting evidence or manifestations that provide the basis for identifying the detected issue such as a GuidanceResponse or MeasureReport.",
+          "items": {
+            "$ref": "#/definitions/DetectedIssue_Evidence"
+          },
+          "type": "array"
+        },
+        "detail": {
+          "description": "A textual explanation of the detected issue.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_detail": {
+          "description": "Extensions for detail",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "reference": {
+          "description": "The literature, knowledge-base or similar reference that describes the propensity for the detected issue identified.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_reference": {
+          "description": "Extensions for reference",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "mitigation": {
+          "description": "Indicates an action that has been taken or is committed to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.",
+          "items": {
+            "$ref": "#/definitions/DetectedIssue_Mitigation"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "DetectedIssue_Evidence": {
+      "description": "Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "A manifestation that led to the recording of this detected issue.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "detail": {
+          "description": "Links to resources that constitute evidence for the detected issue such as a GuidanceResponse or MeasureReport.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DetectedIssue_Mitigation": {
+      "description": "Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "action": {
+          "description": "Describes the action that was taken or the observation that was made that reduces/eliminates the risk associated with the identified issue.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "date": {
+          "description": "Indicates when the mitigating action was documented.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "author": {
+          "description": "Identifies the practitioner who determined the mitigation and takes responsibility for the mitigation step occurring.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "action"
+      ]
+    }
+  }
+}

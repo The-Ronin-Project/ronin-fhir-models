@@ -1,0 +1,426 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Immunization-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Immunization",
+  "definitions": {
+    "Immunization": {
+      "description": "Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Immunization resource",
+          "type": "string",
+          "const": "Immunization"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this immunization record.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "Indicates the current status of the immunization event.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "statusReason": {
+          "description": "Indicates the reason the immunization event was not performed.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "vaccineCode": {
+          "description": "Vaccine that was administered or was to be administered.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "patient": {
+          "description": "The patient who either received or did not receive the immunization.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "The visit or admission or other contact between patient and health care provider the immunization was performed as part of.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "occurrenceDateTime": {
+          "description": "Date vaccine administered or was to be administered.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
+          "type": "string"
+        },
+        "_occurrenceDateTime": {
+          "description": "Extensions for occurrenceDateTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "occurrenceString": {
+          "description": "Date vaccine administered or was to be administered.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_occurrenceString": {
+          "description": "Extensions for occurrenceString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "recorded": {
+          "description": "The date the occurrence of the immunization was first captured in the record - potentially significantly after the occurrence of the event.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_recorded": {
+          "description": "Extensions for recorded",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "primarySource": {
+          "description": "An indication that the content of the record is based on information from the person who administered the vaccine. This reflects the context under which the data was originally recorded.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_primarySource": {
+          "description": "Extensions for primarySource",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "reportOrigin": {
+          "description": "The source of the data when the report of the immunization event is not based on information from the person who administered the vaccine.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "location": {
+          "description": "The service delivery location where the vaccine administration occurred.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "manufacturer": {
+          "description": "Name of vaccine manufacturer.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "lotNumber": {
+          "description": "Lot number of the  vaccine product.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_lotNumber": {
+          "description": "Extensions for lotNumber",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "expirationDate": {
+          "description": "Date vaccine batch expires.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_expirationDate": {
+          "description": "Extensions for expirationDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "site": {
+          "description": "Body site where vaccine was administered.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "route": {
+          "description": "The path by which the vaccine product is taken into the body.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "doseQuantity": {
+          "description": "The quantity of vaccine product that was administered.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "performer": {
+          "description": "Indicates who performed the immunization event.",
+          "items": {
+            "$ref": "#/definitions/Immunization_Performer"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "Extra information about the immunization that is not conveyed by the other attributes.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "reasonCode": {
+          "description": "Reasons why the vaccine was administered.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "reasonReference": {
+          "description": "Condition, Observation or DiagnosticReport that supports why the immunization was administered.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "isSubpotent": {
+          "description": "Indication if a dose is considered to be subpotent. By default, a dose should be considered to be potent.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_isSubpotent": {
+          "description": "Extensions for isSubpotent",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "subpotentReason": {
+          "description": "Reason why a dose is considered to be subpotent.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "education": {
+          "description": "Educational material presented to the patient (or guardian) at the time of vaccine administration.",
+          "items": {
+            "$ref": "#/definitions/Immunization_Education"
+          },
+          "type": "array"
+        },
+        "programEligibility": {
+          "description": "Indicates a patient\u0027s eligibility for a funding program.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "fundingSource": {
+          "description": "Indicates the source of the vaccine actually administered. This may be different than the patient eligibility (e.g. the patient may be eligible for a publically purchased vaccine but due to inventory issues, vaccine purchased with private funds was actually administered).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "reaction": {
+          "description": "Categorical data indicating that an adverse event is associated in time to an immunization.",
+          "items": {
+            "$ref": "#/definitions/Immunization_Reaction"
+          },
+          "type": "array"
+        },
+        "protocolApplied": {
+          "description": "The protocol (set of recommendations) being followed by the provider who administered the dose.",
+          "items": {
+            "$ref": "#/definitions/Immunization_ProtocolApplied"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "patient",
+        "vaccineCode",
+        "resourceType"
+      ]
+    },
+    "Immunization_Performer": {
+      "description": "Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "function": {
+          "description": "Describes the type of performance (e.g. ordering provider, administering provider, etc.).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "actor": {
+          "description": "The practitioner or organization who performed the action.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "actor"
+      ]
+    },
+    "Immunization_Education": {
+      "description": "Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "documentType": {
+          "description": "Identifier of the material presented to the patient.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_documentType": {
+          "description": "Extensions for documentType",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "reference": {
+          "description": "Reference pointer to the educational material given to the patient if the information was on line.",
+          "$ref": "core/primitives.schema.json#/definitions/uri"
+        },
+        "_reference": {
+          "description": "Extensions for reference",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "publicationDate": {
+          "description": "Date the educational material was published.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_publicationDate": {
+          "description": "Extensions for publicationDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "presentationDate": {
+          "description": "Date the educational material was given to the patient.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_presentationDate": {
+          "description": "Extensions for presentationDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Immunization_Reaction": {
+      "description": "Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "date": {
+          "description": "Date of reaction to the immunization.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "detail": {
+          "description": "Details of the reaction.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "reported": {
+          "description": "Self-reported indicator.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_reported": {
+          "description": "Extensions for reported",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Immunization_ProtocolApplied": {
+      "description": "Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "series": {
+          "description": "One possible path to achieve presumed immunity against a disease - within the context of an authority.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_series": {
+          "description": "Extensions for series",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "authority": {
+          "description": "Indicates the authority who published the protocol (e.g. ACIP) that is being followed.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "targetDisease": {
+          "description": "The vaccine preventable disease the dose is being administered against.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "doseNumberPositiveInt": {
+          "description": "Nominal position in a series.",
+          "pattern": "^[1-9][0-9]*$",
+          "type": "number"
+        },
+        "_doseNumberPositiveInt": {
+          "description": "Extensions for doseNumberPositiveInt",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "doseNumberString": {
+          "description": "Nominal position in a series.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_doseNumberString": {
+          "description": "Extensions for doseNumberString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "seriesDosesPositiveInt": {
+          "description": "The recommended number of doses to achieve immunity.",
+          "pattern": "^[1-9][0-9]*$",
+          "type": "number"
+        },
+        "_seriesDosesPositiveInt": {
+          "description": "Extensions for seriesDosesPositiveInt",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "seriesDosesString": {
+          "description": "The recommended number of doses to achieve immunity.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_seriesDosesString": {
+          "description": "Extensions for seriesDosesString",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

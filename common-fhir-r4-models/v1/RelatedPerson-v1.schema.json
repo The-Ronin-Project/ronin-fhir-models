@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/RelatedPerson-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/RelatedPerson",
+  "definitions": {
+    "RelatedPerson": {
+      "description": "Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a RelatedPerson resource",
+          "type": "string",
+          "const": "RelatedPerson"
+        },
+        "identifier": {
+          "description": "Identifier for a person within a particular scope.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "active": {
+          "description": "Whether this related person record is in active use.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_active": {
+          "description": "Extensions for active",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "patient": {
+          "description": "The patient this person is related to.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "relationship": {
+          "description": "The nature of the relationship between a patient and the related person.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "A name associated with the person.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/HumanName"
+          },
+          "type": "array"
+        },
+        "telecom": {
+          "description": "A contact detail for the person, e.g. a telephone number or an email address.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "gender": {
+          "description": "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.",
+          "enum": [
+            "male",
+            "female",
+            "other",
+            "unknown"
+          ]
+        },
+        "_gender": {
+          "description": "Extensions for gender",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "birthDate": {
+          "description": "The date on which the related person was born.",
+          "$ref": "core/primitives.schema.json#/definitions/date"
+        },
+        "_birthDate": {
+          "description": "Extensions for birthDate",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "address": {
+          "description": "Address where the related person can be contacted or visited.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Address"
+          },
+          "type": "array"
+        },
+        "photo": {
+          "description": "Image of the person.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Attachment"
+          },
+          "type": "array"
+        },
+        "period": {
+          "description": "The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "communication": {
+          "description": "A language which may be used to communicate with about the patient\u0027s health.",
+          "items": {
+            "$ref": "#/definitions/RelatedPerson_Communication"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "patient",
+        "resourceType"
+      ]
+    },
+    "RelatedPerson_Communication": {
+      "description": "Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "language": {
+          "description": "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "preferred": {
+          "description": "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_preferred": {
+          "description": "Extensions for preferred",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "language"
+      ]
+    }
+  }
+}

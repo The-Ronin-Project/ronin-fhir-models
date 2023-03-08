@@ -1,0 +1,260 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/VisionPrescription-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/VisionPrescription",
+  "definitions": {
+    "VisionPrescription": {
+      "description": "An authorization for the provision of glasses and/or contact lenses to a patient.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a VisionPrescription resource",
+          "type": "string",
+          "const": "VisionPrescription"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this vision prescription.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of the resource instance.",
+          "$ref": "core/primitives.schema.json#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "created": {
+          "description": "The date this resource was created.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_created": {
+          "description": "Extensions for created",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "patient": {
+          "description": "A resource reference to the person to whom the vision prescription applies.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "A reference to a resource that identifies the particular occurrence of contact between patient and health care provider during which the prescription was issued.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "dateWritten": {
+          "description": "The date (and perhaps time) when the prescription was written.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_dateWritten": {
+          "description": "Extensions for dateWritten",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "prescriber": {
+          "description": "The healthcare professional responsible for authorizing the prescription.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "lensSpecification": {
+          "description": "Contain the details of  the individual lens specifications and serves as the authorization for the fullfillment by certified professionals.",
+          "items": {
+            "$ref": "#/definitions/VisionPrescription_LensSpecification"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "prescriber",
+        "patient",
+        "lensSpecification",
+        "resourceType"
+      ]
+    },
+    "VisionPrescription_LensSpecification": {
+      "description": "An authorization for the provision of glasses and/or contact lenses to a patient.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "product": {
+          "description": "Identifies the type of vision correction product which is required for the patient.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "eye": {
+          "description": "The eye for which the lens specification applies.",
+          "enum": [
+            "right",
+            "left"
+          ]
+        },
+        "_eye": {
+          "description": "Extensions for eye",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "sphere": {
+          "description": "Lens power measured in dioptres (0.25 units).",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_sphere": {
+          "description": "Extensions for sphere",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "cylinder": {
+          "description": "Power adjustment for astigmatism measured in dioptres (0.25 units).",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_cylinder": {
+          "description": "Extensions for cylinder",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "axis": {
+          "description": "Adjustment for astigmatism measured in integer degrees.",
+          "$ref": "core/primitives.schema.json#/definitions/integer"
+        },
+        "_axis": {
+          "description": "Extensions for axis",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "prism": {
+          "description": "Allows for adjustment on two axis.",
+          "items": {
+            "$ref": "#/definitions/VisionPrescription_Prism"
+          },
+          "type": "array"
+        },
+        "add": {
+          "description": "Power adjustment for multifocal lenses measured in dioptres (0.25 units).",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_add": {
+          "description": "Extensions for add",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "power": {
+          "description": "Contact lens power measured in dioptres (0.25 units).",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_power": {
+          "description": "Extensions for power",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "backCurve": {
+          "description": "Back curvature measured in millimetres.",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_backCurve": {
+          "description": "Extensions for backCurve",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "diameter": {
+          "description": "Contact lens diameter measured in millimetres.",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_diameter": {
+          "description": "Extensions for diameter",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "duration": {
+          "description": "The recommended maximum wear period for the lens.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "color": {
+          "description": "Special color or pattern.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_color": {
+          "description": "Extensions for color",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "brand": {
+          "description": "Brand recommendations or restrictions.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_brand": {
+          "description": "Extensions for brand",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "note": {
+          "description": "Notes for special requirements such as coatings and lens materials.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "product"
+      ]
+    },
+    "VisionPrescription_Prism": {
+      "description": "An authorization for the provision of glasses and/or contact lenses to a patient.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "amount": {
+          "description": "Amount of prism to compensate for eye alignment in fractional units.",
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
+        },
+        "_amount": {
+          "description": "Extensions for amount",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "base": {
+          "description": "The relative base, or reference lens edge, for the prism.",
+          "enum": [
+            "up",
+            "down",
+            "in",
+            "out"
+          ]
+        },
+        "_base": {
+          "description": "Extensions for base",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

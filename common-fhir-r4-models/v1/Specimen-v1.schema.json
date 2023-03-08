@@ -1,0 +1,296 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/Specimen-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/Specimen",
+  "definitions": {
+    "Specimen": {
+      "description": "A sample to be used for analysis.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a Specimen resource",
+          "type": "string",
+          "const": "Specimen"
+        },
+        "identifier": {
+          "description": "Id for specimen.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "accessionIdentifier": {
+          "description": "The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures.",
+          "$ref": "core/elements.schema.json#/definitions/Identifier"
+        },
+        "status": {
+          "description": "The availability of the specimen.",
+          "enum": [
+            "available",
+            "unavailable",
+            "unsatisfactory",
+            "entered-in-error"
+          ]
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "The kind of material that forms the specimen.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "Where the specimen came from. This may be from patient(s), from a location (e.g., the source of an environmental sample), or a sampling of a substance or a device.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "receivedTime": {
+          "description": "Time when specimen was received for processing or testing.",
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
+        },
+        "_receivedTime": {
+          "description": "Extensions for receivedTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "parent": {
+          "description": "Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "request": {
+          "description": "Details concerning a service request that required a specimen to be collected.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "collection": {
+          "description": "Details concerning the specimen collection.",
+          "$ref": "#/definitions/Specimen_Collection"
+        },
+        "processing": {
+          "description": "Details concerning processing and processing steps for the specimen.",
+          "items": {
+            "$ref": "#/definitions/Specimen_Processing"
+          },
+          "type": "array"
+        },
+        "container": {
+          "description": "The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.",
+          "items": {
+            "$ref": "#/definitions/Specimen_Container"
+          },
+          "type": "array"
+        },
+        "condition": {
+          "description": "A mode or state of being that describes the nature of the specimen.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "To communicate any details or issues about the specimen or during the specimen collection. (for example: broken vial, sent with patient, frozen).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "Specimen_Collection": {
+      "description": "A sample to be used for analysis.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "collector": {
+          "description": "Person who collected the specimen.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "collectedDateTime": {
+          "description": "Time when specimen was collected from subject - the physiologically relevant time.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
+          "type": "string"
+        },
+        "_collectedDateTime": {
+          "description": "Extensions for collectedDateTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "collectedPeriod": {
+          "description": "Time when specimen was collected from subject - the physiologically relevant time.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "duration": {
+          "description": "The span of time over which the collection of a specimen occurred.",
+          "$ref": "core/elements.schema.json#/definitions/Duration"
+        },
+        "quantity": {
+          "description": "The quantity of specimen collected; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "method": {
+          "description": "A coded value specifying the technique that is used to perform the procedure.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "bodySite": {
+          "description": "Anatomical location from which the specimen was collected (if subject is a patient). This is the target site.  This element is not used for environmental specimens.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "fastingStatusCodeableConcept": {
+          "description": "Abstinence or reduction from some or all food, drink, or both, for a period of time prior to sample collection.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "fastingStatusDuration": {
+          "description": "Abstinence or reduction from some or all food, drink, or both, for a period of time prior to sample collection.",
+          "$ref": "core/elements.schema.json#/definitions/Duration"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Specimen_Processing": {
+      "description": "A sample to be used for analysis.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Textual description of procedure.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "procedure": {
+          "description": "A coded value specifying the procedure used to process the specimen.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "additive": {
+          "description": "Material used in the processing step.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "timeDateTime": {
+          "description": "A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
+          "type": "string"
+        },
+        "_timeDateTime": {
+          "description": "Extensions for timeDateTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "timePeriod": {
+          "description": "A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Specimen_Container": {
+      "description": "A sample to be used for analysis.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "identifier": {
+          "description": "Id for container. There may be multiple; a manufacturer\u0027s bar code, lab assigned identifier, etc. The container ID may differ from the specimen id in some circumstances.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Textual description of the container.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "type": {
+          "description": "The type of container associated with the specimen (e.g. slide, aliquot, etc.).",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "capacity": {
+          "description": "The capacity (volume or other measure) the container may contain.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "specimenQuantity": {
+          "description": "The quantity of specimen in the container; may be volume, dimensions, or other appropriate measurements, depending on the specimen type.",
+          "$ref": "core/elements.schema.json#/definitions/Quantity"
+        },
+        "additiveCodeableConcept": {
+          "description": "Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.",
+          "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+        },
+        "additiveReference": {
+          "description": "Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

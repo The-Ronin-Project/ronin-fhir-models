@@ -1,0 +1,219 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://hl7.org/fhir/json-schema/4.0/PractitionerRole-v1.schema.json",
+  "type": "object",
+  "$ref": "#/definitions/PractitionerRole",
+  "definitions": {
+    "PractitionerRole": {
+      "description": "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.",
+      "allOf": [
+        {
+          "$ref": "core/resource.schema.json#/definitions/DomainResource"
+        }
+      ],
+      "extends": {
+        "$ref": "core/resource.schema.json#/definitions/DomainResource"
+      },
+      "properties": {
+        "resourceType": {
+          "description": "This is a PractitionerRole resource",
+          "type": "string",
+          "const": "PractitionerRole"
+        },
+        "identifier": {
+          "description": "Business Identifiers that are specific to a role/location.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "active": {
+          "description": "Whether this practitioner role record is in active use.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_active": {
+          "description": "Extensions for active",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "period": {
+          "description": "The period during which the person is authorized to act as a practitioner in these role(s) for the organization.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        },
+        "practitioner": {
+          "description": "Practitioner that is able to provide the defined services for the organization.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "organization": {
+          "description": "The organization where the Practitioner performs the roles associated.",
+          "$ref": "core/elements.schema.json#/definitions/Reference"
+        },
+        "code": {
+          "description": "Roles which this practitioner is authorized to perform for the organization.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "specialty": {
+          "description": "Specific specialty of the practitioner.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "location": {
+          "description": "The location(s) at which this practitioner provides care.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "healthcareService": {
+          "description": "The list of healthcare services that this worker provides for this role\u0027s Organization/Location(s).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "telecom": {
+          "description": "Contact details that are specific to the role/location/service.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "availableTime": {
+          "description": "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice.",
+          "items": {
+            "$ref": "#/definitions/PractitionerRole_AvailableTime"
+          },
+          "type": "array"
+        },
+        "notAvailable": {
+          "description": "The practitioner is not available or performing this role during this period of time due to the provided reason.",
+          "items": {
+            "$ref": "#/definitions/PractitionerRole_NotAvailable"
+          },
+          "type": "array"
+        },
+        "availabilityExceptions": {
+          "description": "A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_availabilityExceptions": {
+          "description": "Extensions for availabilityExceptions",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "endpoint": {
+          "description": "Technical endpoints providing access to services operated for the practitioner with this role.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "PractitionerRole_AvailableTime": {
+      "description": "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "daysOfWeek": {
+          "description": "Indicates which days of the week are available between the start and end Times.",
+          "items": {
+            "$ref": "core/primitives.schema.json#/definitions/code"
+          },
+          "type": "array"
+        },
+        "_daysOfWeek": {
+          "description": "Extensions for daysOfWeek",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "allDay": {
+          "description": "Is this always available? (hence times are irrelevant) e.g. 24 hour service.",
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
+        },
+        "_allDay": {
+          "description": "Extensions for allDay",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "availableStartTime": {
+          "description": "The opening time of day. Note: If the AllDay flag is set, then this time is ignored.",
+          "$ref": "core/primitives.schema.json#/definitions/time"
+        },
+        "_availableStartTime": {
+          "description": "Extensions for availableStartTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "availableEndTime": {
+          "description": "The closing time of day. Note: If the AllDay flag is set, then this time is ignored.",
+          "$ref": "core/primitives.schema.json#/definitions/time"
+        },
+        "_availableEndTime": {
+          "description": "Extensions for availableEndTime",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PractitionerRole_NotAvailable": {
+      "description": "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "core/elements.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "The reason that can be presented to the user as to why this time is not available.",
+          "$ref": "core/primitives.schema.json#/definitions/string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "core/elements.schema.json#/definitions/Element"
+        },
+        "during": {
+          "description": "Service is not available (seasonally or for a public holiday) from this date.",
+          "$ref": "core/elements.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
