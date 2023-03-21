@@ -7,9 +7,9 @@ plugins {
 
     `maven-publish`
 
-    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
+    id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
     id("com.dipien.releaseshub.gradle.plugin") version "4.0.0"
-    id("pl.allegro.tech.build.axion-release") version "1.14.2"
+    id("pl.allegro.tech.build.axion-release") version "1.14.4"
 }
 
 dependencies {
@@ -57,13 +57,13 @@ repositories {
 
 // Java/Kotlin versioning
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_11
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     compilerOptions {
         freeCompilerArgs.set(listOf("-Xjsr305=strict"))
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
     }
 }
 
@@ -94,7 +94,8 @@ version = scmVersion.version
 tasks.jar {
     from(project.projectDir) {
         into("schema")
-        include("v*/*.schema.json")
+        include("v*/**/*.schema.json")
+        exclude("**/examples")
     }
 }
 
