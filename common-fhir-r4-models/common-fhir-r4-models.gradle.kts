@@ -26,7 +26,7 @@ jsonSchema2Pojo {
     sourceFiles = fileTree("${project.projectDir}/v1") {
         include("*-v1.schema.json")
     }
-    targetDirectory = file("src/generated/java")
+    targetDirectory = file("$buildDir/generated")
     targetPackage = "com.projectronin.fhir.r4"
     setCustomRuleFactory(FhirRuleFactory::class.java)
     propertyWordDelimiters[2] = ' '
