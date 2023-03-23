@@ -13,7 +13,7 @@ plugins {
 }
 
 dependencies {
-    api("com.fasterxml.jackson.core:jackson-annotations:2.14.2")
+    api(libs.jackson.annotations)
 }
 
 events {
