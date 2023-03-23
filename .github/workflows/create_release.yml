@@ -126,7 +126,7 @@ jobs:
             ARTIFACT_BASE="${SCHEMA}-${v}-${{ needs.tag.outputs.tag }}"
             ARTIFACT="${ARTIFACT_BASE}.tar.gz"
             ( cd ${v} && echo "${ARTIFACT_BASE}" >> version && tar cvzf ../build/${ARTIFACT} . )
-            curl -v --user '${{ secrets.nexus_user }}:${{ secrets.nexus_token }}' \
+            curl -v --user '${{ secrets.NEXUS_RAW_USER }}:${{ secrets.NEXUS_RAW_TOKEN }}' \
               --upload-file $PWD/build/${ARTIFACT} \
               "https://repo.devops.projectronin.io/repository/ronin-raw/contract-event/${SCHEMA}/${ARTIFACT}"
           done
