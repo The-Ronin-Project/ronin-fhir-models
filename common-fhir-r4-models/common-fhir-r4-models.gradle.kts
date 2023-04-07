@@ -58,6 +58,8 @@ repositories {
 // Java/Kotlin versioning
 java {
     sourceCompatibility = JavaVersion.VERSION_11
+
+    withSourcesJar()
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
