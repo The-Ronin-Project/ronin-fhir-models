@@ -7,7 +7,7 @@ plugins {
 
     `maven-publish`
 
-    id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
+    id("org.jlleitschuh.gradle.ktlint") version "11.3.2"
     id("com.dipien.releaseshub.gradle.plugin") version "4.0.0"
     id("pl.allegro.tech.build.axion-release") version "1.15.0"
 }
