@@ -14,6 +14,7 @@ plugins {
 
 dependencies {
     api(libs.jackson.annotations)
+    api(libs.jsr305)
 }
 
 events {
@@ -31,6 +32,11 @@ jsonSchema2Pojo {
     setCustomRuleFactory(FhirRuleFactory::class.java)
     propertyWordDelimiters[2] = ' '
     removeOldOutput = true
+
+    // The following 3 settings are here to better support Kotlin and nullability. See https://github.com/projectronin/ronin-fhir-models/issues/20
+    includeJsr305Annotations = true
+    includeGetters = false
+    includeSetters = false
 }
 
 repositories {
