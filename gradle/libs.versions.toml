@@ -1,2 +1,2 @@
 [libraries]
-jackson-annotations = "com.fasterxml.jackson.core:jackson-annotations:2.15.0"
+jackson-annotations = "com.fasterxml.jackson.core:jackson-annotations:2.15.1"
