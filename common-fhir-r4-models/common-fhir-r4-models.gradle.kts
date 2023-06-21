@@ -37,6 +37,7 @@ jsonSchema2Pojo {
     includeJsr305Annotations = true
     includeGetters = false
     includeSetters = false
+    useBigDecimals = true
 }
 
 repositories {
