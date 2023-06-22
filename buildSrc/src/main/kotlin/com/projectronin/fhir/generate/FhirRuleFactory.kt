@@ -1,6 +1,7 @@
 package com.projectronin.fhir.generate
 
 import com.sun.codemodel.JClassContainer
+import com.sun.codemodel.JDefinedClass
 import com.sun.codemodel.JDocComment
 import com.sun.codemodel.JDocCommentable
 import com.sun.codemodel.JType
@@ -22,5 +23,9 @@ class FhirRuleFactory : RuleFactory() {
 
     override fun getNameHelper(): NameHelper {
         return FhirNameHelper(generationConfig)
+    }
+
+    override fun getPropertyRule(): Rule<JDefinedClass, JDefinedClass> {
+        return FhirPropertyRule(this)
     }
 }

@@ -33,7 +33,10 @@
                     "description": "Extensions for language",
                     "$ref": "elements.schema.json#/definitions/Element"
                 }
-            }
+            },
+            "required": [
+                "resourceType"
+            ]
         },
         "DomainResource": {
             "description": "Base definition for all Domain Resources",

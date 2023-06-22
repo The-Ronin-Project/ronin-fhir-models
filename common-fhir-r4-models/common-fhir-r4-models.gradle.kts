@@ -15,6 +15,10 @@ plugins {
 dependencies {
     api(libs.jackson.annotations)
     api(libs.jsr305)
+
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.kotlin.reflect)
+    testImplementation(libs.classgraph)
 }
 
 events {
@@ -73,6 +77,15 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     compilerOptions {
         freeCompilerArgs.set(listOf("-Xjsr305=strict"))
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+    }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+
+    testLogging {
+        events("passed", "skipped", "failed", "standardOut", "standardError")
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     }
 }
 
