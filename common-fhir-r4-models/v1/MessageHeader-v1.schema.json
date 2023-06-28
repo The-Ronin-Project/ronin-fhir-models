@@ -26,8 +26,7 @@
         },
         "eventUri": {
           "description": "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value \"http://terminology.hl7.org/CodeSystem/message-events\".  Alternatively uri to the EventDefinition.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uri"
         },
         "_eventUri": {
           "description": "Extensions for eventUri",

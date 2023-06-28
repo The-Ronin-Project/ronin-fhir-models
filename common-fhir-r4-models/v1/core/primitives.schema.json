@@ -48,7 +48,7 @@
     },
     "integer": {
       "pattern": "^-?([0]|([1-9][0-9]*))$",
-      "type": "number",
+      "type": "integer",
       "description": "A whole number"
     },
     "markdown": {
@@ -63,7 +63,7 @@
     },
     "positiveInt": {
       "pattern": "^[1-9][0-9]*$",
-      "type": "number",
+      "type": "integer",
       "description": "An integer with a value that is positive (e.g. \u003e0)"
     },
     "string": {
@@ -78,7 +78,7 @@
     },
     "unsignedInt": {
       "pattern": "^[0]|([1-9][0-9]*)$",
-      "type": "number",
+      "type": "integer",
       "description": "An integer with a value that is not negative (e.g. \u003e\u003d 0)"
     },
     "uri": {

@@ -64,8 +64,7 @@
         },
         "valueBase64Binary": {
           "description": "If the parameter is a data type.",
-          "pattern": "^(\\s*([0-9a-zA-Z\\+/\u003d]){4}\\s*)+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/base64Binary"
         },
         "_valueBase64Binary": {
           "description": "Extensions for valueBase64Binary",
@@ -73,8 +72,7 @@
         },
         "valueBoolean": {
           "description": "If the parameter is a data type.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_valueBoolean": {
           "description": "Extensions for valueBoolean",
@@ -82,8 +80,7 @@
         },
         "valueCanonical": {
           "description": "If the parameter is a data type.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
         },
         "_valueCanonical": {
           "description": "Extensions for valueCanonical",
@@ -91,8 +88,7 @@
         },
         "valueCode": {
           "description": "If the parameter is a data type.",
-          "pattern": "^[^\\s]+(\\s[^\\s]+)*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/code"
         },
         "_valueCode": {
           "description": "Extensions for valueCode",
@@ -100,8 +96,7 @@
         },
         "valueDate": {
           "description": "If the parameter is a data type.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_valueDate": {
           "description": "Extensions for valueDate",
@@ -109,8 +104,7 @@
         },
         "valueDateTime": {
           "description": "If the parameter is a data type.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
         },
         "_valueDateTime": {
           "description": "Extensions for valueDateTime",
@@ -118,8 +112,7 @@
         },
         "valueDecimal": {
           "description": "If the parameter is a data type.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
         },
         "_valueDecimal": {
           "description": "Extensions for valueDecimal",
@@ -127,8 +120,7 @@
         },
         "valueId": {
           "description": "If the parameter is a data type.",
-          "pattern": "^[A-Za-z0-9\\-\\.]{1,64}$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/id"
         },
         "_valueId": {
           "description": "Extensions for valueId",
@@ -136,8 +128,7 @@
         },
         "valueInstant": {
           "description": "If the parameter is a data type.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/instant"
         },
         "_valueInstant": {
           "description": "Extensions for valueInstant",
@@ -145,8 +136,7 @@
         },
         "valueInteger": {
           "description": "If the parameter is a data type.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_valueInteger": {
           "description": "Extensions for valueInteger",
@@ -154,8 +144,7 @@
         },
         "valueMarkdown": {
           "description": "If the parameter is a data type.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
         },
         "_valueMarkdown": {
           "description": "Extensions for valueMarkdown",
@@ -163,8 +152,7 @@
         },
         "valueOid": {
           "description": "If the parameter is a data type.",
-          "pattern": "^urn:oid:[0-2](\\.(0|[1-9][0-9]*))+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/oid"
         },
         "_valueOid": {
           "description": "Extensions for valueOid",
@@ -172,8 +160,7 @@
         },
         "valuePositiveInt": {
           "description": "If the parameter is a data type.",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
         },
         "_valuePositiveInt": {
           "description": "Extensions for valuePositiveInt",
@@ -181,8 +168,7 @@
         },
         "valueString": {
           "description": "If the parameter is a data type.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -190,8 +176,7 @@
         },
         "valueTime": {
           "description": "If the parameter is a data type.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/time"
         },
         "_valueTime": {
           "description": "Extensions for valueTime",
@@ -199,8 +184,7 @@
         },
         "valueUnsignedInt": {
           "description": "If the parameter is a data type.",
-          "pattern": "^[0]|([1-9][0-9]*)$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/unsignedInt"
         },
         "_valueUnsignedInt": {
           "description": "Extensions for valueUnsignedInt",
@@ -208,8 +192,7 @@
         },
         "valueUri": {
           "description": "If the parameter is a data type.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uri"
         },
         "_valueUri": {
           "description": "Extensions for valueUri",
@@ -217,8 +200,7 @@
         },
         "valueUrl": {
           "description": "If the parameter is a data type.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/url"
         },
         "_valueUrl": {
           "description": "Extensions for valueUrl",
@@ -226,8 +208,7 @@
         },
         "valueUuid": {
           "description": "If the parameter is a data type.",
-          "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uuid"
         },
         "_valueUuid": {
           "description": "Extensions for valueUuid",

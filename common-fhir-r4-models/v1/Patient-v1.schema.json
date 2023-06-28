@@ -72,8 +72,7 @@
         },
         "deceasedBoolean": {
           "description": "Indicates if the individual is deceased or not.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_deceasedBoolean": {
           "description": "Extensions for deceasedBoolean",
@@ -81,8 +80,7 @@
         },
         "deceasedDateTime": {
           "description": "Indicates if the individual is deceased or not.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
         },
         "_deceasedDateTime": {
           "description": "Extensions for deceasedDateTime",
@@ -101,8 +99,7 @@
         },
         "multipleBirthBoolean": {
           "description": "Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_multipleBirthBoolean": {
           "description": "Extensions for multipleBirthBoolean",
@@ -110,8 +107,7 @@
         },
         "multipleBirthInteger": {
           "description": "Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_multipleBirthInteger": {
           "description": "Extensions for multipleBirthInteger",

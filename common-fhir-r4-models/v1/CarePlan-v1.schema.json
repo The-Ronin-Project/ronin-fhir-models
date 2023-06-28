@@ -356,8 +356,7 @@
         },
         "scheduledString": {
           "description": "The period, timing or frequency upon which the described activity is to occur.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_scheduledString": {
           "description": "Extensions for scheduledString",

@@ -237,8 +237,7 @@
         },
         "amountString": {
           "description": "Todo.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_amountString": {
           "description": "Extensions for amountString",

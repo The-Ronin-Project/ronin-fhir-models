@@ -43,8 +43,7 @@
         },
         "valueBase64Binary": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^(\\s*([0-9a-zA-Z\\+/\u003d]){4}\\s*)+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/base64Binary"
         },
         "_valueBase64Binary": {
           "description": "Extensions for valueBase64Binary",
@@ -52,8 +51,7 @@
         },
         "valueBoolean": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "primitives.schema.json#/definitions/boolean"
         },
         "_valueBoolean": {
           "description": "Extensions for valueBoolean",
@@ -61,8 +59,7 @@
         },
         "valueCanonical": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/canonical"
         },
         "_valueCanonical": {
           "description": "Extensions for valueCanonical",
@@ -70,8 +67,7 @@
         },
         "valueCode": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^[^\\s]+(\\s[^\\s]+)*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/code"
         },
         "_valueCode": {
           "description": "Extensions for valueCode",
@@ -79,8 +75,7 @@
         },
         "valueDate": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/date"
         },
         "_valueDate": {
           "description": "Extensions for valueDate",
@@ -88,8 +83,7 @@
         },
         "valueDateTime": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/dateTime"
         },
         "_valueDateTime": {
           "description": "Extensions for valueDateTime",
@@ -97,8 +91,7 @@
         },
         "valueDecimal": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/decimal"
         },
         "_valueDecimal": {
           "description": "Extensions for valueDecimal",
@@ -106,8 +99,7 @@
         },
         "valueId": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^[A-Za-z0-9\\-\\.]{1,64}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/id"
         },
         "_valueId": {
           "description": "Extensions for valueId",
@@ -115,8 +107,7 @@
         },
         "valueInstant": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/instant"
         },
         "_valueInstant": {
           "description": "Extensions for valueInstant",
@@ -124,8 +115,7 @@
         },
         "valueInteger": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/integer"
         },
         "_valueInteger": {
           "description": "Extensions for valueInteger",
@@ -133,8 +123,7 @@
         },
         "valueMarkdown": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/markdown"
         },
         "_valueMarkdown": {
           "description": "Extensions for valueMarkdown",
@@ -142,8 +131,7 @@
         },
         "valueOid": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^urn:oid:[0-2](\\.(0|[1-9][0-9]*))+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/oid"
         },
         "_valueOid": {
           "description": "Extensions for valueOid",
@@ -151,8 +139,7 @@
         },
         "valuePositiveInt": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/positiveInt"
         },
         "_valuePositiveInt": {
           "description": "Extensions for valuePositiveInt",
@@ -160,8 +147,7 @@
         },
         "valueString": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -169,8 +155,7 @@
         },
         "valueTime": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/time"
         },
         "_valueTime": {
           "description": "Extensions for valueTime",
@@ -178,8 +163,7 @@
         },
         "valueUnsignedInt": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^[0]|([1-9][0-9]*)$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/unsignedInt"
         },
         "_valueUnsignedInt": {
           "description": "Extensions for valueUnsignedInt",
@@ -187,8 +171,7 @@
         },
         "valueUri": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uri"
         },
         "_valueUri": {
           "description": "Extensions for valueUri",
@@ -196,8 +179,7 @@
         },
         "valueUrl": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/url"
         },
         "_valueUrl": {
           "description": "Extensions for valueUrl",
@@ -205,8 +187,7 @@
         },
         "valueUuid": {
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
-          "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uuid"
         },
         "_valueUuid": {
           "description": "Extensions for valueUuid",
@@ -396,8 +377,7 @@
         },
         "authorString": {
           "description": "The individual responsible for making the annotation.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_authorString": {
           "description": "Extensions for authorString",
@@ -2100,8 +2080,7 @@
         },
         "valueDateTime": {
           "description": "The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/dateTime"
         },
         "_valueDateTime": {
           "description": "Extensions for valueDateTime",
@@ -2353,8 +2332,7 @@
         },
         "timingDate": {
           "description": "The timing of the event (if this is a periodic trigger).",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/date"
         },
         "_timingDate": {
           "description": "Extensions for timingDate",
@@ -2362,8 +2340,7 @@
         },
         "timingDateTime": {
           "description": "The timing of the event (if this is a periodic trigger).",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/dateTime"
         },
         "_timingDateTime": {
           "description": "Extensions for timingDateTime",
@@ -2481,8 +2458,7 @@
         },
         "asNeededBoolean": {
           "description": "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "primitives.schema.json#/definitions/boolean"
         },
         "_asNeededBoolean": {
           "description": "Extensions for asNeededBoolean",
@@ -2844,8 +2820,7 @@
         },
         "amountString": {
           "description": "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_amountString": {
           "description": "Extensions for amountString",
@@ -3130,8 +3105,7 @@
         },
         "defaultValueBase64Binary": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^(\\s*([0-9a-zA-Z\\+/\u003d]){4}\\s*)+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/base64Binary"
         },
         "_defaultValueBase64Binary": {
           "description": "Extensions for defaultValueBase64Binary",
@@ -3139,8 +3113,7 @@
         },
         "defaultValueBoolean": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "primitives.schema.json#/definitions/boolean"
         },
         "_defaultValueBoolean": {
           "description": "Extensions for defaultValueBoolean",
@@ -3148,8 +3121,7 @@
         },
         "defaultValueCanonical": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/canonical"
         },
         "_defaultValueCanonical": {
           "description": "Extensions for defaultValueCanonical",
@@ -3157,8 +3129,7 @@
         },
         "defaultValueCode": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^[^\\s]+(\\s[^\\s]+)*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/code"
         },
         "_defaultValueCode": {
           "description": "Extensions for defaultValueCode",
@@ -3166,8 +3137,7 @@
         },
         "defaultValueDate": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/date"
         },
         "_defaultValueDate": {
           "description": "Extensions for defaultValueDate",
@@ -3175,8 +3145,7 @@
         },
         "defaultValueDateTime": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/dateTime"
         },
         "_defaultValueDateTime": {
           "description": "Extensions for defaultValueDateTime",
@@ -3184,8 +3153,7 @@
         },
         "defaultValueDecimal": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/decimal"
         },
         "_defaultValueDecimal": {
           "description": "Extensions for defaultValueDecimal",
@@ -3193,8 +3161,7 @@
         },
         "defaultValueId": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^[A-Za-z0-9\\-\\.]{1,64}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/id"
         },
         "_defaultValueId": {
           "description": "Extensions for defaultValueId",
@@ -3202,8 +3169,7 @@
         },
         "defaultValueInstant": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/instant"
         },
         "_defaultValueInstant": {
           "description": "Extensions for defaultValueInstant",
@@ -3211,8 +3177,7 @@
         },
         "defaultValueInteger": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/integer"
         },
         "_defaultValueInteger": {
           "description": "Extensions for defaultValueInteger",
@@ -3220,8 +3185,7 @@
         },
         "defaultValueMarkdown": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/markdown"
         },
         "_defaultValueMarkdown": {
           "description": "Extensions for defaultValueMarkdown",
@@ -3229,8 +3193,7 @@
         },
         "defaultValueOid": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^urn:oid:[0-2](\\.(0|[1-9][0-9]*))+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/oid"
         },
         "_defaultValueOid": {
           "description": "Extensions for defaultValueOid",
@@ -3238,8 +3201,7 @@
         },
         "defaultValuePositiveInt": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/positiveInt"
         },
         "_defaultValuePositiveInt": {
           "description": "Extensions for defaultValuePositiveInt",
@@ -3247,8 +3209,7 @@
         },
         "defaultValueString": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_defaultValueString": {
           "description": "Extensions for defaultValueString",
@@ -3256,8 +3217,7 @@
         },
         "defaultValueTime": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/time"
         },
         "_defaultValueTime": {
           "description": "Extensions for defaultValueTime",
@@ -3265,8 +3225,7 @@
         },
         "defaultValueUnsignedInt": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^[0]|([1-9][0-9]*)$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/unsignedInt"
         },
         "_defaultValueUnsignedInt": {
           "description": "Extensions for defaultValueUnsignedInt",
@@ -3274,8 +3233,7 @@
         },
         "defaultValueUri": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uri"
         },
         "_defaultValueUri": {
           "description": "Extensions for defaultValueUri",
@@ -3283,8 +3241,7 @@
         },
         "defaultValueUrl": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/url"
         },
         "_defaultValueUrl": {
           "description": "Extensions for defaultValueUrl",
@@ -3292,8 +3249,7 @@
         },
         "defaultValueUuid": {
           "description": "The value that should be used if there is no value stated in the instance (e.g. \u0027if not otherwise specified, the abstract is false\u0027).",
-          "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uuid"
         },
         "_defaultValueUuid": {
           "description": "Extensions for defaultValueUuid",
@@ -3441,8 +3397,7 @@
         },
         "fixedBase64Binary": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^(\\s*([0-9a-zA-Z\\+/\u003d]){4}\\s*)+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/base64Binary"
         },
         "_fixedBase64Binary": {
           "description": "Extensions for fixedBase64Binary",
@@ -3450,8 +3405,7 @@
         },
         "fixedBoolean": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "primitives.schema.json#/definitions/boolean"
         },
         "_fixedBoolean": {
           "description": "Extensions for fixedBoolean",
@@ -3459,8 +3413,7 @@
         },
         "fixedCanonical": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/canonical"
         },
         "_fixedCanonical": {
           "description": "Extensions for fixedCanonical",
@@ -3468,8 +3421,7 @@
         },
         "fixedCode": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^[^\\s]+(\\s[^\\s]+)*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/code"
         },
         "_fixedCode": {
           "description": "Extensions for fixedCode",
@@ -3477,8 +3429,7 @@
         },
         "fixedDate": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/date"
         },
         "_fixedDate": {
           "description": "Extensions for fixedDate",
@@ -3486,8 +3437,7 @@
         },
         "fixedDateTime": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/dateTime"
         },
         "_fixedDateTime": {
           "description": "Extensions for fixedDateTime",
@@ -3495,8 +3445,7 @@
         },
         "fixedDecimal": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/decimal"
         },
         "_fixedDecimal": {
           "description": "Extensions for fixedDecimal",
@@ -3504,17 +3453,14 @@
         },
         "fixedId": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^[A-Za-z0-9\\-\\.]{1,64}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/id"
         },
         "_fixedId": {
           "description": "Extensions for fixedId",
           "$ref": "#/definitions/Element"
         },
         "fixedInstant": {
-          "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/instant"
         },
         "_fixedInstant": {
           "description": "Extensions for fixedInstant",
@@ -3522,8 +3468,7 @@
         },
         "fixedInteger": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/integer"
         },
         "_fixedInteger": {
           "description": "Extensions for fixedInteger",
@@ -3531,8 +3476,7 @@
         },
         "fixedMarkdown": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_fixedMarkdown": {
           "description": "Extensions for fixedMarkdown",
@@ -3540,8 +3484,7 @@
         },
         "fixedOid": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^urn:oid:[0-2](\\.(0|[1-9][0-9]*))+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/oid"
         },
         "_fixedOid": {
           "description": "Extensions for fixedOid",
@@ -3549,8 +3492,7 @@
         },
         "fixedPositiveInt": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/positiveInt"
         },
         "_fixedPositiveInt": {
           "description": "Extensions for fixedPositiveInt",
@@ -3558,8 +3500,7 @@
         },
         "fixedString": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_fixedString": {
           "description": "Extensions for fixedString",
@@ -3567,8 +3508,7 @@
         },
         "fixedTime": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/time"
         },
         "_fixedTime": {
           "description": "Extensions for fixedTime",
@@ -3576,8 +3516,7 @@
         },
         "fixedUnsignedInt": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^[0]|([1-9][0-9]*)$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/unsignedInt"
         },
         "_fixedUnsignedInt": {
           "description": "Extensions for fixedUnsignedInt",
@@ -3585,8 +3524,7 @@
         },
         "fixedUri": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uri"
         },
         "_fixedUri": {
           "description": "Extensions for fixedUri",
@@ -3594,8 +3532,7 @@
         },
         "fixedUrl": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/url"
         },
         "_fixedUrl": {
           "description": "Extensions for fixedUrl",
@@ -3603,8 +3540,7 @@
         },
         "fixedUuid": {
           "description": "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.",
-          "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uuid"
         },
         "_fixedUuid": {
           "description": "Extensions for fixedUuid",
@@ -3736,8 +3672,7 @@
         },
         "patternBase64Binary": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^(\\s*([0-9a-zA-Z\\+/\u003d]){4}\\s*)+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/base64Binary"
         },
         "_patternBase64Binary": {
           "description": "Extensions for patternBase64Binary",
@@ -3745,8 +3680,7 @@
         },
         "patternBoolean": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "primitives.schema.json#/definitions/boolean"
         },
         "_patternBoolean": {
           "description": "Extensions for patternBoolean",
@@ -3754,8 +3688,7 @@
         },
         "patternCanonical": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/canonical"
         },
         "_patternCanonical": {
           "description": "Extensions for patternCanonical",
@@ -3763,8 +3696,7 @@
         },
         "patternCode": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^[^\\s]+(\\s[^\\s]+)*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/code"
         },
         "_patternCode": {
           "description": "Extensions for patternCode",
@@ -3772,8 +3704,7 @@
         },
         "patternDate": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/date"
         },
         "_patternDate": {
           "description": "Extensions for patternDate",
@@ -3781,8 +3712,7 @@
         },
         "patternDateTime": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/dateTime"
         },
         "_patternDateTime": {
           "description": "Extensions for patternDateTime",
@@ -3790,8 +3720,7 @@
         },
         "patternDecimal": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/decimal"
         },
         "_patternDecimal": {
           "description": "Extensions for patternDecimal",
@@ -3799,8 +3728,7 @@
         },
         "patternId": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^[A-Za-z0-9\\-\\.]{1,64}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/id"
         },
         "_patternId": {
           "description": "Extensions for patternId",
@@ -3808,8 +3736,7 @@
         },
         "patternInstant": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/instant"
         },
         "_patternInstant": {
           "description": "Extensions for patternInstant",
@@ -3817,8 +3744,7 @@
         },
         "patternInteger": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/integer"
         },
         "_patternInteger": {
           "description": "Extensions for patternInteger",
@@ -3826,8 +3752,7 @@
         },
         "patternMarkdown": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_patternMarkdown": {
           "description": "Extensions for patternMarkdown",
@@ -3835,8 +3760,7 @@
         },
         "patternOid": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^urn:oid:[0-2](\\.(0|[1-9][0-9]*))+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/oid"
         },
         "_patternOid": {
           "description": "Extensions for patternOid",
@@ -3844,8 +3768,7 @@
         },
         "patternPositiveInt": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/positiveInt"
         },
         "_patternPositiveInt": {
           "description": "Extensions for patternPositiveInt",
@@ -3853,8 +3776,7 @@
         },
         "patternString": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_patternString": {
           "description": "Extensions for patternString",
@@ -3862,8 +3784,7 @@
         },
         "patternTime": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/time"
         },
         "_patternTime": {
           "description": "Extensions for patternTime",
@@ -3871,8 +3792,7 @@
         },
         "patternUnsignedInt": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^[0]|([1-9][0-9]*)$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/unsignedInt"
         },
         "_patternUnsignedInt": {
           "description": "Extensions for patternUnsignedInt",
@@ -3880,8 +3800,7 @@
         },
         "patternUri": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uri"
         },
         "_patternUri": {
           "description": "Extensions for patternUri",
@@ -3889,8 +3808,7 @@
         },
         "patternUrl": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/url"
         },
         "_patternUrl": {
           "description": "Extensions for patternUrl",
@@ -3898,8 +3816,7 @@
         },
         "patternUuid": {
           "description": "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.",
-          "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uuid"
         },
         "_patternUuid": {
           "description": "Extensions for patternUuid",
@@ -4038,8 +3955,7 @@
         },
         "minValueDate": {
           "description": "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/date"
         },
         "_minValueDate": {
           "description": "Extensions for minValueDate",
@@ -4047,8 +3963,7 @@
         },
         "minValueDateTime": {
           "description": "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/dateTime"
         },
         "_minValueDateTime": {
           "description": "Extensions for minValueDateTime",
@@ -4056,8 +3971,7 @@
         },
         "minValueInstant": {
           "description": "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/instant"
         },
         "_minValueInstant": {
           "description": "Extensions for minValueInstant",
@@ -4065,8 +3979,7 @@
         },
         "minValueTime": {
           "description": "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/time"
         },
         "_minValueTime": {
           "description": "Extensions for minValueTime",
@@ -4074,8 +3987,7 @@
         },
         "minValueDecimal": {
           "description": "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/decimal"
         },
         "_minValueDecimal": {
           "description": "Extensions for minValueDecimal",
@@ -4083,8 +3995,7 @@
         },
         "minValueInteger": {
           "description": "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/integer"
         },
         "_minValueInteger": {
           "description": "Extensions for minValueInteger",
@@ -4092,8 +4003,7 @@
         },
         "minValuePositiveInt": {
           "description": "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/positiveInt"
         },
         "_minValuePositiveInt": {
           "description": "Extensions for minValuePositiveInt",
@@ -4101,8 +4011,7 @@
         },
         "minValueUnsignedInt": {
           "description": "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^[0]|([1-9][0-9]*)$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/unsignedInt"
         },
         "_minValueUnsignedInt": {
           "description": "Extensions for minValueUnsignedInt",
@@ -4114,8 +4023,7 @@
         },
         "maxValueDate": {
           "description": "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/date"
         },
         "_maxValueDate": {
           "description": "Extensions for maxValueDate",
@@ -4123,8 +4031,7 @@
         },
         "maxValueDateTime": {
           "description": "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/dateTime"
         },
         "_maxValueDateTime": {
           "description": "Extensions for maxValueDateTime",
@@ -4132,8 +4039,7 @@
         },
         "maxValueInstant": {
           "description": "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/instant"
         },
         "_maxValueInstant": {
           "description": "Extensions for maxValueInstant",
@@ -4141,8 +4047,7 @@
         },
         "maxValueTime": {
           "description": "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/time"
         },
         "_maxValueTime": {
           "description": "Extensions for maxValueTime",
@@ -4150,8 +4055,7 @@
         },
         "maxValueDecimal": {
           "description": "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/decimal"
         },
         "_maxValueDecimal": {
           "description": "Extensions for maxValueDecimal",
@@ -4159,8 +4063,7 @@
         },
         "maxValueInteger": {
           "description": "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/integer"
         },
         "_maxValueInteger": {
           "description": "Extensions for maxValueInteger",
@@ -4168,8 +4071,7 @@
         },
         "maxValuePositiveInt": {
           "description": "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/positiveInt"
         },
         "_maxValuePositiveInt": {
           "description": "Extensions for maxValuePositiveInt",
@@ -4177,8 +4079,7 @@
         },
         "maxValueUnsignedInt": {
           "description": "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.",
-          "pattern": "^[0]|([1-9][0-9]*)$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/unsignedInt"
         },
         "_maxValueUnsignedInt": {
           "description": "Extensions for maxValueUnsignedInt",
@@ -4523,8 +4424,7 @@
         },
         "valueBase64Binary": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^(\\s*([0-9a-zA-Z\\+/\u003d]){4}\\s*)+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/base64Binary"
         },
         "_valueBase64Binary": {
           "description": "Extensions for valueBase64Binary",
@@ -4532,8 +4432,7 @@
         },
         "valueBoolean": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "primitives.schema.json#/definitions/boolean"
         },
         "_valueBoolean": {
           "description": "Extensions for valueBoolean",
@@ -4541,8 +4440,7 @@
         },
         "valueCanonical": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/canonical"
         },
         "_valueCanonical": {
           "description": "Extensions for valueCanonical",
@@ -4550,8 +4448,7 @@
         },
         "valueCode": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^[^\\s]+(\\s[^\\s]+)*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/code"
         },
         "_valueCode": {
           "description": "Extensions for valueCode",
@@ -4559,8 +4456,7 @@
         },
         "valueDate": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/date"
         },
         "_valueDate": {
           "description": "Extensions for valueDate",
@@ -4568,8 +4464,7 @@
         },
         "valueDateTime": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/dateTime"
         },
         "_valueDateTime": {
           "description": "Extensions for valueDateTime",
@@ -4577,8 +4472,7 @@
         },
         "valueDecimal": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/decimal"
         },
         "_valueDecimal": {
           "description": "Extensions for valueDecimal",
@@ -4586,8 +4480,7 @@
         },
         "valueId": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^[A-Za-z0-9\\-\\.]{1,64}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/id"
         },
         "_valueId": {
           "description": "Extensions for valueId",
@@ -4595,8 +4488,7 @@
         },
         "valueInstant": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/instant"
         },
         "_valueInstant": {
           "description": "Extensions for valueInstant",
@@ -4604,8 +4496,7 @@
         },
         "valueInteger": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/integer"
         },
         "_valueInteger": {
           "description": "Extensions for valueInteger",
@@ -4613,8 +4504,7 @@
         },
         "valueMarkdown": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_valueMarkdown": {
           "description": "Extensions for valueMarkdown",
@@ -4622,8 +4512,7 @@
         },
         "valueOid": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^urn:oid:[0-2](\\.(0|[1-9][0-9]*))+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/oid"
         },
         "_valueOid": {
           "description": "Extensions for valueOid",
@@ -4631,8 +4520,7 @@
         },
         "valuePositiveInt": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/positiveInt"
         },
         "_valuePositiveInt": {
           "description": "Extensions for valuePositiveInt",
@@ -4640,8 +4528,7 @@
         },
         "valueString": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -4649,8 +4536,7 @@
         },
         "valueTime": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/time"
         },
         "_valueTime": {
           "description": "Extensions for valueTime",
@@ -4658,8 +4544,7 @@
         },
         "valueUnsignedInt": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^[0]|([1-9][0-9]*)$",
-          "type": "number"
+          "$ref": "primitives.schema.json#/definitions/unsignedInt"
         },
         "_valueUnsignedInt": {
           "description": "Extensions for valueUnsignedInt",
@@ -4667,8 +4552,7 @@
         },
         "valueUri": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uri"
         },
         "_valueUri": {
           "description": "Extensions for valueUri",
@@ -4676,8 +4560,7 @@
         },
         "valueUrl": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/url"
         },
         "_valueUrl": {
           "description": "Extensions for valueUrl",
@@ -4685,8 +4568,7 @@
         },
         "valueUuid": {
           "description": "The actual value for the element, which must be one of the types allowed for this element.",
-          "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-          "type": "string"
+          "$ref": "primitives.schema.json#/definitions/uuid"
         },
         "_valueUuid": {
           "description": "Extensions for valueUuid",

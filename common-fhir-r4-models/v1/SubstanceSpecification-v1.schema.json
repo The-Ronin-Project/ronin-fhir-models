@@ -190,8 +190,7 @@
         },
         "amountString": {
           "description": "Quantitative value for this moiety.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_amountString": {
           "description": "Extensions for amountString",
@@ -251,8 +250,7 @@
         },
         "amountString": {
           "description": "Quantitative value for this property.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_amountString": {
           "description": "Extensions for amountString",
@@ -701,8 +699,7 @@
         },
         "amountString": {
           "description": "A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_amountString": {
           "description": "Extensions for amountString",

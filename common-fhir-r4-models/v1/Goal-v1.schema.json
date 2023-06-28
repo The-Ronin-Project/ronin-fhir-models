@@ -70,8 +70,7 @@
         },
         "startDate": {
           "description": "The date or event after which the goal should begin being pursued.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_startDate": {
           "description": "Extensions for startDate",
@@ -183,8 +182,7 @@
         },
         "detailString": {
           "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_detailString": {
           "description": "Extensions for detailString",
@@ -192,8 +190,7 @@
         },
         "detailBoolean": {
           "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_detailBoolean": {
           "description": "Extensions for detailBoolean",
@@ -201,8 +198,7 @@
         },
         "detailInteger": {
           "description": "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_detailInteger": {
           "description": "Extensions for detailInteger",
@@ -214,8 +210,7 @@
         },
         "dueDate": {
           "description": "Indicates either the date or the duration after start by which the goal should be met.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_dueDate": {
           "description": "Extensions for dueDate",

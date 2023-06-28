@@ -92,8 +92,7 @@
         },
         "effectiveDateTime": {
           "description": "A specific date/time or interval of time during which the administration took place (or did not take place, when the \u0027notGiven\u0027 attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
         },
         "_effectiveDateTime": {
           "description": "Extensions for effectiveDateTime",

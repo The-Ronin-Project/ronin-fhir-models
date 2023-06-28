@@ -492,8 +492,7 @@
         },
         "defaultValueBase64Binary": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^(\\s*([0-9a-zA-Z\\+/\u003d]){4}\\s*)+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/base64Binary"
         },
         "_defaultValueBase64Binary": {
           "description": "Extensions for defaultValueBase64Binary",
@@ -501,8 +500,7 @@
         },
         "defaultValueBoolean": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_defaultValueBoolean": {
           "description": "Extensions for defaultValueBoolean",
@@ -510,8 +508,7 @@
         },
         "defaultValueCanonical": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
         },
         "_defaultValueCanonical": {
           "description": "Extensions for defaultValueCanonical",
@@ -519,8 +516,7 @@
         },
         "defaultValueCode": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^[^\\s]+(\\s[^\\s]+)*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/code"
         },
         "_defaultValueCode": {
           "description": "Extensions for defaultValueCode",
@@ -528,8 +524,7 @@
         },
         "defaultValueDate": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_defaultValueDate": {
           "description": "Extensions for defaultValueDate",
@@ -537,8 +532,7 @@
         },
         "defaultValueDateTime": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
         },
         "_defaultValueDateTime": {
           "description": "Extensions for defaultValueDateTime",
@@ -546,8 +540,7 @@
         },
         "defaultValueDecimal": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
         },
         "_defaultValueDecimal": {
           "description": "Extensions for defaultValueDecimal",
@@ -555,8 +548,7 @@
         },
         "defaultValueId": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^[A-Za-z0-9\\-\\.]{1,64}$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/id"
         },
         "_defaultValueId": {
           "description": "Extensions for defaultValueId",
@@ -564,8 +556,7 @@
         },
         "defaultValueInstant": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/instant"
         },
         "_defaultValueInstant": {
           "description": "Extensions for defaultValueInstant",
@@ -573,8 +564,7 @@
         },
         "defaultValueInteger": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_defaultValueInteger": {
           "description": "Extensions for defaultValueInteger",
@@ -582,8 +572,7 @@
         },
         "defaultValueMarkdown": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/markdown"
         },
         "_defaultValueMarkdown": {
           "description": "Extensions for defaultValueMarkdown",
@@ -591,8 +580,7 @@
         },
         "defaultValueOid": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^urn:oid:[0-2](\\.(0|[1-9][0-9]*))+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/oid"
         },
         "_defaultValueOid": {
           "description": "Extensions for defaultValueOid",
@@ -600,8 +588,7 @@
         },
         "defaultValuePositiveInt": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
         },
         "_defaultValuePositiveInt": {
           "description": "Extensions for defaultValuePositiveInt",
@@ -609,8 +596,7 @@
         },
         "defaultValueString": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_defaultValueString": {
           "description": "Extensions for defaultValueString",
@@ -618,8 +604,7 @@
         },
         "defaultValueTime": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/time"
         },
         "_defaultValueTime": {
           "description": "Extensions for defaultValueTime",
@@ -627,8 +612,7 @@
         },
         "defaultValueUnsignedInt": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^[0]|([1-9][0-9]*)$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/unsignedInt"
         },
         "_defaultValueUnsignedInt": {
           "description": "Extensions for defaultValueUnsignedInt",
@@ -636,8 +620,7 @@
         },
         "defaultValueUri": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uri"
         },
         "_defaultValueUri": {
           "description": "Extensions for defaultValueUri",
@@ -645,8 +628,7 @@
         },
         "defaultValueUrl": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/url"
         },
         "_defaultValueUrl": {
           "description": "Extensions for defaultValueUrl",
@@ -654,8 +636,7 @@
         },
         "defaultValueUuid": {
           "description": "A value to use if there is no existing value in the source object.",
-          "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uuid"
         },
         "_defaultValueUuid": {
           "description": "Extensions for defaultValueUuid",
@@ -984,8 +965,7 @@
         },
         "valueId": {
           "description": "Parameter value - variable or literal.",
-          "pattern": "^[A-Za-z0-9\\-\\.]{1,64}$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/id"
         },
         "_valueId": {
           "description": "Extensions for valueId",
@@ -993,8 +973,7 @@
         },
         "valueString": {
           "description": "Parameter value - variable or literal.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -1002,8 +981,7 @@
         },
         "valueBoolean": {
           "description": "Parameter value - variable or literal.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_valueBoolean": {
           "description": "Extensions for valueBoolean",
@@ -1011,8 +989,7 @@
         },
         "valueInteger": {
           "description": "Parameter value - variable or literal.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_valueInteger": {
           "description": "Extensions for valueInteger",
@@ -1020,8 +997,7 @@
         },
         "valueDecimal": {
           "description": "Parameter value - variable or literal.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
         },
         "_valueDecimal": {
           "description": "Extensions for valueDecimal",

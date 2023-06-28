@@ -140,8 +140,7 @@
         },
         "sourceUri": {
           "description": "Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uri"
         },
         "_sourceUri": {
           "description": "Extensions for sourceUri",
@@ -149,8 +148,7 @@
         },
         "sourceCanonical": {
           "description": "Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
         },
         "_sourceCanonical": {
           "description": "Extensions for sourceCanonical",
@@ -158,8 +156,7 @@
         },
         "targetUri": {
           "description": "The target value set provides context for the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uri"
         },
         "_targetUri": {
           "description": "Extensions for targetUri",
@@ -167,8 +164,7 @@
         },
         "targetCanonical": {
           "description": "The target value set provides context for the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
         },
         "_targetCanonical": {
           "description": "Extensions for targetCanonical",

@@ -412,8 +412,7 @@
         },
         "answerBoolean": {
           "description": "A value that the referenced question is tested using the specified operator in order for the item to be enabled.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_answerBoolean": {
           "description": "Extensions for answerBoolean",
@@ -421,8 +420,7 @@
         },
         "answerDecimal": {
           "description": "A value that the referenced question is tested using the specified operator in order for the item to be enabled.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
         },
         "_answerDecimal": {
           "description": "Extensions for answerDecimal",
@@ -430,8 +428,7 @@
         },
         "answerInteger": {
           "description": "A value that the referenced question is tested using the specified operator in order for the item to be enabled.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_answerInteger": {
           "description": "Extensions for answerInteger",
@@ -439,8 +436,7 @@
         },
         "answerDate": {
           "description": "A value that the referenced question is tested using the specified operator in order for the item to be enabled.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_answerDate": {
           "description": "Extensions for answerDate",
@@ -448,8 +444,7 @@
         },
         "answerDateTime": {
           "description": "A value that the referenced question is tested using the specified operator in order for the item to be enabled.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
         },
         "_answerDateTime": {
           "description": "Extensions for answerDateTime",
@@ -457,8 +452,7 @@
         },
         "answerTime": {
           "description": "A value that the referenced question is tested using the specified operator in order for the item to be enabled.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/time"
         },
         "_answerTime": {
           "description": "Extensions for answerTime",
@@ -466,8 +460,7 @@
         },
         "answerString": {
           "description": "A value that the referenced question is tested using the specified operator in order for the item to be enabled.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_answerString": {
           "description": "Extensions for answerString",
@@ -511,8 +504,7 @@
         },
         "valueInteger": {
           "description": "A potential answer that\u0027s allowed as the answer to this question.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_valueInteger": {
           "description": "Extensions for valueInteger",
@@ -520,8 +512,7 @@
         },
         "valueDate": {
           "description": "A potential answer that\u0027s allowed as the answer to this question.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_valueDate": {
           "description": "Extensions for valueDate",
@@ -529,8 +520,7 @@
         },
         "valueTime": {
           "description": "A potential answer that\u0027s allowed as the answer to this question.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/time"
         },
         "_valueTime": {
           "description": "Extensions for valueTime",
@@ -538,8 +528,7 @@
         },
         "valueString": {
           "description": "A potential answer that\u0027s allowed as the answer to this question.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -587,8 +576,7 @@
         },
         "valueBoolean": {
           "description": "The actual value to for an initial answer.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_valueBoolean": {
           "description": "Extensions for valueBoolean",
@@ -596,8 +584,7 @@
         },
         "valueDecimal": {
           "description": "The actual value to for an initial answer.",
-          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/decimal"
         },
         "_valueDecimal": {
           "description": "Extensions for valueDecimal",
@@ -605,8 +592,7 @@
         },
         "valueInteger": {
           "description": "The actual value to for an initial answer.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_valueInteger": {
           "description": "Extensions for valueInteger",
@@ -614,8 +600,7 @@
         },
         "valueDate": {
           "description": "The actual value to for an initial answer.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_valueDate": {
           "description": "Extensions for valueDate",
@@ -623,8 +608,7 @@
         },
         "valueDateTime": {
           "description": "The actual value to for an initial answer.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
         },
         "_valueDateTime": {
           "description": "Extensions for valueDateTime",
@@ -632,8 +616,7 @@
         },
         "valueTime": {
           "description": "The actual value to for an initial answer.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/time"
         },
         "_valueTime": {
           "description": "Extensions for valueTime",
@@ -641,8 +624,7 @@
         },
         "valueString": {
           "description": "The actual value to for an initial answer.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -650,8 +632,7 @@
         },
         "valueUri": {
           "description": "The actual value to for an initial answer.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uri"
         },
         "_valueUri": {
           "description": "Extensions for valueUri",

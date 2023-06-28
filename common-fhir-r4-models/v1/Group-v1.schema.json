@@ -133,8 +133,7 @@
         },
         "valueBoolean": {
           "description": "The value of the trait that holds (or does not hold - see \u0027exclude\u0027) for members of the group.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_valueBoolean": {
           "description": "Extensions for valueBoolean",

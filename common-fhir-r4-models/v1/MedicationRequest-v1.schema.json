@@ -72,8 +72,7 @@
         },
         "reportedBoolean": {
           "description": "Indicates if this record was captured as a secondary \u0027reported\u0027 record rather than as an original primary source-of-truth record.  It may also indicate the source of the report.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_reportedBoolean": {
           "description": "Extensions for reportedBoolean",
@@ -352,8 +351,7 @@
         },
         "allowedBoolean": {
           "description": "True if the prescriber allows a different drug to be dispensed from what was prescribed.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_allowedBoolean": {
           "description": "Extensions for allowedBoolean",

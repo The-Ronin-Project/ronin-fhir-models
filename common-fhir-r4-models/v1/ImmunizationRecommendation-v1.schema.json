@@ -133,8 +133,7 @@
         },
         "doseNumberPositiveInt": {
           "description": "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose).",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
         },
         "_doseNumberPositiveInt": {
           "description": "Extensions for doseNumberPositiveInt",
@@ -142,8 +141,7 @@
         },
         "doseNumberString": {
           "description": "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose).",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_doseNumberString": {
           "description": "Extensions for doseNumberString",
@@ -151,8 +149,7 @@
         },
         "seriesDosesPositiveInt": {
           "description": "The recommended number of doses to achieve immunity.",
-          "pattern": "^[1-9][0-9]*$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/positiveInt"
         },
         "_seriesDosesPositiveInt": {
           "description": "Extensions for seriesDosesPositiveInt",
@@ -160,8 +157,7 @@
         },
         "seriesDosesString": {
           "description": "The recommended number of doses to achieve immunity.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_seriesDosesString": {
           "description": "Extensions for seriesDosesString",

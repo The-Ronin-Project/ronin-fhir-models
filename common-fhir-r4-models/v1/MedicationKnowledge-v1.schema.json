@@ -601,8 +601,7 @@
         },
         "valueString": {
           "description": "Description of the characteristic.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -614,8 +613,7 @@
         },
         "valueBase64Binary": {
           "description": "Description of the characteristic.",
-          "pattern": "^(\\s*([0-9a-zA-Z\\+/\u003d]){4}\\s*)+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/base64Binary"
         },
         "_valueBase64Binary": {
           "description": "Extensions for valueBase64Binary",

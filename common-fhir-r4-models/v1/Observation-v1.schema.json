@@ -86,8 +86,7 @@
         },
         "effectiveDateTime": {
           "description": "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
         },
         "_effectiveDateTime": {
           "description": "Extensions for effectiveDateTime",
@@ -103,8 +102,7 @@
         },
         "effectiveInstant": {
           "description": "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/instant"
         },
         "_effectiveInstant": {
           "description": "Extensions for effectiveInstant",
@@ -135,8 +133,7 @@
         },
         "valueString": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -144,8 +141,7 @@
         },
         "valueBoolean": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_valueBoolean": {
           "description": "Extensions for valueBoolean",
@@ -153,8 +149,7 @@
         },
         "valueInteger": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_valueInteger": {
           "description": "Extensions for valueInteger",
@@ -174,8 +169,7 @@
         },
         "valueTime": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/time"
         },
         "_valueTime": {
           "description": "Extensions for valueTime",
@@ -183,8 +177,7 @@
         },
         "valueDateTime": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
         },
         "_valueDateTime": {
           "description": "Extensions for valueDateTime",
@@ -353,8 +346,7 @@
         },
         "valueString": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -362,8 +354,7 @@
         },
         "valueBoolean": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_valueBoolean": {
           "description": "Extensions for valueBoolean",
@@ -371,8 +362,7 @@
         },
         "valueInteger": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^-?([0]|([1-9][0-9]*))$",
-          "type": "number"
+          "$ref": "core/primitives.schema.json#/definitions/integer"
         },
         "_valueInteger": {
           "description": "Extensions for valueInteger",
@@ -392,8 +382,7 @@
         },
         "valueTime": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/time"
         },
         "_valueTime": {
           "description": "Extensions for valueTime",
@@ -401,8 +390,7 @@
         },
         "valueDateTime": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/dateTime"
         },
         "_valueDateTime": {
           "description": "Extensions for valueDateTime",

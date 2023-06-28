@@ -191,8 +191,7 @@
         },
         "minimumVolumeString": {
           "description": "The minimum volume to be conditioned in the container.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_minimumVolumeString": {
           "description": "Extensions for minimumVolumeString",

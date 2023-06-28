@@ -36,8 +36,7 @@
         },
         "manufacturerString": {
           "description": "A name of the manufacturer.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_manufacturerString": {
           "description": "Extensions for manufacturerString",

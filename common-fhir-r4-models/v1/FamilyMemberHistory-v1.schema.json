@@ -99,8 +99,7 @@
         },
         "bornDate": {
           "description": "The actual or approximate date of birth of the relative.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_bornDate": {
           "description": "Extensions for bornDate",
@@ -108,8 +107,7 @@
         },
         "bornString": {
           "description": "The actual or approximate date of birth of the relative.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_bornString": {
           "description": "Extensions for bornString",
@@ -125,8 +123,7 @@
         },
         "ageString": {
           "description": "The age of the relative at the time the family member history is recorded.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_ageString": {
           "description": "Extensions for ageString",
@@ -142,8 +139,7 @@
         },
         "deceasedBoolean": {
           "description": "Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_deceasedBoolean": {
           "description": "Extensions for deceasedBoolean",
@@ -159,8 +155,7 @@
         },
         "deceasedDate": {
           "description": "Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_deceasedDate": {
           "description": "Extensions for deceasedDate",
@@ -168,8 +163,7 @@
         },
         "deceasedString": {
           "description": "Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_deceasedString": {
           "description": "Extensions for deceasedString",
@@ -262,8 +256,7 @@
         },
         "onsetString": {
           "description": "Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_onsetString": {
           "description": "Extensions for onsetString",

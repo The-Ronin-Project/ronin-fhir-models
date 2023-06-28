@@ -344,8 +344,7 @@
         },
         "timingDate": {
           "description": "The date when or period to which this information refers.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_timingDate": {
           "description": "Extensions for timingDate",
@@ -357,8 +356,7 @@
         },
         "valueBoolean": {
           "description": "Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_valueBoolean": {
           "description": "Extensions for valueBoolean",
@@ -366,8 +364,7 @@
         },
         "valueString": {
           "description": "Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_valueString": {
           "description": "Extensions for valueString",
@@ -746,8 +743,7 @@
         },
         "servicedDate": {
           "description": "The date or dates when the service or product was supplied, performed or completed.",
-          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/date"
         },
         "_servicedDate": {
           "description": "Extensions for servicedDate",

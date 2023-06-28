@@ -206,8 +206,7 @@
         },
         "contentString": {
           "description": "A communicated content (or for multi-part communications, one portion of the communication).",
-          "pattern": "^[ \\r\\n\\t\\S]+$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/string"
         },
         "_contentString": {
           "description": "Extensions for contentString",

@@ -165,8 +165,7 @@
         },
         "eventUri": {
           "description": "Event code or link to the EventDefinition.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uri"
         },
         "_eventUri": {
           "description": "Extensions for eventUri",

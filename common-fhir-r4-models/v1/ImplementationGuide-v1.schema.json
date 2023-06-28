@@ -773,8 +773,7 @@
         },
         "exampleBoolean": {
           "description": "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_exampleBoolean": {
           "description": "Extensions for exampleBoolean",
@@ -782,8 +781,7 @@
         },
         "exampleCanonical": {
           "description": "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
         },
         "_exampleCanonical": {
           "description": "Extensions for exampleCanonical",
@@ -826,8 +824,7 @@
         },
         "nameUrl": {
           "description": "The source address for the page.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/url"
         },
         "_nameUrl": {
           "description": "Extensions for nameUrl",
@@ -1071,8 +1068,7 @@
         },
         "exampleBoolean": {
           "description": "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile.",
-          "pattern": "^true|false$",
-          "type": "boolean"
+          "$ref": "core/primitives.schema.json#/definitions/boolean"
         },
         "_exampleBoolean": {
           "description": "Extensions for exampleBoolean",
@@ -1080,8 +1076,7 @@
         },
         "exampleCanonical": {
           "description": "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
         },
         "_exampleCanonical": {
           "description": "Extensions for exampleCanonical",

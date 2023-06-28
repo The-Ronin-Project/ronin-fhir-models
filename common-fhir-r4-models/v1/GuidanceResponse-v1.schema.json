@@ -33,8 +33,7 @@
         },
         "moduleUri": {
           "description": "An identifier, CodeableConcept or canonical reference to the guidance that was requested.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/uri"
         },
         "_moduleUri": {
           "description": "Extensions for moduleUri",
@@ -42,8 +41,7 @@
         },
         "moduleCanonical": {
           "description": "An identifier, CodeableConcept or canonical reference to the guidance that was requested.",
-          "pattern": "^\\S*$",
-          "type": "string"
+          "$ref": "core/primitives.schema.json#/definitions/canonical"
         },
         "_moduleCanonical": {
           "description": "Extensions for moduleCanonical",

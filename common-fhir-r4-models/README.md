@@ -30,6 +30,8 @@ Besides dissecting the schema, there are a few modifications made that are of no
   the schema validation, while `extends` is used by the code generation.
 * The use of `allOf` also required the `additionalProperties` field of all top-level Resources to be switched
   to `unevaluatedProperties`
+* All uses of FHIR primitives have been switched to references to our pulled
+  out [primitive definitions](v1/core/primitives.schema.json)
 
 ## Test Examples
 
